@@ -648,3 +648,93 @@ class Toy():
 action_figure = Toy('red', 0)
 print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
 print(str('action_figure'))       # action_figure
+
+
+
+--------------------------------------------------
+
+
+
+# Miltiple Inheritance
+class User:
+
+    def sign_in(self):
+        print('Logged in')
+
+
+class Wizard(User):
+
+    def __init__(self, name, power):
+        self.name = name
+        self.power = power
+
+    def attack(self): 
+        User.attack(self)
+        print(f'Attacking with power of {self.power}')
+
+
+class Archer(User):
+
+    def __init__(self, name, arrows):
+        self.name = name
+        self.arrows = arrows
+
+    def check_arrows(self):
+        print(f'{self.arrows} remaining')
+    
+    def run(self):
+        print('Run fast')
+
+
+class HybridBorg(Wizard, Archer):
+    pass
+
+hb1 = HybridBorg('Borgie', 50)      # extentiation
+
+print(hb1.run())    # Run fast # None
+print(hb1.check_arrows())   # gives error since it doesn't know arrows
+
+
+
+-----------
+
+
+
+# Miltiple Inheritance
+class User:
+    def sign_in(self):
+        print('Logged in')
+
+
+class Wizard(User):
+    def __init__(self, name, power):
+        self.name = name
+        self.power = power
+
+    def attack(self): 
+        print(f'Attacking with power of {self.power}')
+
+
+class Archer(User):
+    def __init__(self, name, arrows):
+        self.name = name
+        self.arrows = arrows
+
+    def check_arrows(self):
+        print(f'{self.arrows} remaining')
+    
+    def run(self):
+        print('Run fast')
+
+
+class HybridBorg(Wizard, Archer):
+    def __init__(self, name, power, arrows):
+        Archer.__init__(self, name, arrows)
+        Wizard.__init__(self, name, power)
+
+hb1 = HybridBorg('Borgie', 50, 100)
+
+print(hb1.run())    # Run fast # None
+print(hb1.check_arrows())   # 100 remaining  # None
+print(hb1.attack())     # Attacking with power of 50  # None
+print(hb1.sign_in())    # Logged in  # None
