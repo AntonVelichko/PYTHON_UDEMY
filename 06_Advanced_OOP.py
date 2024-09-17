@@ -585,3 +585,66 @@ class Wizard(User):
 
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
 print(dir(wizard1))
+
+
+--------------------------------------------------------------
+
+
+
+# Dunder Methods
+class Toy():
+    def __init__(self, color, age):
+        self.color = color
+        self.age = age
+        
+action_figure = Toy('red', 0)
+print(action_figure.__str__())  # <__main__.Toy object at 0x773cad9efc90>
+print(str(action_figure))       # <__main__.Toy object at 0x773cad9efc90>
+
+-----
+
+class Toy():
+    def __init__(self, color, age):
+        self.color = color
+        self.age = age
+        
+    def __str__(self):
+        return f'{self.color}'
+        
+action_figure = Toy('red', 0)
+print(action_figure.__str__())  # red
+print(str(action_figure))       # red
+
+-----
+
+class Toy():
+    def __init__(self, color, age):
+        self.color = color
+        self.age = age
+        
+    def __str__(self):
+        return f'{self.color}'
+        
+action_figure = Toy('red', 0)
+print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
+print(str('action_figure'))       # action_figure
+
+
+
+
+-----------------------------------------------------------
+
+
+
+# Dunder Methods
+class Toy():
+    def __init__(self, color, age):
+        self.color = color
+        self.age = age
+        
+    def __str__(self):
+        return f'{self.color}'
+        
+action_figure = Toy('red', 0)
+print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
+print(str('action_figure'))       # action_figure
