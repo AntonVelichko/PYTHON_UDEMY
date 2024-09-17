@@ -512,3 +512,34 @@ for char in [wizard1, archer1]:  # Do nothing  /  # Attacking with power of 60
   char.attack()  # Attacking with arrows: arrows left - 30
 
 player_attack(user1)  # Do nothing
+
+
+
+
+------------------------------------------------------------------------------
+
+
+
+# super()
+class User:
+    def __init__(self, email):
+        self.email = email
+
+    def sign_in(self):
+        print('Logged in')
+
+
+
+class Wizard(User):
+    def __init__(self, name, power, email):
+        User.__init__(self, email)        # one way to pass argument
+        self.name = name
+        self.power = power
+
+    def attack(self):
+        print(f'Attacking with power of {self.power}')
+
+
+
+wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
+print(wizard1.email)
