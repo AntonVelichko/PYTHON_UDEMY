@@ -34,11 +34,11 @@ print(bool(None))               # False
 # 63 Ternary operator
 is_friend = False
 true_friend = 'Yes, True'  if is_friend else 'No friend'
-print(true_friend)
+print(true_friend)  # No friend
 
 
 
-# 64 Short circuiting
+# 64 Short-circuiting
 
 # 65 Logical operators
 # > < ==  !=  and  or  not
@@ -72,11 +72,11 @@ print(10 == 10.0)           # True
 print([] == [])             # True
 print([1,2,3] == [1,2,3])   # True
 print((1,2,3) == (1,2,3))   # True
-print((1,3,2) == (1,2,3))   # False
-print({1,3,2} == {1,2,3})   # True
+print((1,2,3) == (3,2,1))   # False
+print({1,2,3} == {3,2,1})   # True
 
 
-# 'is' checks if value stored in one memory location
+# 'is' checks if the value is stored in one memory location
 print(True is 1)            # False
 print('1' is 1)             # False
 print([] is 1)              # False
@@ -99,7 +99,7 @@ b = [1,2,3]
 print(a == b)               # True
 
 a = [1,2,3]
-b = a
+b = a                       # refference in memory
 print(a is b)               # True
 
 
