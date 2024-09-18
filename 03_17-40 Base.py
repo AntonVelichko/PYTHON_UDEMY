@@ -25,7 +25,7 @@ print(type(10.56))        # '10' stores in one memory and '56' in another
 
 print(2 ** 3)             # 8
 print(3 // 2)             # 1   /rounded down to integer
-print(5 % 4)              # 1   /modulo, the remainder of devision
+print(5 % 4)              # 1   /modulo, the remainder of division
 
 # Math functions   / https://www.programiz.com/python-programming/modules/math
 print(round(3.5))         # 4
@@ -54,7 +54,7 @@ print(int('0b111', 2))    # 7
 # snake_case
 # start with lowercase or _underscore
 # contains letters, numbers, underscores
-# case sensetive
+# case sensitive
 # don't overwrite keywords
 # variables are descriptive
 
@@ -147,7 +147,7 @@ print(python[::-2])           # jhfdb  (reverse, skip every 2)
 
 # built-in functions   / https://docs.python.org/3/library/functions.html
 greet = 'abcde'
-print(greet[0:len(greet)])    # abcdefghij
+print(greet[0:len(greet)])    # abcde
 
 
 # string methods   / https://www.w3schools.com/python/python_ref_string.asp
