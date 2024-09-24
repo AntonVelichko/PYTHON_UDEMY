@@ -13,7 +13,7 @@ dict_1 = {
   'b': 2
 }
 
-# items returns tuple
+# items return tuple
 print(dict_1.items())               # dict_items([('a', 1), ('b', 2)])
 
 
@@ -28,7 +28,7 @@ tuple_1 = (1,2,3,4,5)
 
 # copy
 tuple_2 = tuple_1[1:2]
-print(tuple_2)              # (2,)   /if it's single item then will be a comma in the end
+print(tuple_2)              # (2,)   /if it's a single item, then will be a comma at the end
 print(tuple_1)              # (1, 2, 3, 4, 5)
 
 tuple_3 = tuple_1[1:4]
