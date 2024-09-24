@@ -103,7 +103,7 @@ print(set_4)                                      # set()
 set_1 = {1,2,3,4,5}
 set_2 = {4,5,6,7,8,9,10}
 
-# .difference()   / find diffecrence / returns difference
+# .difference()   / find difference / returns difference
 set_1 = {1,2,3,4,5}
 print(set_1.difference(set_2))                          # {1,2,3}
 print(set_2.difference(set_1))                          # {6, 7, 8, 9, 10}
@@ -111,12 +111,14 @@ print(set_1)                                            # {1, 2, 3, 4, 5}
 
 # .discard()   /delete item / returns None
 set_1 = {1,2,3,4,5}
+set_2 = {4,5,6,7,8,9,10}
 set_1.discard(5)
 print(set_1)                                            # {1, 2, 3, 4}
 
 # .difference_update()   /returns None
 # removes all elements of another set from this set
 set_1 = {1,2,3,4,5}
+set_2 = {4,5,6,7,8,9,10}
 set_1.difference_update(set_2)
 print(set_1)                                            # {1,2,3}
 
@@ -126,20 +128,24 @@ print(set_1.intersection(set_2))                        # set()   /if no interse
 print(set_1)                                            # {1,2,3}
 
 set_1 = {1,2,3,4,5}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.intersection(set_2))                        # {4,5}
 print(set_1)                                            # {1,2,3,4,5}
 
 set_1 = {9,10,11}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.intersection(set_2))                        # {9,10}
 print(set_1 & set_2)                                    # {9, 10}
 print(set_1)                                            # {9,10,11}
 
 # .isdisjoint()   /if it hasn't common values
 set_1 = {1,2,3}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.isdisjoint(set_2))                          # True
 
 # .union()
 set_1 = {1,2,3,4,5}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.union(set_2))                               # {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
 set_1 = {3,4,5}
@@ -147,13 +153,16 @@ print(set_1 | set_2)                                    # {3, 4, 5, 6, 7, 8, 9, 
 
 # .issubset()   / returns whether another set contains this set or not
 set_1 = {4,5}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.issubset(set_2))                            # True
 
 set_1 = {3,4,5}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.issubset(set_2))                            # False
 
 # .issuperset()   / returns whether this set contains another set or not
 set_1 = {4,5}
+set_2 = {4,5,6,7,8,9,10}
 print(set_1.issuperset(set_2))                          # False
 print(set_2.issuperset(set_1))                          # True
 
