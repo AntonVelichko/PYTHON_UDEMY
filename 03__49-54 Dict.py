@@ -68,7 +68,6 @@ print(dictionary.get('c', 3))         # 3
 
 # if the key exists, it doesn't overwrite the value
 print(dictionary.get('a', 10))        # 1
-
 print(dictionary)                     # {'a': 1, 'b': 2}
 
 
@@ -113,7 +112,7 @@ print(dictionary)                     # {'b': 2}
 print(dictionary.update({'b': 12}))   # None
 print(dictionary)                     # {'b': 12}
 
-# .update()   /can add new item
+# .update()   /can add a new item
 dictionary.update({'a': 11})
 print(dictionary)                     # {'b': 12, 'a': 11}
 
@@ -122,10 +121,11 @@ dictionary.clear()
 print(dictionary)                     # {}
 
 # .popitem() 
-# /removes last one, but dict is unordered so basicaly it removes some randome item
+# /removes the last one, but dict is unordered so basically, it removes some random item
 
 
 
+#EXERCISE
 #1 Create a user profile for your new game. This user profile will be stored in a dictionary with keys: 'age', 'username', 'weapons', 'is_active' and 'clan'
 user = {
   'age': 23,
@@ -152,7 +152,7 @@ print(user)
 user['is_banned'] = True          # user.update({'is_banned': True})
 print(user)
 
-#6 create a new user2 by copying the previous user and update the age value and username value. 
+#6 create a new user2 by copying the previous user and updating the age and username values. 
 user2 = user.copy()
 user2.update({'age': 35, 'username': 'Jimmy'})
 print(user2)
