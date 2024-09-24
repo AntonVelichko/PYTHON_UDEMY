@@ -34,7 +34,7 @@ arr_3[0] = 'w'
 print(arr)          # ['w', 'b', 'c', 'd']
 print(arr_3)        # ['w', 'b', 'c', 'd']
 
-# list slicing create new copy
+# list slicing creates new copy
 arr_4 = arr[:]
 arr_4[0] = 'n'
 print(arr_4)        # ['n', 'b', 'c', 'd']
@@ -96,7 +96,7 @@ arr.pop(2)                # delete index
 print(arr)                # [1, 'x', 3, 4, 5, 6, 7, 8]
 
 # .remove()   /returns None
-arr.remove('x')           # remove value
+arr.remove('x')           # remove the first value
 print(arr)                # [1, 3, 4, 5, 6, 7, 8]
 
 # .clear()   /returns None
@@ -110,7 +110,7 @@ print(arr)                # []
 
 
 # 45 List Methods 2
-# .index()   /reterns first index of value
+# .index()   /returns the first index of value
 arr = ['a','b','c','d','e','a']
 print(arr.index('b'))             # 1
 print(arr.index('d', 0, 4))       # 3 /starts from 0 and stops before 4 
