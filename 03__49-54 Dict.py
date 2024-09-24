@@ -1,8 +1,8 @@
 
 
 # 50 Dictionary
-# dict is data type and data structure
-# unordered data (key value pair), list is ordered data
+# dict is a data type and data structure
+# unordered data (key-value pair), list is ordered data
 
 dictionary = {
   'a': 1,                   # key, value
@@ -62,17 +62,17 @@ dictionary = {
 print(dictionary.get('a'))            # 1
 print(dictionary.get('age'))          # None
 
-# return the value of an item that do not exist
-# means grab the 'c' from dictionary, if it doesn't exist then use 3 by default
+# return the value of an item that does not exist
+# means grab the 'c' from the dictionary; if it doesn't exist, then use '3' by default
 print(dictionary.get('c', 3))         # 3
 
-# if key exists it doesn't overwrite the value
+# if the key exists, it doesn't overwrite the value
 print(dictionary.get('a', 10))        # 1
 
 print(dictionary)                     # {'a': 1, 'b': 2}
 
 
-# another way to create dictionary
+# another way to create a dictionary
 dictionary_2 = dict(name = 'John', age = 55)
 print(dictionary_2)                   # {'name': 'John', 'age': 55}
 
