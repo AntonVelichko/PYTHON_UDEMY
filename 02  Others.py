@@ -68,6 +68,7 @@ elif not is_magician:
 print(True == 1)            # True
 print('1' == 1)             # False
 print([] == 1)              # False
+print([] == 0)              # False
 print(10 == 10.0)           # True
 print([] == [])             # True
 print([1,2,3] == [1,2,3])   # True
@@ -83,19 +84,17 @@ print([] is 1)              # False
 print(10 is 10.0)           # False
 print([] is [])             # False
 print([1,2,3] is [1,2,3])   # False
+print([] is [])             # False  /every list (dict, sets, tuples) in its own memory location
 
 print('1' is '1')           # True
 print(True is True)         # True
-print([] is [])             # False  /every list (dict, sets, tuples) in its own memory location
 print(10 is 10)             # True
+
 
 
 a = [1,2,3]
 b = [1,2,3]
 print(a is b)               # False
-
-a = [1,2,3]
-b = [1,2,3]
 print(a == b)               # True
 
 a = [1,2,3]
@@ -110,10 +109,10 @@ print(a is b)               # True
 
 # 72 enumerate()
 for char in enumerate('abc'):
-  print(char)                       # (0, 'a') (1, 'b') (2, 'c')
+  print(char)                       # (0, 'a')  /  (1, 'b')  /  (2, 'c')
 
 for i, char in enumerate('abc'):
-  print(i, char)                    # 0 a  1 b  2 c
+  print(i, char)                    # 0 a  /  1 b  /  2 c
 
 for i, char in enumerate(list(range(10))):
   if char == 5:
@@ -204,17 +203,17 @@ print(is_even(51))
 # **kwargs - can be keywords
 def super_func(*args):        # can accept any number as many as we want
   print(args)                 # (1, 2, 3)  /tuple
-  return sum(args)
-print(super_func(1,2,3))      # 6
+  return sum(args)            # 6
+print(super_func(1,2,3))
 
 
-def super_func(*args, **kwargs):        # can accept any number as many as we want
+def super_func(*args, **kwargs):
   print(kwargs)                         # {'num1': 10}  /dict
-  return sum(args)
-print(super_func(1,2,3, num1 = 10))     # 6
+  return sum(args)                      # 6
+print(super_func(1,2,3, num1 = 10))
 
 
-def super_func(*args, **kwargs):        # can accept any number as many as we want
+def super_func(*args, **kwargs):
   total = 0                         
   for items in kwargs.values():
     total += items
@@ -242,7 +241,7 @@ def highest_even2(arr):
   for item in arr:
     if item % 2 == 0:
       list_evens.append(item)
-  return max(evens)
+  return max(list_evens)
   
 print(highest_even2([1,2,10,13,3,4,11]))
 
@@ -251,18 +250,16 @@ print(highest_even2([1,2,10,13,3,4,11]))
 
 # 89 walrus operator
 a = 'Helloooooooo'
+
 if (len(a) > 10):
   print(f'too long {len(a)} elements')
-
 
 if ((n := len(a)) > 10):
   print(f'too long {n} elements')
 
-
 b = len(a)
 if (b > 10):
   print(f'too long {b} elements')
-
 
 while((n := len(a)) > 1):
   print(n)
@@ -292,7 +289,7 @@ print(func())               # 5
 #1 - start with local
 #2 - parent local scope
 #3 - global
-#4 - built-in pythin functions
+#4 - built-in python functions
 
 
 
@@ -311,7 +308,7 @@ print(count())                  # 1
 
 total_1 = 0
 def count_1():
-  global total_1                # not a godo way to use, hard to understand
+  global total_1                # not a good way to use, hard to understand
   total_1 += 1
   return total_1
 
@@ -331,7 +328,7 @@ total_3 = 3
 def count_3(total_3):
   #total_3 = 0
   return total_3
-print(count_3(total_3))         #5
+print(count_3(total_3))         #3
 
 
 def count_4(total_4):
@@ -362,9 +359,9 @@ def outer():
   def inner():
     nonlocal x
     x = 'nonlocal'
-    print('inner:', x)            # inner: nonlocal
+    print('inner:', x)
 
-  inner()
+  inner()                         # inner: nonlocal
   print('outer:', x)
 outer()                           # outer: nonlocal
 
@@ -373,9 +370,9 @@ def outer_2():
   x = 'local'
   def inner():
     x = 'nonlocal'
-    print('inner:', x)            # inner: nonlocal
+    print('inner:', x)
 
-  inner()
+  inner()                         # inner: nonlocal
   print('outer:', x)
 outer_2()                         # outer: local
 
