@@ -12,7 +12,7 @@ set
 # Classes -> custom types
 
 # Specialized Data Types -> libraries, packages (modules)
-None      # abcense of value
+None                        # abcense of value
 
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
@@ -25,7 +25,7 @@ print(type(10.56))        # '10' stores in one memory and '56' in another
 
 print(2 ** 3)             # 8
 print(3 // 2)             # 1   /rounded down to integer
-print(5 % 4)              # 1   /modulo, the remainder of division
+print(5 % 4)              # 1   /modulo, the remainder of the division
 
 # Math functions   / https://www.programiz.com/python-programming/modules/math
 print(round(3.5))         # 4
