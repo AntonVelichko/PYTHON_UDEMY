@@ -125,7 +125,7 @@ i = 0
 while i < 5:
   print(i)                    # 0
   i = i + 1
-  break                       # 'break' stops loop
+  break                       # 'break' stops the loop
 else:
   print('done')
 
