@@ -59,13 +59,27 @@ print(sum)                          # 55
 
 # 71 range
 for i in range(0, 10):
-  print(i)                          # 0 1 2 ...
+  print(i)                          # 0 1 2 ... 9
 
 for _ in range(0, 10, 2):           # _ means that variable doesn't matter
   print('email')                    # email ... (x5)
 
 for _ in range(5, 0, -1):           # reversing range
   print(_)                          # 5 4 3 2 1
+
+# https://stackoverflow.com/questions/3476732/how-to-loop-backwards-in-python
+for x in reversed(whatever):
+    do_something()
+
+
+def reverse(text):
+    result = ""
+    for i in range(len(text),0,-1):
+        result += text[i-1]
+    return (result)
+# same can do --> text[::-1]
+# same can do --> "".join(reversed(text))
+
 
 for _ in range(3):
   print(list(range(10)))            # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] ... (x3)
