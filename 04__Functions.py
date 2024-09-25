@@ -4,7 +4,7 @@ def say_hello():
 
 say_hello()                 # hello!
 print(say_hello)            # <function say_hello at 0x7f413b6461f0>
-print(say_hello())          # hello!   # None
+print(say_hello())          # hello!   # None / returns 'None' since function doesn't have Return
 
 
 
