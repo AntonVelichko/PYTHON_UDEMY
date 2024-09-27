@@ -535,7 +535,7 @@ class Wizard(User):
         print(f'Attacking with power of {self.power}')
 
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
-print(wizard1.email)
+print(wizard1.email)        # merlin@gmail.com
 
 
 ----------
@@ -558,7 +558,7 @@ class Wizard(User):
         print(f'Attacking with power of {self.power}')
 
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
-print(wizard1.email)
+print(wizard1.email)        # merlin@gmail.com
 
 -------------
 
@@ -573,7 +573,7 @@ class User:
 
 class Wizard(User):
     def __init__(self, name, power, email):
-        super().__init__(email)        # reffering to Super Class (class above), no self needed
+        super().__init__(email)
         self.name = name
         self.power = power
 
@@ -581,13 +581,13 @@ class Wizard(User):
         print(f'Attacking with power of {self.power}')
 
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
-print(dir(wizard1))
+print(dir(wizard1))    # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',  ...  'attack', 'email', 'name', 'power', 'sign_in']
 
 
 --------------------------------------------------------------
 
 
-
+https://docs.python.org/3/reference/datamodel.html#special-method-names
 # Dunder Methods
 class Toy():
     def __init__(self, color, age):
@@ -595,10 +595,13 @@ class Toy():
         self.age = age
         
 action_figure = Toy('red', 0)
+
 print(action_figure.__str__())  # <__main__.Toy object at 0x773cad9efc90>
 print(str(action_figure))       # <__main__.Toy object at 0x773cad9efc90>
 
+
 -----
+
 
 class Toy():
     def __init__(self, color, age):
@@ -609,42 +612,11 @@ class Toy():
         return f'{self.color}'
         
 action_figure = Toy('red', 0)
-print(action_figure.__str__())  # red
+print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
 print(str(action_figure))       # red
 
------
-
-class Toy():
-    def __init__(self, color, age):
-        self.color = color
-        self.age = age
-        
-    def __str__(self):
-        return f'{self.color}'
-        
-action_figure = Toy('red', 0)
-print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
 print(str('action_figure'))       # action_figure
-
-
-
-
------------------------------------------------------------
-
-
-
-# Dunder Methods
-class Toy():
-    def __init__(self, color, age):
-        self.color = color
-        self.age = age
-        
-    def __str__(self):
-        return f'{self.color}'
-        
-action_figure = Toy('red', 0)
-print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
-print(str('action_figure'))       # action_figure
+print(type(str(123)))          #  <class 'str'>
 
 
 
@@ -652,15 +624,13 @@ print(str('action_figure'))       # action_figure
 
 
 
-# Miltiple Inheritance
+# Miltiple Inheritance - complicates code, be very cautios
 class User:
-
     def sign_in(self):
         print('Logged in')
 
 
 class Wizard(User):
-
     def __init__(self, name, power):
         self.name = name
         self.power = power
@@ -671,7 +641,6 @@ class Wizard(User):
 
 
 class Archer(User):
-
     def __init__(self, name, arrows):
         self.name = name
         self.arrows = arrows
@@ -680,7 +649,7 @@ class Archer(User):
         print(f'{self.arrows} remaining')
     
     def run(self):
-        print('Run fast')
+        print('Run fast ')
 
 
 class HybridBorg(Wizard, Archer):
@@ -721,7 +690,7 @@ class Archer(User):
         print(f'{self.arrows} remaining')
     
     def run(self):
-        print('Run fast')
+        print('Run fast Archer')
 
 
 class HybridBorg(Wizard, Archer):
@@ -731,7 +700,11 @@ class HybridBorg(Wizard, Archer):
 
 hb1 = HybridBorg('Borgie', 50, 100)
 
-print(hb1.run())    # Run fast # None
-print(hb1.check_arrows())   # 100 remaining  # None
-print(hb1.attack())     # Attacking with power of 50  # None
-print(hb1.sign_in())    # Logged in  # None
+print(hb1.run())            # Run fast Archer 
+                            # None
+print(hb1.check_arrows())   # 100 remaining  
+                            # None
+print(hb1.attack())         # Attacking with power of 50  
+                            # None
+print(hb1.sign_in())        # Logged in  
+                            # None
