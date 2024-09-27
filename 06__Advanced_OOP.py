@@ -15,8 +15,8 @@ print(type(5.5))
 print(type('hi'))
 print(type([]))
 print(type(()))
-print(type({}))
-print(type(obj1))
+print(type({}))            # <class 'dict'>
+print(type(obj1))            # <class '__main__.BigObject'>
 
 
 ----------------------------------------------------------------------
@@ -50,15 +50,14 @@ help(player1)
 
 
 class PlayerCharacter:
-    membership = True  # Class Object Attribute (static)
+    membership = True
     def __init__(self, name, age):
         if(self.membership):
-            self.name = name  #attributes
+            self.name = name
             self.age = age
 
     def run(self):
         print('run')
-        #return 'Done'
 
 
 player1 = PlayerCharacter('Cindy', 44)
@@ -73,15 +72,14 @@ print(player1.run())
 
 
 class PlayerCharacter:
-    membership = True  # Class Object Attribute (static)
+    membership = True
     def __init__(self, name = 'anonymous', age = 20):
         if(age >= 18):
-            self.name = name  #attributes
+            self.name = name
             self.age = age
 
     def run(self):
         print('Run')
-        #return 'Done'
 
 
 player1 = PlayerCharacter('Tom', 10)
@@ -128,15 +126,14 @@ print(f'The oldest cat is {oldest_cat(cat1.age,cat2.age,cat3.age)} years old.')
 
 #@classmethod and @staticmethod
 class PlayerCharacter:
-    membership = True  # Class Object Attribute (static)
+    membership = True
     def __init__(self, name = 'anonymous', age = 20):
         if(age >= 18):
-            self.name = name  #attributes
+            self.name = name
             self.age = age
 
     def run(self):
         print('Run')
-        #return 'Done'
 
     @classmethod            # method for the actual class, not used often (5%)
     def adding_things(cls, num1, num2):
@@ -147,9 +144,9 @@ player1 = PlayerCharacter('Tom', 10)
 player2 = PlayerCharacter()
 player2.attack = 50
 
-print(player1.adding_things(2,3))
-print(PlayerCharacter.adding_things(3,3))
-
+print(player1.adding_things(2,3))                    # 5
+print(player2.name, player2.age)                    # anonymous 20
+print(PlayerCharacter.adding_things(3,4))            # 7
 
 
 
@@ -157,15 +154,14 @@ print(PlayerCharacter.adding_things(3,3))
 
 
 class PlayerCharacter:
-    membership = True  # Class Object Attribute (static)
+    membership = True
     def __init__(self, name = 'anonymous', age = 20):
         if(age >= 18):
-            self.name = name  #attributes
+            self.name = name
             self.age = age
 
     def run(self):
         print('Run')
-        #return 'Done'
 
     @classmethod            # method for the actual class, not used often (5%)
     def adding_things(cls, num1, num2):
@@ -181,15 +177,14 @@ print(PlayerCharacter.adding_things(3,3))    # <__main__.PlayerCharacter object 
 
 
 class PlayerCharacter:
-    membership = True  # Class Object Attribute (static)
+    membership = True
     def __init__(self, name = 'anonymous', age = 20):
         if(age >= 18):
-            self.name = name  #attributes
+            self.name = name
             self.age = age
 
     def run(self):
         print('Run')
-        #return 'Done'
 
     @classmethod            # method for the actual class, not used often (5%)
     def adding_things(cls, num1, num2):
@@ -199,8 +194,9 @@ class PlayerCharacter:
     def adding_things2(num1, num2):
         return num1 + num2
 
-player = PlayerCharacter.adding_things(3,3)
-print(player.age)                            # 6 supposed to give, but give an error
+player = PlayerCharacter.adding_things(11,11)
+print(player.age)                            # 22
+print(player.name)                          # Teddy
 
 
 
@@ -209,6 +205,8 @@ print(player.age)                            # 6 supposed to give, but give an e
 
 
 https://www.makeuseof.com/tag/python-instance-static-class-methods/
+
+# Decorator Patterns
 # Decorator Patterns
 class DecoratorExample:
   # Example Class """
@@ -221,15 +219,18 @@ class DecoratorExample:
     # This method is decorated! """
     print('I\'m a decorated function!')
 
-de = DecoratorExample()
+de = DecoratorExample()                     # Hello, World!
 
-de.example_function()
-print('-')
-DecoratorExample().example_function()
-print('-')
-DecoratorExample.example_function()
+de.example_function()                       #I'm a decorated function!
+print('---')
 
-print('1----')
+DecoratorExample().example_function()       # Hello, World!
+print('---')                                # I'm a decorated function!
+
+DecoratorExample.example_function()         # I'm a decorated function!
+print('----')
+
+
 
 
 # Instance Methods
@@ -238,17 +239,18 @@ class DecoratorExample:
   def __init__(self):
     # Example Setup """
     print('Hello, World!')
-    self.name = 'Decorator_Example'
+    self.name = 'Decorator Example'
 
   def example_function(self):
     # This method is an instance method! """
     print('I\'m an instance method!')
     print('My name is ' + self.name)
 
-de = DecoratorExample()
-de.example_function()
+de = DecoratorExample()     # Hello, World!
+de.example_function()       # I'm an instance method!
+                            # My name is Decorator Example
 
-print('2----')
+
 
 
 # Static Method
@@ -263,10 +265,11 @@ class DecoratorExample:
     # This method is a static method! """
     print('I\'m a static method!')
 
-de = DecoratorExample.example_function()
+de = DecoratorExample.example_function()    # I'm a static method!
 
 
-print('3----')
+
+
 
 # Class Method
 class DecoratorExample:
@@ -285,8 +288,9 @@ class DecoratorExample:
   def some_other_function():
     print('Hello!')
 
-de = DecoratorExample()
-de.example_function()
+de = DecoratorExample()         # Hello, World!
+de.example_function()           # I'm a class method!
+                                # Hello!
 
 
 
@@ -306,9 +310,10 @@ class PlayerCharacter:
     print(f'My name is {self.name}, and I am {self.age} years old')
 
 player1 = PlayerCharacter('Tony', 99)
-player1.speak()
+player1.speak()                         # My name is Tony, and I am 99 years old
+PlayerCharacter('John', 88).speak()     # My name is John, and I am 88 years old
 
-PlayerCharacter('John', 88).speak()
+
 
 
 # if no methods - it's useless
@@ -318,14 +323,13 @@ class PlayerCharacter:
     self.age = age
 
 player1 = PlayerCharacter('Tony', 99)
-print(player1.name)
-print(player1.age)
+print(player1.name)         # Tony
+print(player1.age)          # 99
 
-player2 = {'name': 'Tony', 'age': 100}
-print(player2['name'])
-print(player2['age'])
-
-
+player2 = {'name': 'John', 'age': 100}
+print(player2['name'])      # John
+print(player2['age'])       # 100
+# the difference between player1 and player2 is the access to information
 
 
 
@@ -343,7 +347,8 @@ player1.name = '!!!'
 player1.speak = 'Booo'
 
 print(player1.speak)    # Booo
-print(player1.speak())  # Object is not callable
+print(player1.name)     # !!!
+print(player1.speak())  # TypeError: 'str' object is not callable
 
 
 
@@ -354,10 +359,7 @@ print(player1.speak())  # Object is not callable
 # Inheritance
 
 class User:
-
-  def sign_in(
-      self
-  ):  # if no attributes then we don't need __init__ , we do not initialize anything
+  def sign_in (self):      # if no attributes then we don't need __init__ , we do not initialize anything
     print('Logged in')
 
 class Wizard(User):
@@ -367,22 +369,19 @@ class Archer(User):
   pass
 
 wizard1 = Wizard()
-wizard1.sign_in()
+wizard1.sign_in()       # Logged in
+
 
 
 --------------------------------------------------
 
 
 class User:
-
-  def sign_in(
-      self
-  ):  # if no attributes then we don't need __init__ , we do not initialize anything
+  def sign_in (self):  # if no attributes then we don't need __init__ , we do not initialize anything
     print('Logged in')
 
 
 class Wizard(User):
-
   def __init__(self, name, power):
     self.name = name
     self.power = power
@@ -392,7 +391,6 @@ class Wizard(User):
 
 
 class Archer(User):
-
   def __init__(self, name, arrows):
     self.name = name
     self.arrows = arrows
@@ -405,16 +403,17 @@ wizard1 = Wizard('Merlin', 60)
 print(isinstance(wizard1, Wizard))    # True, wizard1 inherits methods from class Wizard
 print(isinstance(wizard1, User))    # True, wizard1 inherits methods from class User
 print(isinstance(wizard1, object))    # True, wizard1 inherits methods even from Object base class
+print(isinstance(User, object))        # True
 
 
 
 --------------------------------------------------
 
+# _var - means this variable is private, do not change it
 
-
+--------------------------------------------------
 # Polumorphism
 class User:
-
   def sign_in(self):
     print('Logged in')
 
@@ -423,7 +422,6 @@ class User:
 
 
 class Wizard(User):
-
   def __init__(self, name, power):
     self.name = name
     self.power = power
@@ -433,7 +431,6 @@ class Wizard(User):
 
 
 class Archer(User):
-
   def __init__(self, name, arrows):
     self.name = name
     self.arrows = arrows
@@ -452,13 +449,15 @@ def player_attack(char):
 
 
 player_attack(wizard1)  # Attacking with power of 60
+wizard1.attack()        # Attacking with power of 60
 player_attack(archer1)  # Attacking with arrows: arrows left - 30
 
 # for loop
 for char in [wizard1, archer1]:  # Attacking with power of 60
   char.attack()  # Attacking with arrows: arrows left - 30
 
-player_attack(user1)  # Do nothing
+player_attack(user1)    # Do nothing
+user1.attack()          # Do nothing
 
 
 --------------
@@ -466,7 +465,6 @@ player_attack(user1)  # Do nothing
 
 # when we keep both methods, from inheritance and local
 class User:
-
   def sign_in(self):
     print('Logged in')
 
@@ -475,18 +473,16 @@ class User:
 
 
 class Wizard(User):
-
   def __init__(self, name, power):
     self.name = name
     self.power = power
 
-  def attack(self):  # this attack function will override User attack
-    User.attack(self)
+  def attack(self):      
+    User.attack(self)    # this will keep both class and local Attack
     print(f'Attacking with power of {self.power}')
 
 
 class Archer(User):
-
   def __init__(self, name, arrows):
     self.name = name
     self.arrows = arrows
@@ -504,7 +500,8 @@ def player_attack(char):
   char.attack()
 
 
-player_attack(wizard1)  # Do nothing  // # Attacking with power of 60
+player_attack(wizard1)  # Do nothing
+                        # Attacking with power of 60
 player_attack(archer1)  # Attacking with arrows: arrows left - 30
 
 # for loop
