@@ -624,7 +624,7 @@ print(type(str(123)))          #  <class 'str'>
 
 
 
-# Miltiple Inheritance - complicates code, be very cautios
+# Miltiple Inheritance - complicates code; be very cautious. Maybe avoid to ise
 class User:
     def sign_in(self):
         print('Logged in')
@@ -704,7 +704,39 @@ print(hb1.run())            # Run fast Archer
                             # None
 print(hb1.check_arrows())   # 100 remaining  
                             # None
-print(hb1.attack())         # Attacking with power of 50  
+print(hb1.attack())         # Attacking with power of 50 
+                            # if the attack has Wizard and Archer it will fulfill the one who goes first in " class HybridBorg(Wizard, Archer) ".
+                            # in this case, it will be Wizard
                             # None
 print(hb1.sign_in())        # Logged in  
                             # None
+
+
+-----------------------------------------------------------------------------
+
+
+http://www.srikanthtechnologies.com/blog/python/mro.aspx
+# MRO  __mro__
+
+# this will be a bad code since it is complicated to understand
+class X: pass
+class Y: pass
+class Z: pass
+class A(X,Y): pass
+class B(Y,Z): pass
+class M(B,A,Z): pass
+
+print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__main__.A'>, <class '__main__.X'>, <class '__main__.Y'>, <class '__main__.Z'>, <class 'object'>)
+
+
+'''
+
+    object
+ ↑     ↑    ↑
+ X     Y     Z
+  ↖ ↗    ↖ ↗
+   A      B
+      ↖ ↗
+       M
+
+'''
