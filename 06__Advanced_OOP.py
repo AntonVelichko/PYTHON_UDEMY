@@ -560,7 +560,30 @@ class Wizard(User):
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
 print(wizard1.email)        # merlin@gmail.com
 
+
+
 -------------
+
+
+
+# Exercise Extending List
+
+class SuperList(list):
+    def __len__(self):
+        return 1000
+
+super_list1 = SuperList()
+print(len(super_list1))
+
+super_list1.append(5)                   # 1000
+print(super_list1[0])                   # 5
+print(issubclass(SuperList, list))      # True
+print(issubclass(list, object))         # True
+
+
+
+--------------------------------------------------------------
+
 
 
 # introspection - the ability to determine the object at run time
@@ -617,6 +640,44 @@ print(str(action_figure))       # red
 
 print(str('action_figure'))       # action_figure
 print(type(str(123)))          #  <class 'str'>
+
+
+
+-----
+
+
+class Toy():
+  def __init__(self, color, age):
+    self.color = color
+    self.age = age
+    self.my_dict = {
+        'name':'Yoyo',
+        'has_pets': False,
+    }
+
+  def __str__(self):
+    return f"{self.color}"
+
+  def __len__(self):
+    return 5
+
+  def __del__(self):
+    return "deleted"
+
+  def __call__(self):
+      return('yes??')
+
+  def __getitem__(self,i):
+      return self.my_dict[i]
+
+
+action_figure = Toy('red', 0)
+print(action_figure.__str__())       # red
+print(str(action_figure))            # red
+print(len(action_figure))            # 5
+print(action_figure())               # yes??
+print(action_figure['name'])         # Yoyo
+
 
 
 
@@ -719,6 +780,7 @@ http://www.srikanthtechnologies.com/blog/python/mro.aspx
 # MRO  __mro__
 
 # this will be a bad code since it is complicated to understand
+
 class X: pass
 class Y: pass
 class Z: pass
@@ -740,3 +802,70 @@ print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__mai
        M
 
 '''
+
+
+
+-----------------------------------------------------------------------------
+
+
+
+# Exercise
+
+class Pets():
+    animals = []
+    def __init__(self, animals):
+        self.animals = animals
+
+    def walk(self):
+        for animal in self.animals:
+            print(animal.walk())
+
+class Cat():
+    is_lazy = True
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def walk(self):
+        return f'{self.name} is just walking around'
+
+class Simon(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+
+class Sally(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+
+
+#1 Add another Cat
+class Bob(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+
+
+#2 Create a list of all of the pets (create 3 cat instances from the above)
+my_cats = []
+cat1 = Simon('Simon', 1)
+cat2 = Sally('Sally', 2)
+cat3 = Bob('Bob', 3)
+
+my_cats.append(cat1)
+my_cats.append(cat2)
+my_cats.append(cat3)
+
+#OR my_cats = [Simon('Simon', 1), Sally('Sally', 2), Bob('Bob', 3)]
+
+
+#3 Instantiate the Pet class with all your cats use variable my_pets
+my_pets = Pets(my_cats)
+
+
+#4 Output all of the cats walking using the my_pets instance
+my_pets.walk()
+
+print(cat1.sing('Moew'))        # Moew
+
+
+
