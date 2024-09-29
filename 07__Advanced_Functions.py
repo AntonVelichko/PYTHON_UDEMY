@@ -141,6 +141,57 @@ print(reduce(accumulator, (my_numbers + scores)))
 
 
 
+----------------------------------------
 
 
+
+### lambda expressions - one time anonymous function
+# can be hard to read for others. Use carefully
+# lambda param: action(param)
+
+from functools import reduce
+
+my_list = [1,2,3]
+
+print(list(map(lambda item: item * 2, my_list)))            # [2, 4, 6]
+print(list(filter(lambda item: item % 2 != 0, my_list)))    # [1, 3]
+print(reduce(lambda acc, item: acc + item, my_list))        # 6
+print(my_list)      # [1, 2, 3]
+
+
+
+----------------------------------------
+
+
+
+### EXERCISE
+
+my_list = [5, 4, 3]
+
+#Square
+print(f'Squared list = {list(map(lambda item: item * item, my_list))}')            # [25, 16, 9]
+
+
+# List Sorting by second number
+arr = [(0, 2), (9, 9), (4, -2), (10, -1)]
+
+# solution
+arr2 = []
+
+for i in range(0, len(arr)): 
+    min = arr[0][1]
+    min_index = 0
+    for item in arr:
+        if(item[1] < min):
+            min = item[1]
+            min_index = arr.index(item)
+    arr2.append(arr[min_index])
+    arr.pop(min_index)
+
+
+
+
+#print(f'Min = {min}')
+#print(f'Min index = {min_index}')
+print(f'Sorded list = {arr2}')              # [(4, -2), (10, -1), (0, 2), (9, 9)]
 
