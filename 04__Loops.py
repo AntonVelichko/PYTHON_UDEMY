@@ -64,6 +64,9 @@ for i in range(0, 10):
 for _ in range(0, 10, 2):           # _ means that variable doesn't matter
   print('email')                    # email ... (x5)
 
+for i in range(0, 10, 2):
+  print(i)                    # 0  2  4  6  8
+
 for _ in range(5, 0, -1):           # reversing range
   print(_)                          # 5 4 3 2 1
 
