@@ -223,6 +223,8 @@ print(arr)
 
 ### COMPREHENSIONS
 # quick way to create lists, sets, dicts
+# but can be confusing for others
+# maybe sometimes better not to use Comprehensions and use just simple Descriptive Function
 
 # List
 
@@ -234,6 +236,9 @@ for char in 'hello':
 
 print(my_list)		# ['h', 'e', 'l', 'l', 'o']
 
+
+
+
 --
 
 # fast, easier way
@@ -241,14 +246,60 @@ print(my_list)		# ['h', 'e', 'l', 'l', 'o']
 
 my_list = [char for char in 'hello']
 print(my_list)		# ['h', 'e', 'l', 'l', 'o']
-
 --
-
 my_list = [num for num in range (0,10)] 
 print(my_list)         # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+--
+my_list = [num * 2 for num in range (0,10)] 
+print(my_list)      # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+--
+my_list = [num ** 2 for num in range(0,10) if num % 2 == 0]
+print(my_list)      # [0, 4, 16, 36, 64]
+
+---------
+
+
+
+# Set
+my_list = {char for char in 'hello'}
+print(my_list)		# {'h', 'o', 'l', 'e'}
+
+---------
+
+
+
+# Dictionary
+simple_dict = {
+	'a' : 1,
+	'b' : 2
+}
+my_dict = {key:value ** 2 for key, value in simple_dict.items()}
+print(my_dict)          # {'a': 1, 'b': 4}
 
 --
 
-my_list = [num * 2 for num in range (0,10)] 
-print(my_list)      # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+simple_dict = {
+	'a' : 1,
+	'b' : 2
+}
+my_dict = {key:value ** 2 for key, value in simple_dict.items() if value % 2 == 0}
+print(my_dict)          # {'b': 4}
+
+--
+
+simple_dict = {
+	'a' : 1,
+	'b' : 2
+}
+my_dict = {num:num*2 for num in [1,2,3]}
+print(my_dict)          # {1: 2, 2: 4, 3: 6}
+
+
+
+
+
+
+
+
+
 
