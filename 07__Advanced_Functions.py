@@ -297,8 +297,24 @@ print(my_dict)          # {1: 2, 2: 4, 3: 6}
 
 
 
+----------------------------------------
 
 
+
+### EXERCISE
+my_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
+
+duplicates = list({char for char in my_list if my_list.count(char) > 1})
+print(duplicates)               # ['b', 'n']
+
+
+----------------
+
+# TEACHER SOLUTION
+my_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
+
+duplicates = list( set([x for x in my_list if my_list.count(x) > 1]) )
+print(duplicates)               # ['b', 'n']
 
 
 
