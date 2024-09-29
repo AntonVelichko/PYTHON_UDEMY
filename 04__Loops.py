@@ -261,10 +261,10 @@ print(string)
 
 
 # 78 find duplicates
-list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
+my_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
 dupl = []
-for value in list:
-  if list.count(value) > 1:
+for value in my_list:
+  if my_list.count(value) > 1:
     if value not in dupl:
       dupl.append(value)
       
