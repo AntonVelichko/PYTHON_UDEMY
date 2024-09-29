@@ -175,7 +175,7 @@ print(f'Squared list = {list(map(lambda item: item * item, my_list))}')         
 # List Sorting by second number
 arr = [(0, 2), (9, 9), (4, -2), (10, -1)]
 
-# solution
+# MY SOLUTION
 arr2 = []
 
 for i in range(0, len(arr)): 
@@ -194,4 +194,61 @@ for i in range(0, len(arr)):
 #print(f'Min = {min}')
 #print(f'Min index = {min_index}')
 print(f'Sorded list = {arr2}')              # [(4, -2), (10, -1), (0, 2), (9, 9)]
+
+
+----------------
+
+# TEACHER SOLUTION
+
+
+my_list = [5, 4, 3]
+
+#Square
+print(f'Squared list = {list(map(lambda item: item * item, my_list))}')            # [25, 16, 9]
+
+
+# List Sorting by second number
+arr = [(0, 2), (9, 9), (4, -2), (10, -1)]
+
+arr.sort(key = lambda x: x[1])
+print(arr)
+
+
+
+
+----------------------------------------
+
+
+
+
+### COMPREHENSIONS
+# quick way to create lists, sets, dicts
+
+# List
+
+# classic way to create list
+my_list = []
+
+for char in 'hello':
+	my_list.append(char)
+
+print(my_list)		# ['h', 'e', 'l', 'l', 'o']
+
+--
+
+# fast, easier way
+[param for param in iterable]
+
+my_list = [char for char in 'hello']
+print(my_list)		# ['h', 'e', 'l', 'l', 'o']
+
+--
+
+my_list = [num for num in range (0,10)] 
+print(my_list)         # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+--
+
+my_list = [num * 2 for num in range (0,10)] 
+print(my_list)      # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 
