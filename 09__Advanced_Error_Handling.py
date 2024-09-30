@@ -49,5 +49,62 @@ print(sum(1, 0))
 
 
 
+---
+
+# finally
+while True:
+	try: 
+		age = int(input('What is your age?'))
+		10/age
+	except ValueError:
+		print('Please enter a number')
+		continue
+	except ZeroDivisionError:
+		print('Please enter age higher than 0')
+	else: 
+		print('Accepted! Thank you')
+		break
+	finally:
+		print('your attempt is logged')
+	print('Can you hear me?')
+
+
+---
+
+# raise ValueError
+while True:
+	try: 
+		age = int(input('What is your age?'))
+		10/age
+		raise ValueError('STOP IT!')
+	except ZeroDivisionError:
+		print('Please enter age higher than 0')
+	else: 
+		print('Accepted! Thank you')
+		break
+	finally:
+		print('your attempt is logged')
+	print('Can you hear me?')
+
+
+---
+
+# raise Exception
+while True:
+	try: 
+		age = int(input('What is your age?'))
+		10/age
+		raise Exception('STOP IT!')
+	except ZeroDivisionError:
+		print('Please enter age higher than 0')
+	else: 
+		print('Accepted! Thank you')
+		break
+	finally:
+		print('your attempt is logged')
+	print('Can you hear me?')
+
+
+
 
 
