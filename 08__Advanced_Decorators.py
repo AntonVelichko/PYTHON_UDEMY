@@ -228,7 +228,33 @@ def message_friends(user):
 
 message_friends(user1)
 
+---
 
+# modified to find out what is 'args[0]['valid']
+user1 = {
+    "name": "Sorna",
+    "valid": True,
+}
+
+user2 = {
+    "name": "Sorna",
+    "valid": False,  
+}
+
+def authenticated(fn):
+    def wrapper(*args, **kwargs):
+        if args[0]["valid"]:
+            print(args[1]["valid"])     # False
+            return fn(*args, **kwargs)
+        else:
+            return print("invalid user")
+    return wrapper
+
+@authenticated
+def message_friends(*args):
+    print("message has been sent")
+
+message_friends(user1, user2)       # message has been sent
 
 
 
