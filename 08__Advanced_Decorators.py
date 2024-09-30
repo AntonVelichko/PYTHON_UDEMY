@@ -1,4 +1,6 @@
 ###
+# @classmethod
+# @staticmethod
 
 def hello1():
 	print('hellllooo')
@@ -123,6 +125,111 @@ hello2()        # ******
 my_decorator(hello)()         # ******
                               # helllooo
                               # ******
+
+---
+
+def my_decorator(func):
+	def wrap_func(x):
+		print('******')
+		func(x)
+		print('******')
+	return wrap_func
+
+@my_decorator
+def hello(greeting):
+	print(greeting)
+
+hello('hiiii')      # ******
+                    # hiiii
+                    # ******
+
+---
+
+# we can give 2 parameters but it is hectic to change them if needed
+def my_decorator(func):
+	def wrap_func(x, y):
+		print('******')
+		func(x, y)
+		print('******')
+	return wrap_func
+
+@my_decorator
+def hello(greeting, emoji):
+	print(greeting, emoji)
+
+hello('hiiii', ';)')	# ******
+                    	# hiiii  ;)
+                    	# ******
+
+---
+
+# DECORATOR PATTERN - we can pass as many arguments as we want in wrap function
+# this way is better and is a right way
+
+def my_decorator(func):
+	def wrap_func(*args, **kwargs):
+		func(*args, **kwargs)
+	return wrap_func
+
+@my_decorator
+def hello(greeting, emoji = ':('):
+	print(greeting, emoji)
+
+hello('hiiii')      # hiiii :(
+
+---
+# @performance
+
+from time import time
+def performance(fn):
+	def wrapper(*args, **kwargs):
+		t1 = time()
+		result = fn(*args, **kwargs)
+		t2 = time()
+		print(f'It took {t2 - t1} s')
+		return result
+	return wrapper
+
+
+@performance
+def long_time():
+	for i in range (100000000):
+		i * 5
+
+long_time()
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+
+### EXERCISE
+
+# Create an @authenticated decorator that only allows the function to run is user1 has 'valid' set to True:
+user1 = {
+    "name": "Sorna",
+    "valid": True,  # changing this will either run or not run the message_friends function.
+}
+
+def authenticated(fn):
+    # code here
+    def wrapper(*args, **kwargs):
+        if args[0]["valid"]:
+            return fn(*args, **kwargs)
+        else:
+            return print("invalid user")
+
+    return wrapper
+
+@authenticated
+def message_friends(user):
+    print("message has been sent")
+
+message_friends(user1)
+
+
+
 
 
 
