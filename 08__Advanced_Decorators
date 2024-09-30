@@ -1,1 +1,128 @@
 
+def hello1():
+	print('hellllooo')
+greet = hello1()
+print(greet)        # hellllooo
+
+---
+
+def hello2():
+	print('hellllooo')
+greet = hello2
+print(greet())      # hellllooo
+
+---
+
+def hello3():
+	print('hellllooo')
+greet = hello3
+print(greet)      # <function hello3 at 0x7016a4d1c9a0>  |  functioin location
+
+---
+
+def hello():
+	print('hellllooo')
+greet = hello
+del hello
+print(greet())      # hellllooo  | func is in memory but reference like 'hello' is deleted, but reference 'greet' is there
+                    # python didn't delete whole function becasue the function stil have another reference 'greet'
+print(hello)        # name 'hello' is not defined
+print(hello())      # # name 'hello' is not defined
+
+---
+
+def hello(func):
+	func()
+	
+def greet():
+	print('still here!')
+	
+a = hello(greet)
+
+print(a)        # still here!
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+### HIGHT Order Function - HOF
+# any func that accept a Function as a paramentr or returns a function
+
+def greet(func):
+	func()		# this is HOF
+
+---
+
+def greet():
+	def func():
+		return 5
+	return func()
+	
+print(greet())      # 5
+
+---
+
+map(), filter(), reduce() - are HOF
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+### DECORATOR - a function that wraps another function and inchanses it or changes it
+
+def my_decorator(func):
+	def wrap_func():
+		print('******')
+		func()
+		print('******')
+	return wrap_func
+
+@my_decorator
+def hello():
+	print('helllooo')
+hello()         # ******
+                # helllooo
+                # ******
+
+@my_decorator
+def bye():
+	print('see ya later')
+bye()           # ******
+                # see ya later
+                # ******
+
+---
+
+# how the Decorator works under the hood
+
+def my_decorator(func):
+	def wrap_func():
+		print('******')
+		func()
+		print('******')
+	return wrap_func
+
+def hello():
+	print('helllooo')
+
+hello2 = my_decorator(hello)
+hello2()        # ******
+                # helllooo
+                # ******
+
+---
+
+# hello2 = my_decorator(hello)
+# hello2()
+# it is the same
+my_decorator(hello)()         # ******
+                              # helllooo
+                              # ******
+
+
+
+
