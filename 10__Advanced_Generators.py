@@ -143,3 +143,41 @@ for i in gen:
     print(i)
 
 
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+### EXERCISE
+# Fibonachi Numbers
+
+# in list
+def fib (number):
+	a = 0
+	b = 1
+	result = []
+	for i in range(number):
+		result.append(a)
+		temp = a
+		a = b
+		b = temp + b
+	return result
+
+print(fib(10))      # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+
+# in generator - more efficient
+def fib (number):
+	a = 0
+	b = 1
+	for i in range(number):
+		yield a		# return a from above | if we use 'return', the function just stops after the return
+		temp = a	# we need to not modify 'a' before we do 'b = a + b'
+		a = b		# then make a = b
+		b = temp + b	# then make b = a + b
+for x in fib(10):
+	print(x)            # 0  1  2  3  ..
+
+
+
+
+
