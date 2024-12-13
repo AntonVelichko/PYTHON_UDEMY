@@ -37,20 +37,20 @@ player1 = PlayerCharacter('Cindy', 44)
 player2 = PlayerCharacter('Tom', 20)
 player2.attack = 50
 
-print(player1.name)
-print(player2.age)
-print(player2.run())    # None - becasue Funcion has no return, uncomment to see difference
+print(player1.name)       # Cindy
+print(player2.age)        # 20
+print(player2.run())      # None - because Funcion has no return, uncomment and will be "Done"
 print(player1)            # <__main__.PlayerCharacter object at 0x75d86f4eb1f0>
 print(player2)            # <__main__.PlayerCharacter object at 0x75d86f51e490>
 print(player2.attack)     # 50
-help(player1)
+help(player1)             # run it in program
 
 
 ----------------------------------------------------------------------
 
 
 class PlayerCharacter:
-    membership = True
+    membership = True                # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
     def __init__(self, name, age):
         if(self.membership):
             self.name = name
@@ -64,25 +64,25 @@ player1 = PlayerCharacter('Cindy', 44)
 player2 = PlayerCharacter('Tom', 20)
 player2.attack = 50
 
-print(player1.name)
-print(player1.run())
+print(player1.name)     # Cindy
+print(player1.run())    # run
+                        # None
 
 
 ----------------------------------------------------------------------
 
 
 class PlayerCharacter:
-    membership = True
-    def __init__(self, name = 'anonymous', age = 20):
-        if(age >= 18):
+    membership = False                                      # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
+    def __init__(self, name = 'anonymous', age = 20):       # by default
+        if(age >= 18 and self.membership):
             self.name = name
             self.age = age
 
     def run(self):
         print('Run')
 
-
-player1 = PlayerCharacter('Tom', 10)
+player1 = PlayerCharacter('Tom', 18)
 player2 = PlayerCharacter()
 player2.attack = 50
 
