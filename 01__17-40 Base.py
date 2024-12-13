@@ -12,7 +12,7 @@ set
 # Classes -> custom types
 
 # Specialized Data Types -> libraries, packages (modules)
-None                        # abcense of value
+None                        # absence of value
 
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
