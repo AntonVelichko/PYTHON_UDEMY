@@ -38,14 +38,16 @@ x,y,z, *other = (1,2,3,4,5)
 print(x)                    # 1
 print(other)                # [4, 5]
 
-# .count   /how many times does item appears in tuple
-print(tuple_1.count(2))     # 1
+# .count   /how many times does item appear in tuple
+tuple_1 = (1,2,3,4,5,2)
+print(tuple_1.count(2))     # 2
 
-# .index()   /shows the first index of item if there're more then one similar items
+# .index()   /shows the first index of the item if there are more than one similar item
 print(tuple_1.index(5))     # 4
+print(tuple_1.index(2))     # 1
 
 # len
-print(len(tuple_1))         # 5
+print(len(tuple_1))         # 6
 
 
 
@@ -75,7 +77,7 @@ print(1 in set_2)                                 # True
 #print(set_2[1])                                  # Error
 #print(set_2[0])                                  # Error
 
-# len()   /count only uniq values
+# len()   /count only unique values
 set_3 = {1,2,3,3,2,1}
 print(len(set_3))                                 # 3
 
