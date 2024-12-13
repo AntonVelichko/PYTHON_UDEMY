@@ -170,7 +170,7 @@ def test(a):
   '''
   print(a)
 
-test('!')
+test('!')            # !
 help(test)            # test(a) Info: this fuction test and prints param
 print(test.__doc__)   # Info: this fuction test and prints param
 
@@ -220,6 +220,17 @@ def super_func(*args, **kwargs):
   return sum(args) + total
 print(super_func(1,2,3, num1 = 10))     # 16
 
+
+def super_func(*args, **kwargs):
+  total = 0                         
+  for items in kwargs.values():
+    print(items)                    # 10        -> next iteration -> 20
+    print(kwargs.values())          # dict_values([10, 20]) ->  dict_values([10, 20])
+    print(kwargs)                   # {'num1': 10, 'num': 20}   ->  {'num1': 10, 'num': 20}
+    total += items
+  return sum(args) + total
+print(super_func(1,2,3, num1 = 10, num = 20))     # 36
+
 # Order of execution: params, *args, default parametrs, **kwargs
 
 
@@ -242,7 +253,7 @@ def highest_even2(arr):
     if item % 2 == 0:
       list_evens.append(item)
   return max(list_evens)
-  
+
 print(highest_even2([1,2,10,13,3,4,11]))
 
 
@@ -331,6 +342,13 @@ def count_3(total_3):
 print(count_3(total_3))         #3
 
 
+total_3 = 3
+a = 2
+def count_3(total_3):
+    return total_3
+print(count_3(a))         #2
+
+
 def count_4(total_4):
   total_4 +=1
   return total_4
@@ -341,6 +359,7 @@ total_5 = 5
 def count_5(total_5):
   total_5 +=1
   return total_5
+print(count_5(total_5))         # 6
 print(count_5(total_5))         # 6
 
 
