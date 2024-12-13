@@ -148,6 +148,7 @@ print(python[::-2])           # jhfdb  (reverse, skip every 2)
 # built-in functions   / https://docs.python.org/3/library/functions.html
 greet = 'abcde'
 print(greet[0:len(greet)])    # abcde
+print(greet[0:len(greet)-1])    # abcd
 
 
 # string methods   / https://www.w3schools.com/python/python_ref_string.asp
@@ -194,4 +195,3 @@ just do this instead
 # 49 None
 a = None
 print(a)			     # None
-
