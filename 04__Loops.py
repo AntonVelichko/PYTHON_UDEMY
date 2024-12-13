@@ -14,7 +14,7 @@ for item in (1,2,3):
 
 
 # 69 iterables
-# iterate -> one by one check each item in collection
+# iterate -> one by one, check each item in a collection
 
 user = {
   'name': 'Gollum',
@@ -80,6 +80,7 @@ def reverse(text):
     for i in range(len(text),0,-1):
         result += text[i-1]
     return (result)
+print(reverse('abcde'))         # edcba
 # same can do --> text[::-1]
 # same can do --> "".join(reversed(text))
 
@@ -189,16 +190,12 @@ for item in my_list:
   continue
   print(item)               # nothing happens
 
+my_list = [7,8,9]
 i = 0
-while i < len(my_list):
-  print(my_list[i])         # 7 8 9
-  i += 1
-  pass                      # useless feature, very rare to use
-
+while i < len(my_list):cx
 for item in my_list:
   # thinking about it
   pass                      # just a temporary placeholder
-
 
 
 --------------------------------------------------------------------
