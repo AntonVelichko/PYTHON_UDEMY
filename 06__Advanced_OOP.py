@@ -169,8 +169,10 @@ class PlayerCharacter:
 
 
 print(PlayerCharacter.adding_things(3,3))    # <__main__.PlayerCharacter object at 0x72fbc215bee0>
-# object 'Teddy' instantiated with age = num1 + num2
-
+                                             # object 'Teddy' instantiated with age = num1 + num2
+player = PlayerCharacter.adding_things(11,11)
+print(player.age)                            # 22
+print(player.name)                           # Teddy
 
 
 
@@ -206,7 +208,6 @@ print(player.name)                          # Teddy
 
 https://www.makeuseof.com/tag/python-instance-static-class-methods/
 
-# Decorator Patterns
 # Decorator Patterns
 class DecoratorExample:
   # Example Class """
@@ -297,7 +298,7 @@ de.example_function()           # I'm a class method!
 
 
 
-# Incapsuation
+# Incapsulation
 class PlayerCharacter:
   def __init__(self, name, age):
     self.name = name
@@ -316,7 +317,7 @@ PlayerCharacter('John', 88).speak()     # My name is John, and I am 88 years old
 
 
 
-# if no methods - it's useless
+# if there are no methods - it's useless
 class PlayerCharacter:
   def __init__(self, name, age):
     self.name = name
@@ -362,7 +363,7 @@ class User:
   def sign_in (self):      # if no attributes then we don't need __init__ , we do not initialize anything
     print('Logged in')
 
-class Wizard(User):
+class Wizard(User):        # 'class Wizard' INHERITS methods from 'class User'
   pass
 
 class Archer(User):
@@ -377,7 +378,7 @@ wizard1.sign_in()       # Logged in
 
 
 class User:
-  def sign_in (self):  # if no attributes then we don't need __init__ , we do not initialize anything
+  def sign_in (self):                  # if no attributes then we don't need __init__ , we do not initialize anything
     print('Logged in')
 
 
@@ -400,24 +401,29 @@ class Archer(User):
 
 
 wizard1 = Wizard('Merlin', 60)
-print(isinstance(wizard1, Wizard))    # True, wizard1 inherits methods from class Wizard
-print(isinstance(wizard1, User))    # True, wizard1 inherits methods from class User
-print(isinstance(wizard1, object))    # True, wizard1 inherits methods even from Object base class
+print(isinstance(wizard1, Wizard))    # True  -->  wizard1 inherits methods from class Wizard
+print(isinstance(wizard1, User))    # True  -->  wizard1 inherits methods from class User
+print(isinstance(wizard1, object))    # True  -->  wizard1 inherits methods even from Object base class
 print(isinstance(User, object))        # True
 
 
 
---------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 
-# _var - means this variable is private, do not change it
 
---------------------------------------------------
-# Polumorphism
+###   _var - means this variable is PRIVATE; do not change it   ###
+
+
+-----------------------------------------------------------------------------------------------------------
+
+
+###  POLYMORPHISM  ###
+
 class User:
   def sign_in(self):
     print('Logged in')
 
-  def attack(self):  # initial attack function
+  def attack(self):              # initial attack function
     print('Do nothing')
 
 
@@ -426,7 +432,7 @@ class Wizard(User):
     self.name = name
     self.power = power
 
-  def attack(self):  # this attack function will override User attack
+  def attack(self):              # this attack function will override User attack
     print(f'Attacking with power of {self.power}')
 
 
@@ -436,7 +442,7 @@ class Archer(User):
     self.arrows = arrows
 
   def attack(self):
-    print(f'Attacking with arrows: arrows left - {self.arrows}')
+    print(f'Attacking with arrows; arrows left - {self.arrows}')
 
 
 wizard1 = Wizard('Merlin', 60)
@@ -448,13 +454,15 @@ def player_attack(char):
   char.attack()
 
 
-player_attack(wizard1)  # Attacking with power of 60
-wizard1.attack()        # Attacking with power of 60
-player_attack(archer1)  # Attacking with arrows: arrows left - 30
+player_attack(wizard1)              # Attacking with power of 60  -->  using 'def player_attack(char):'
+wizard1.attack()                    # Attacking with power of 60  -->  using 'class Wizard(User):'
+Wizard('Saruman', 70).attack()      # Attacking with power of 70
+player_attack(archer1)              # Attacking with arrows; arrows left - 30
+
 
 # for loop
-for char in [wizard1, archer1]:  # Attacking with power of 60
-  char.attack()  # Attacking with arrows: arrows left - 30
+for char in [wizard1, archer1]:      # Attacking with power of 60
+  char.attack()                      # Attacking with arrows: arrows left - 30
 
 player_attack(user1)    # Do nothing
 user1.attack()          # Do nothing
@@ -468,7 +476,7 @@ class User:
   def sign_in(self):
     print('Logged in')
 
-  def attack(self):  # initial attack function
+  def attack(self):                  # initial attack function
     print('Do nothing')
 
 
@@ -478,7 +486,7 @@ class Wizard(User):
     self.power = power
 
   def attack(self):      
-    User.attack(self)    # this will keep both class and local Attack
+    User.attack(self)                # this will keep both class and local Attack
     print(f'Attacking with power of {self.power}')
 
 
@@ -502,22 +510,25 @@ def player_attack(char):
 
 player_attack(wizard1)  # Do nothing
                         # Attacking with power of 60
+wizard1.attack()        # Do nothing
+                        # Attacking with power of 60
 player_attack(archer1)  # Attacking with arrows: arrows left - 30
 
+
 # for loop
-for char in [wizard1, archer1]:  # Do nothing  /  # Attacking with power of 60
-  char.attack()  # Attacking with arrows: arrows left - 30
+for char in [wizard1, archer1]:      # Do nothing  \n  # Attacking with power of 60
+  char.attack()                      # Attacking with arrows: arrows left - 30
 
-player_attack(user1)  # Do nothing
-
-
-
-
-------------------------------------------------------------------------------
+player_attack(user1)                  # Do nothing
 
 
 
-# super()
+
+-----------------------------------------------------------------------------------------------------------
+
+
+###  SUPER CLASS  ###
+
 class User:
     def __init__(self, email):
         self.email = email
@@ -526,8 +537,8 @@ class User:
         print('Logged in')
 
 class Wizard(User):
-    def __init__(self, name, power, email):
-        User.__init__(self, email)        # one way to pass argument
+    def __init__(self, name, power, email):      # this shows the ORDER of arguments
+        User.__init__(self, email)               # one way to pass argument
         self.name = name
         self.power = power
 
@@ -550,7 +561,7 @@ class User:
 
 class Wizard(User):
     def __init__(self, name, power, email):
-        super().__init__(email)        # reffering to Super Class (class above), no self needed
+        super().__init__(email)                # reffering to Super Class (class above), no self needed
         self.name = name
         self.power = power
 
@@ -573,20 +584,21 @@ class SuperList(list):
         return 1000
 
 super_list1 = SuperList()
-print(len(super_list1))
+print(len(super_list1))                 # 1000
 
-super_list1.append(5)                   # 1000
+super_list1.append(5)                   
 print(super_list1[0])                   # 5
 print(issubclass(SuperList, list))      # True
 print(issubclass(list, object))         # True
 
 
 
---------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------
 
 
+###  INTROSPECTION - the ability to determine the object at run time  ###
 
-# introspection - the ability to determine the object at run time
 class User:
     def __init__(self, email):
         self.email = email
@@ -607,11 +619,14 @@ wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
 print(dir(wizard1))    # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',  ...  'attack', 'email', 'name', 'power', 'sign_in']
 
 
---------------------------------------------------------------
 
 
+-----------------------------------------------------------------------------------------------------------
+
+
+###  DUNDER METHODS  ###
 https://docs.python.org/3/reference/datamodel.html#special-method-names
-# Dunder Methods
+
 class Toy():
     def __init__(self, color, age):
         self.color = color
