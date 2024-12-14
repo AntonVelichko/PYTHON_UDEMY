@@ -621,9 +621,7 @@ print(dir(wizard1))    # ['__class__', '__delattr__', '__dict__', '__dir__', '__
 
 
 
------------------------------------------------------------------------------------------------------------
-
-
+##########################################################################################################################
 ###  DUNDER METHODS  ###
 https://docs.python.org/3/reference/datamodel.html#special-method-names
 
@@ -650,12 +648,11 @@ class Toy():
         return f'{self.color}'
         
 action_figure = Toy('red', 0)
-print(action_figure.__str__())  # red  |  str is modified only when use it with specific object
-print(str(action_figure))       # red
-
-print(str('action_figure'))       # action_figure
-print(type(str(123)))          #  <class 'str'>
-
+print(action_figure.__str__())      # red  |  'str' is modified only when used with a specific object ('Toy' in our case)
+print(str(action_figure))           # red
+print(str('action_figure'))         # action_figure
+print(str(123) + 'a')               # 123a
+print(type(str(123)))               #  <class 'str'>
 
 
 -----
@@ -696,11 +693,10 @@ print(action_figure['name'])         # Yoyo
 
 
 
---------------------------------------------------
+##########################################################################################################################
+###  MULTIPLE INHERITANCE  ###
+Complicates code; be very cautious. Maybe avoid it to use
 
-
-
-# Miltiple Inheritance - complicates code; be very cautious. Maybe avoid to ise
 class User:
     def sign_in(self):
         print('Logged in')
