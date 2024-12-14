@@ -710,6 +710,10 @@ class Wizard(User):
     def attack(self): 
         User.attack(self)
         print(f'Attacking with power of {self.power}')
+        
+        
+    def run(self):
+        print('Run fast Wazard')
 
 
 class Archer(User):
@@ -721,7 +725,7 @@ class Archer(User):
         print(f'{self.arrows} remaining')
     
     def run(self):
-        print('Run fast ')
+        print('Run fast Archer')
 
 
 class HybridBorg(Wizard, Archer):
@@ -729,8 +733,11 @@ class HybridBorg(Wizard, Archer):
 
 hb1 = HybridBorg('Borgie', 50)      # extentiation
 
-print(hb1.run())    # Run fast # None
-print(hb1.check_arrows())   # gives error since it doesn't know arrows
+print(hb1.run())    # Run fast Wizard  \n  None    | Order matters; if Archer first in 'class HybridBorg(Archer, Wizard)' it will gives 'Run fast Archer'
+print(hb1.name)     # orgie
+print(hb1.power)    # 50
+print(hb1.arrows)   # showes nothing
+print(hb1.check_arrows())   # gives an error since it doesn't know the arrows
 
 
 
@@ -777,20 +784,19 @@ print(hb1.run())            # Run fast Archer
 print(hb1.check_arrows())   # 100 remaining  
                             # None
 print(hb1.attack())         # Attacking with power of 50 
-                            # if the attack has Wizard and Archer it will fulfill the one who goes first in " class HybridBorg(Wizard, Archer) ".
+                            # Order matters; 'def __init__(self, name, power, arrows):'
                             # in this case, it will be Wizard
                             # None
 print(hb1.sign_in())        # Logged in  
                             # None
 
 
------------------------------------------------------------------------------
 
-
+##########################################################################################################################
+###  MRO  ###
+__mro__
 http://www.srikanthtechnologies.com/blog/python/mro.aspx
-# MRO  __mro__
-
-# this will be a bad code since it is complicated to understand
+This will be a bad code since it's complicated to understand
 
 class X: pass
 class Y: pass
@@ -803,7 +809,6 @@ print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__mai
 
 
 '''
-
     object
  ↑     ↑    ↑
  X     Y     Z
@@ -811,7 +816,6 @@ print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__mai
    A      B
       ↖ ↗
        M
-
 '''
 
 
@@ -824,6 +828,7 @@ print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__mai
 
 class Pets():
     animals = []
+    
     def __init__(self, animals):
         self.animals = animals
 
