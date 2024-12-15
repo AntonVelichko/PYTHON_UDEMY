@@ -1,11 +1,13 @@
-#Pure Function
+##########################################################################################################################
+###  PURE FUNCTION  ###
+
 def multiply_by2(li):
 	new_list = []
 	for item in li:
 		new_list.append(item * 2)
 	return new_list
 	
-print(multiply_by2([1,2,3]))		# [2, 4, 6]
+print(multiply_by2([1,2,3]))			# [2, 4, 6]
 
 
 -----
@@ -15,29 +17,30 @@ def multiply_by2(li):
 	new_list = []
 	for item in li:
 		new_list.append(item * 2)
-	return print(new_list)  # this is not pure and has a side effect
+	return print(new_list)  		# this is not pure and has a side effect
 	
-multiply_by2([1,2,3])		# [2, 4, 6]
+multiply_by2([1,2,3])				# [2, 4, 6]
 
 
 ----
 
 
-new_list = []  # this is not pure and has a side effect
+new_list = []  					# this is not pure and has a side effect
 def multiply_by2(li):
 	for item in li:
 		new_list.append(item * 2)
 	return new_list
 	
-new_list = []  # this is not pure and has a side effect
+new_list = []  					# this is not pure and has a side effect
 	
-multiply_by2([1,2,3])		#
+multiply_by2([1,2,3])				# showes nothing
 
 
----------------------------------------------------------------------------
 
 
-### map
+##########################################################################################################################
+###  MAP  ###
+
 def multiply_by2(item):
 	return item * 2
 
@@ -53,10 +56,11 @@ print(list(map(multiply_by2, my_list)))	# [2, 4, 6]
 print(my_list)	# [1,2,3]
 
 
-----------------------------------------
 
 
-# filter
+##########################################################################################################################
+###  FILTER  ###
+
 my_list = [1,2,3]
 def only_odd(item):
     return item % 2 != 0
@@ -65,10 +69,11 @@ print(list(filter(only_odd, my_list)))	# [1, 3]
 print(my_list)	# [1,2,3]
 
 
-----------------------------------------
 
 
-# zip
+##########################################################################################################################
+###  ZIP  ###
+
 my_list = [1,2,3]
 your_list = [10, 20, 30]
 
@@ -84,31 +89,30 @@ print(list(zip(my_list, your_list, their_list)))	# [(1, 10, 'a'), (2, 20, 'b'), 
 
 
 
-----------------------------------------
 
+##########################################################################################################################
+###  REDUCE  ###
 
-# reduce
 from functools import reduce
 my_list = [1,2,3]
 
 def accumulator(acc, item):
-	print(acc, item)		# 0 1
-					# 1 2
-					# 3 3
+	print(acc, item)		# 0 1  \n  1 2  \n  3 3
 	return acc + item
 
 print(reduce(accumulator, my_list, 0))		# 6
 
 
 
-----------------------------------------
+
+*************************************************************************************************************************
+***  EXERCISE  ***
 
 
 
-### EXERCISE
-from functools import reduce
 
 #1 Capitalize all of the pet names and print the list
+
 my_pets = ['sisi', 'bibi', 'titi', 'carla']
 
 def capitalize(string):
@@ -117,14 +121,18 @@ def capitalize(string):
 print(list(map(capitalize, my_pets)))
 
 
-#2 Zip the 2 lists into a list of tuples, but sort the numbers from lowest to highest.
+
+#2 Zip the 2 lists into a list of tuples, but sort the numbers from lowest to highest
+
 my_strings = ['a', 'b', 'c', 'd', 'e']
 my_numbers = [5,4,3,2,1]
 
 print(list(zip(my_strings, sorted(my_numbers))))
 
 
+
 #3 Filter the scores that pass over 50%
+
 scores = [73, 20, 65, 19, 76, 100, 88]
 
 def is_smart_student(score):
@@ -133,7 +141,11 @@ def is_smart_student(score):
 print(list(filter(is_smart_student, scores)))
 
 
+
 #4 Combine all of the numbers that are in a list on this file using reduce (my_numbers and scores). What is the total?
+
+from functools import reduce
+
 def accumulator(acc, item):
     return acc + item
 
@@ -141,13 +153,13 @@ print(reduce(accumulator, (my_numbers + scores)))
 
 
 
-----------------------------------------
 
+##########################################################################################################################
+###  LAMBDA EXPRESSIONS  ###
+One time anonymous function
+Can be hard to read for others. Use carefully
+Lambda param: action(param)
 
-
-### lambda expressions - one time anonymous function
-# can be hard to read for others. Use carefully
-# lambda param: action(param)
 
 from functools import reduce
 
@@ -160,11 +172,9 @@ print(my_list)      # [1, 2, 3]
 
 
 
-----------------------------------------
 
-
-
-### EXERCISE
+*************************************************************************************************************************
+***  EXERCISE  ***
 
 my_list = [5, 4, 3]
 
@@ -196,7 +206,9 @@ for i in range(0, len(arr)):
 print(f'Sorded list = {arr2}')              # [(4, -2), (10, -1), (0, 2), (9, 9)]
 
 
-----------------
+
+
+
 
 # TEACHER SOLUTION
 
@@ -216,28 +228,20 @@ print(arr)
 
 
 
-----------------------------------------
+##########################################################################################################################
+###  COMPREHENSIONS  ###
+Quick way to create lists, sets, dicts
+But can be confusing for others
+Maybe sometimes it is better not to use Comprehensions and use just simple Descriptive Function
 
-
-
-
-### COMPREHENSIONS
-# quick way to create lists, sets, dicts
-# but can be confusing for others
-# maybe sometimes better not to use Comprehensions and use just simple Descriptive Function
-
-# List
-
+# LIST
 # classic way to create list
-my_list = []
 
+my_list = []
 for char in 'hello':
 	my_list.append(char)
 
 print(my_list)		# ['h', 'e', 'l', 'l', 'o']
-
-
-
 
 --
 
