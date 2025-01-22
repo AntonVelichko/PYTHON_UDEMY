@@ -15,18 +15,18 @@ print(type(5.5))
 print(type('hi'))
 print(type([]))
 print(type(()))
-print(type({}))            # <class 'dict'>
-print(type(obj1))            # <class '__main__.BigObject'>
+print(type({}))                      # <class 'dict'>
+print(type(obj1))                    # <class '__main__.BigObject'>
 
 
 ----------------------------------------------------------------------
 
 
 class PlayerCharacter:
-    membership = True    # Class Object Attribute (static)
+    membership = True                # Class Object Attribute (static)
 
     def __init__(self, name, age):
-        self.name = name	#attributes
+        self.name = name	        #attributes
         self.age = age
 
     def run(self):
@@ -37,13 +37,13 @@ player1 = PlayerCharacter('Cindy', 44)
 player2 = PlayerCharacter('Tom', 20)
 player2.attack = 50
 
-print(player1.name)       # Cindy
-print(player2.age)        # 20
-print(player2.run())      # None - because Funcion has no return, uncomment and will be "Done"
-print(player1)            # <__main__.PlayerCharacter object at 0x75d86f4eb1f0>
-print(player2)            # <__main__.PlayerCharacter object at 0x75d86f51e490>
-print(player2.attack)     # 50
-help(player1)             # run it in program
+print(player1.name)               # Cindy
+print(player2.age)                # 20
+print(player2.run())              # None - because Funcion has no return, uncomment and will be "Done"
+print(player1)                    # <__main__.PlayerCharacter object at 0x75d86f4eb1f0>
+print(player2)                    # <__main__.PlayerCharacter object at 0x75d86f51e490>
+print(player2.attack)             # 50
+help(player1)                     # run it in program
 
 
 ----------------------------------------------------------------------
