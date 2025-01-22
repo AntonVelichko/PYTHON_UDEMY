@@ -36,14 +36,14 @@ C:\Users>dir			  		  - showing all users
 color 0B	          		  - cyan color (0 - background color, B - text color)
 color 07	          		  - normal color
 color		            		  - return to normal color
-color /?	          		  - key codes of all the colors
+color /?                                              #  key codes of all the colors
 
-attrib /?			      		  - file attributes Help
-attrib				      		  - see file attributes
-attrib +h <File name>		  - add attribute 'Hidden' to specific file
-attrib +r           		  -h "file anme"	- add Read Only, remove Hidden
+attrib /?                                             #  file attributes Help
+attrib                                                #  see file attributes
+attrib +h <File name>                                 #  add attribute 'Hidden' to specific file
+attrib +r -h "file anme"                              #  add Read Only, remove Hidden
 
-del <file name>		  		  - delete file
+del <file name>                                       #  delete file
 
 echo <your text> > <file name>.txt                    #  create file and type there text
 echo lalala > Bacon.txt                               #  create file "Bacon" and type there text "lalala"
@@ -63,8 +63,9 @@ move <folder name> <folder name>                      #  moves Folder to another
 rename <folder name> <folder name>                    #  rename Directory
 
 
-----------------------------------------
-----------------------------------------
+
+####################################################################################################################################################
+
 
 
 notepad myfile.txt
