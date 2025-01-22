@@ -1,12 +1,12 @@
 Win -> cmd
 
-cd Desktop		   		      - change directory
-cd ..		          		    - prev Directory (parent directory)
+cd Desktop                 #  change directory
+cd ..                      #  prev Directory (parent directory)
 cd Desktop\PYTHON
-cd ../..           		    - prev 2 directries
-cd D  ->  hit Tab			  	- for autocompletion until you get the Right Directory
+cd ../..                   #  prev 2 directries
+cd D  ->  hit Tab          #  for autocompletion until you get the Right Directory
 
-dir                       - showing what is in current directory
+dir                        #  showing what is in current directory
 dir Desktop\Temp			  	- no directory changed but showed what's inside
 dir /a				    		    - showing also all hidden directories
 
