@@ -33,6 +33,9 @@ class PlayerCharacter:
         print('run')
         #return 'Done'
 
+    def shout(self):
+        print(f'My name is {self.name}')
+
 player1 = PlayerCharacter('Cindy', 44)
 player2 = PlayerCharacter('Tom', 20)
 player2.attack = 50
@@ -43,16 +46,26 @@ print(player2.run())              # None - because Funcion has no return, uncomm
 print(player1)                    # <__main__.PlayerCharacter object at 0x75d86f4eb1f0>
 print(player2)                    # <__main__.PlayerCharacter object at 0x75d86f51e490>
 print(player2.attack)             # 50
-help(player1)                     # run it in program
+
+print(player1.shout())            # My name is Cindy    # None
+print(player2.shout())            # My name is Tom      # None
+
+print(player1.membership)         # True (but it is not dynamic)
+
+help(player1)                     # run it in the program (entire blueprint of the object)
+help(list)                        # to see the lass List blueprint
+
+
+
 
 
 ----------------------------------------------------------------------
 
 
 class PlayerCharacter:
-    membership = True                # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
+    membership = True                    # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
     def __init__(self, name, age):
-        if(self.membership):
+        if(self.membership):             # self refers to this PlayerCharacter
             self.name = name
             self.age = age
 
