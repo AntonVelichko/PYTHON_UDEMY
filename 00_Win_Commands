@@ -45,22 +45,22 @@ attrib +r           		  -h "file anme"	- add Read Only, remove Hidden
 
 del <file name>		  		  - delete file
 
-echo <your text> > <file name>.txt		   -  create file and type there text
-echo lalala > Bacon.txt	  - create file "Bacon" and type there text "lalala"
-type  <file name>.txt		  - read what is inside the file
+echo <your text> > <file name>.txt                    #  create file and type there text
+echo lalala > Bacon.txt                               #  create file "Bacon" and type there text "lalala"
+type  <file name>.txt                                 #  read what is inside the file
 
-echo <your text> >> <file name>.txt			  -  add new text to the existing file
-dir > <file name>.txt	    - copy all output from "dir" command to <file name>.txt
+echo <your text> >> <file name>.txt                   #  add new text to the existing file
+dir > <file name>.txt                                 #  copy all output from "dir" command to <file name>.txt
 
-copy <file name>.txt <folder name>	- copying file to another folder
-copy <file name>.txt E:			- copying file to the root folder of FlashDrive
+copy <file name>.txt <folder name>                    #  copying file to another folder
+copy <file name>.txt E:                               #  copying file to the root folder of FlashDrive
 
-xcopy <folder name> <folder name>	- copying all files from one folder to another folder (by default "xcopy" copying only the files)
-xcopy <folder name> <folder name> /s	- copying all files and folders from one folder to another folder
-xcopy /?			- help for command "xcopy"
+xcopy <folder name> <folder name>                     #  copying all files from one folder to another folder (by default "xcopy" copying only the files)
+xcopy <folder name> <folder name> /s                  #  copying all files and folders from one folder to another folder
+xcopy /?                                              #  help for command "xcopy"
 
-move <folder name> <folder name>	- moves Folder to another place
-rename <folder name> <folder name>	- rename Directory
+move <folder name> <folder name>                      #  moves Folder to another place
+rename <folder name> <folder name>                    #  rename Directory
 
 
 ----------------------------------------
