@@ -66,6 +66,7 @@ class PlayerCharacter:
     membership = True                    # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
     def __init__(self, name, age):
         if(self.membership):             # self refers to this PlayerCharacter
+                                         # can also be used if(PlayerCharacter.membership): instead of if(self.membership):
             self.name = name
             self.age = age
 
@@ -86,8 +87,8 @@ print(player1.run())    # run
 
 
 class PlayerCharacter:
-    membership = False                                      # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
-    def __init__(self, name = 'anonymous', age = 20):       # by default
+    membership = True                                       # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
+    def __init__(self, name = 'anonymous', age = 20):       # default parameters
         if(age >= 18 and self.membership):
             self.name = name
             self.age = age
@@ -99,11 +100,19 @@ player1 = PlayerCharacter('Tom', 18)
 player2 = PlayerCharacter()
 player2.attack = 50
 
-print(player1.name)
-print(player1.run())
+print(player1.name)         # Tom
+print(player1.run())        # Run
+                            # None
+                            
+print(player2.name)         # anonymous
 
 
-----------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 #Exercise
@@ -134,10 +143,17 @@ def oldest_cat(*args):
 print(f'The oldest cat is {oldest_cat(cat1.age,cat2.age,cat3.age)} years old.')
 
 
-----------------------------------------------------------------------
 
 
-#@classmethod and @staticmethod
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+#@classmethod
+
 class PlayerCharacter:
     membership = True
     def __init__(self, name = 'anonymous', age = 20):
@@ -148,8 +164,8 @@ class PlayerCharacter:
     def run(self):
         print('Run')
 
-    @classmethod            # method for the actual class, not used often (5%)
-    def adding_things(cls, num1, num2):
+    @classmethod                                # method for the actual class, not used often (5%)
+    def adding_things(cls, num1, num2):         # 'cls' stands for Class , 'cls' is like 'self'
         return num1 + num2
 
 
@@ -158,7 +174,7 @@ player2 = PlayerCharacter()
 player2.attack = 50
 
 print(player1.adding_things(2,3))                    # 5
-print(player2.name, player2.age)                    # anonymous 20
+print(player2.name, player2.age)                     # anonymous 20
 print(PlayerCharacter.adding_things(3,4))            # 7
 
 
@@ -176,20 +192,22 @@ class PlayerCharacter:
     def run(self):
         print('Run')
 
-    @classmethod            # method for the actual class, not used often (5%)
+    @classmethod                                     # method for the actual class, not used often (5%)
     def adding_things(cls, num1, num2):
-        return cls('Teddy', num1 + num2)
+        return cls('Teddy', num1 + num2)             # using 'cls' to instantiate an object
 
 
-print(PlayerCharacter.adding_things(3,3))    # <__main__.PlayerCharacter object at 0x72fbc215bee0>
-                                             # object 'Teddy' instantiated with age = num1 + num2
+print(PlayerCharacter.adding_things(3,3))            # <__main__.PlayerCharacter object at 0x72fbc215bee0>
+                                                     # object 'Teddy' instantiated with age = num1 + num2
+
 player = PlayerCharacter.adding_things(11,11)
-print(player.age)                            # 22
-print(player.name)                           # Teddy
+print(player.age)                                    # 22
+print(player.name)                                   # Teddy
 
 
 
 
+@staticmethod
 
 class PlayerCharacter:
     membership = True
@@ -201,62 +219,68 @@ class PlayerCharacter:
     def run(self):
         print('Run')
 
-    @classmethod            # method for the actual class, not used often (5%)
+    @classmethod                            # method for the actual class, not used often (5%)
     def adding_things(cls, num1, num2):
         return cls('Teddy', num1 + num2)
 
-    @staticmethod
+    @staticmethod                            # same like @classmethod but no access to cls
     def adding_things2(num1, num2):
         return num1 + num2
 
 player = PlayerCharacter.adding_things(11,11)
 print(player.age)                            # 22
-print(player.name)                          # Teddy
+print(player.name)                           # Teddy
 
 
 
-----------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
 https://www.makeuseof.com/tag/python-instance-static-class-methods/
 
 # Decorator Patterns
-class DecoratorExample:
-  # Example Class """
-  def __init__(self):
-    # Example Setup """
+class DecoratorExample:                        # Example Class
+  def __init__(self):                          # Example Setup  
     print('Hello, World!')
 
   @staticmethod
-  def example_function():
-    # This method is decorated! """
+  def example_function():                      # This method is decorated!
     print('I\'m a decorated function!')
+      
+de = DecoratorExample()                         # Hello, World!
 
-de = DecoratorExample()                     # Hello, World!
-
-de.example_function()                       #I'm a decorated function!
+de.example_function()                           # I'm a decorated function!
 print('---')
 
-DecoratorExample().example_function()       # Hello, World!
-print('---')                                # I'm a decorated function!
+DecoratorExample().example_function()           # Hello, World!
+print('---')                                    # I'm a decorated function!
 
-DecoratorExample.example_function()         # I'm a decorated function!
+DecoratorExample.example_function()             # I'm a decorated function!
 print('----')
+
+# Decorators have to immediately precede a function or class declaration
+# They start with the @ sign, and unlike normal methods, you don't have to put parentheses on the end unless you are passing in arguments
+
+
 
 
 
 
 # Instance Methods
-class DecoratorExample:
-  # Example Class """
-  def __init__(self):
-    # Example Setup """
+# The most common type of methods in Python classes, no decorator needed
+# When you create a Python class, its methods will be instance methods by default
+
+class DecoratorExample:                        # Example Class
+  def __init__(self):                          # Example Setup
     print('Hello, World!')
     self.name = 'Decorator Example'
 
-  def example_function(self):
-    # This method is an instance method! """
+  def example_function(self):                  # This method is an instance method!
     print('I\'m an instance method!')
     print('My name is ' + self.name)
 
@@ -267,51 +291,73 @@ de.example_function()       # I'm an instance method!
 
 
 
+
 # Static Method
-class DecoratorExample:
-  # Example Class """
-  def __init__(self):
-    # Example Setup """
+# Static methods are methods that are related to a class in some way
+# but don't need to access any class-specific data 
+# You don't have to use self, and you don't even need to instantiate an instance, you can simply call your method
+# The @staticmethod decorator was used to tell Python that this method is a static method
+
+class DecoratorExample:             # Example Class
+  def __init__(self):               # Example Setup
     print('Hello, World!') 
 
   @staticmethod
-  def example_function():
-    # This method is a static method! """
+  def example_function():            # This method is a static method!
     print('I\'m a static method!')
 
 de = DecoratorExample.example_function()    # I'm a static method!
+
+# Static methods are great for utility functions, which perform a task in isolation
+# They don't need to (and cannot) access class data
+# They should be completely self-contained, and only work with data passed in as arguments
+# You may use a static method to add two numbers together, or print a given string
+
 
 
 
 
 
 # Class Method
-class DecoratorExample:
-  # Example Class """
-  def __init__(self):
-    # Example Setup """
+# Class methods know about their class
+# They can't access specific instance data, but they can call other static methods
+# Class methods don't need self as an argument, 
+# but they do need a parameter called cls
+# This stands for class, and like self, it gets automatically passed in by Python
+# Class methods are created using the @classmethod decorator
+
+class DecoratorExample:                     # Example Class
+  def __init__(self):                       # Example Setup
     print('Hello, World!') 
 
   @classmethod
-  def example_function(cls):
-    # This method is a class method! """
+  def example_function(cls):                # This method is a class method!
     print('I\'m a class method!')
     cls.some_other_function()
 
   @staticmethod
   def some_other_function():
-    print('Hello!')
+    print('I\'m a static method!')
 
-de = DecoratorExample()         # Hello, World!
-de.example_function()           # I'm a class method!
-                                # Hello!
+de = DecoratorExample()                     # Hello, World!
+de.example_function()                       # I'm a class method!
+                                            # I'm a static method!
+de.some_other_function()                    # I'm a static method!
+
+# Remember, instance methods can manipulate an object's state and have access to the class itself via self
+# Class methods, on the other hand, can't access the instance of a class but can access the class itself
+# This is the major difference between class and instance methods in Python.
+# Since class methods can manipulate the class itself, they are useful when you're working on larger, more complex projects
 
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+###  INCAPSULATION  ###
 
-# Incapsulation
 class PlayerCharacter:
   def __init__(self, name, age):
     self.name = name
@@ -327,10 +373,13 @@ player1 = PlayerCharacter('Tony', 99)
 player1.speak()                         # My name is Tony, and I am 99 years old
 PlayerCharacter('John', 88).speak()     # My name is John, and I am 88 years old
 
+# Without a class we would use 2 variables and 2 functions
+# With class we have everything in one place, a blueprint, a package
+# This is entire object I can interact with, I can use
 
 
 
-# if there are no methods - it's useless
+# if there are no methods - it's useless, it's like a dictionary
 class PlayerCharacter:
   def __init__(self, name, age):
     self.name = name
@@ -340,16 +389,18 @@ player1 = PlayerCharacter('Tony', 99)
 print(player1.name)         # Tony
 print(player1.age)          # 99
 
-player2 = {'name': 'John', 'age': 100}
+player2 = {'name': 'John', 'age': 100}        # dictionary
 print(player2['name'])      # John
 print(player2['age'])       # 100
+
 # the difference between player1 and player2 is the access to information
 
 
 
+------------------------------------------------------------------------------------------------------------------------
 
 
-# Absraction
+###  ABSRACTION  ###
 
 class PlayerCharacter:
   def __init__(self, name, age):
@@ -366,11 +417,10 @@ print(player1.speak())  # TypeError: 'str' object is not callable
 
 
 
+------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-# Inheritance
+###  INHERITANCE  ###
 
 class User:
   def sign_in (self):      # if no attributes then we don't need __init__ , we do not initialize anything
@@ -387,7 +437,7 @@ wizard1.sign_in()       # Logged in
 
 
 
---------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 
 class User:
