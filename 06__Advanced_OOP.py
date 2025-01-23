@@ -402,10 +402,22 @@ print(player2['age'])       # 100
 
 ###  ABSRACTION  ###
 
+# This is an example of abstraction. We have access to the method "count", but we don't know how it works and we don't need to know actually
+# We just need access to it
+print((1,2,3,1).count(1))            # 2
+
+
 class PlayerCharacter:
   def __init__(self, name, age):
     self.name = name
     self.age = age
+
+  def run(self):
+    print('Run')
+
+  def speak(self):
+    print(f'My name is {self.name}, and I am {self.age} years old')
+      
 
 player1 = PlayerCharacter('Tony', 99)
 player1.name = '!!!'
@@ -417,12 +429,15 @@ print(player1.speak())  # TypeError: 'str' object is not callable
 
 
 
+
+
+
 ------------------------------------------------------------------------------------------------------------------------
 
 
 ###  INHERITANCE  ###
 
-class User:
+class User():
   def sign_in (self):      # if no attributes then we don't need __init__ , we do not initialize anything
     print('Logged in')
 
@@ -473,20 +488,38 @@ print(isinstance(User, object))        # True
 
 -----------------------------------------------------------------------------------------------------------
 
+###  PRIVACY  ###
 
-###   _var - means this variable is PRIVATE; do not change it   ###
+_<variable name> - means this variable is PRIVATE; do not change it
+
+class PlayerCharacter:
+  def __init__(self, name, age):
+    self._name = name
+    self._age = age
+
+  def run(self):
+    print('Run')
+
+  def speak(self):
+    print(f'My name is {self.name}, and I am {self.age} years old')
+      
+
+player1 = PlayerCharacter('Tony', 99)
+player1.name = '!!!'
+player1.speak = 'Booo'
 
 
 -----------------------------------------------------------------------------------------------------------
 
 
-###  POLYMORPHISM  ###
+###  POLYMORPHISM (many forms)  ###
+# different object classes can share the same method name
 
 class User:
   def sign_in(self):
     print('Logged in')
 
-  def attack(self):              # initial attack function
+  def attack(self):                                      # initial attack function
     print('Do nothing')
 
 
@@ -495,7 +528,7 @@ class Wizard(User):
     self.name = name
     self.power = power
 
-  def attack(self):              # this attack function will override User attack
+  def attack(self):                                      # this attack function will override User attack
     print(f'Attacking with power of {self.power}')
 
 
@@ -520,6 +553,7 @@ def player_attack(char):
 player_attack(wizard1)              # Attacking with power of 60  -->  using 'def player_attack(char):'
 wizard1.attack()                    # Attacking with power of 60  -->  using 'class Wizard(User):'
 Wizard('Saruman', 70).attack()      # Attacking with power of 70
+
 player_attack(archer1)              # Attacking with arrows; arrows left - 30
 
 
@@ -527,8 +561,8 @@ player_attack(archer1)              # Attacking with arrows; arrows left - 30
 for char in [wizard1, archer1]:      # Attacking with power of 60
   char.attack()                      # Attacking with arrows: arrows left - 30
 
-player_attack(user1)    # Do nothing
-user1.attack()          # Do nothing
+player_attack(user1)                 # Do nothing
+user1.attack()                       # Do nothing
 
 
 --------------
@@ -687,6 +721,7 @@ print(dir(wizard1))    # ['__class__', '__delattr__', '__dict__', '__dir__', '__
 ##########################################################################################################################
 ###  DUNDER METHODS  ###
 https://docs.python.org/3/reference/datamodel.html#special-method-names
+# we don't write our own Dunder Methods
 
 class Toy():
     def __init__(self, color, age):
