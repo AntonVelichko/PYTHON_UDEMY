@@ -856,6 +856,7 @@ print(hb1.sign_in())        # Logged in
 # Method Resolution Order
 # __mro__
 # This will be a bad code since it's complicated to understand
+# Do not structure your code this way
 http://www.srikanthtechnologies.com/blog/python/mro.aspx
 
 class X: pass
