@@ -55,7 +55,7 @@ print(player2.shout())            # My name is Tom      # None
 print(player1.membership)         # True (but it is not dynamic)
 
 help(player1)                     # run it in the program (entire blueprint of the object)
-help(list)                        # to see the lass List blueprint
+help(list)                        # to see the List blueprint
 
 
 
