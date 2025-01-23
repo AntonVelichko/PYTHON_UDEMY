@@ -1,4 +1,6 @@
-# OOP
+
+##########################################################################################################################
+### OOP  ###
 
 class BigObject:
     pass
@@ -19,7 +21,7 @@ print(type({}))                      # <class 'dict'>
 print(type(obj1))                    # <class '__main__.BigObject'>
 
 
-----------------------------------------------------------------------
+--------------
 
 
 class PlayerCharacter:
@@ -59,7 +61,7 @@ help(list)                        # to see the lass List blueprint
 
 
 
-----------------------------------------------------------------------
+------------------
 
 
 class PlayerCharacter:
@@ -83,7 +85,7 @@ print(player1.run())    # run
                         # None
 
 
-----------------------------------------------------------------------
+---------------
 
 
 class PlayerCharacter:
@@ -108,51 +110,11 @@ print(player2.name)         # anonymous
 
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-
-#Exercise
-
-#Given the below class:
-class Cat:
-    species = 'mammal'
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-
-# 1 Instantiate the Cat object with 3 cats
-cat1 = Cat('Barsik', 1)
-cat2 = Cat('Alicia', 2)
-cat3 = Cat('Murka', 4)
-
-
-# 2 Create a function that finds the oldest cat
-def oldest_cat(*args):
-    return max(args)
-
-
-# 3 Print out: "The oldest cat is x years old.". x will be the oldest cat age by using the function in #2
-#print(cat1.age)
-#print(oldest_cat(cat1.age,cat2.age,cat3.age))
-
-print(f'The oldest cat is {oldest_cat(cat1.age,cat2.age,cat3.age)} years old.')
-
-
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-#@classmethod
+##########################################################################################################################
+### @classmethod  ###
 
 class PlayerCharacter:
     membership = True
@@ -179,7 +141,7 @@ print(PlayerCharacter.adding_things(3,4))            # 7
 
 
 
-
+-----------------
 
 
 class PlayerCharacter:
@@ -206,8 +168,8 @@ print(player.name)                                   # Teddy
 
 
 
-
-@staticmethod
+##########################################################################################################################
+### @staticmethod  ###
 
 class PlayerCharacter:
     membership = True
@@ -268,10 +230,10 @@ print('----')
 
 
 
+-----------------
 
 
-
-# Instance Methods
+###  INSTANCE METHOD  ###
 # The most common type of methods in Python classes, no decorator needed
 # When you create a Python class, its methods will be instance methods by default
 
@@ -289,10 +251,10 @@ de.example_function()       # I'm an instance method!
                             # My name is Decorator Example
 
 
+-----------------
 
 
-
-# Static Method
+### STATIC METHOD  ###
 # Static methods are methods that are related to a class in some way
 # but don't need to access any class-specific data 
 # You don't have to use self, and you don't even need to instantiate an instance, you can simply call your method
@@ -315,10 +277,10 @@ de = DecoratorExample.example_function()    # I'm a static method!
 
 
 
+-----------------
 
 
-
-# Class Method
+### CLASS METHOD  ###
 # Class methods know about their class
 # They can't access specific instance data, but they can call other static methods
 # Class methods don't need self as an argument, 
@@ -782,27 +744,6 @@ print(del(action_figure))            # SyntaxError: invalid syntax
 
 
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! Exercise  !!!
-# Extending List
-
-class SuperList(list):
-    def __len__(self):
-        return 1000
-
-super_list1 = SuperList()
-print(len(super_list1))                 # 1000
-
-super_list1.append(5)                   
-print(super_list1[0])                   # 5
-
-print(issubclass(SuperList, list))      # True
-print(issubclass(list, object))         # True
-
-
-
-
-
 ##########################################################################################################################
 ###  MULTIPLE INHERITANCE  ###
 # Complicates code; be very cautious. Maybe avoid it to use
@@ -851,12 +792,17 @@ print(hb1.arrows)                   # showes nothing    |    if we put Archer fi
 print(hb1.check_arrows())           # gives an error since it doesn't know the arrows   |   if we put Archer first in "class HybridBorg(Archer, Wizard)"  -->> 50 remaining  \n  None
 
 
+# Because of Order Matter and if Wizard first we can't add Arrows to the class HybridBorg it is becoming tricky using multiple inheritance
+# Code becomes more complicated to solve that problem with Arrows
+
+
 
 -----------
 
 
 
-# Miltiple Inheritance
+# continue, the limitation with Arrows is fixed but complicates the code
+# multiple inheritance might complicate code a lot (some programming languages don't allow multi-inheritances)
 class User:
     def sign_in(self):
         print('Logged in')
@@ -907,9 +853,10 @@ print(hb1.sign_in())        # Logged in
 
 ##########################################################################################################################
 ###  MRO  ###
-__mro__
+# Method Resolution Order
+# __mro__
+# This will be a bad code since it's complicated to understand
 http://www.srikanthtechnologies.com/blog/python/mro.aspx
-This will be a bad code since it's complicated to understand
 
 class X: pass
 class Y: pass
@@ -919,17 +866,74 @@ class B(Y,Z): pass
 class M(B,A,Z): pass
 
 print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__main__.A'>, <class '__main__.X'>, <class '__main__.Y'>, <class '__main__.Z'>, <class 'object'>)
-
+print(M.mro())      # same like "print(M.__mro__)"
 
 '''
     object
- ↑     ↑    ↑
- X     Y     Z
+  ↗     ↑    ↖
+ X3     Y4     Z5
   ↖ ↗    ↖ ↗
-   A      B
+   A2      B1
       ↖ ↗
        M
 '''
+
+
+
+
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! Exercise  !!!
+
+#Given the below class:
+class Cat:
+    species = 'mammal'
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+# 1 Instantiate the Cat object with 3 cats
+cat1 = Cat('Barsik', 1)
+cat2 = Cat('Alicia', 2)
+cat3 = Cat('Murka', 4)
+
+
+# 2 Create a function that finds the oldest cat
+def oldest_cat(*args):
+    return max(args)
+
+
+# 3 Print out: "The oldest cat is x years old.". x will be the oldest cat age by using the function in #2
+#print(cat1.age)
+#print(oldest_cat(cat1.age,cat2.age,cat3.age))
+
+print(f'The oldest cat is {oldest_cat(cat1.age,cat2.age,cat3.age)} years old.')
+
+
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! Exercise  !!!
+# Extending List
+
+class SuperList(list):
+    def __len__(self):
+        return 1000
+
+super_list1 = SuperList()
+print(len(super_list1))                 # 1000
+
+super_list1.append(5)                   
+print(super_list1[0])                   # 5
+
+print(issubclass(SuperList, list))      # True
+print(issubclass(list, object))         # True
 
 
 
