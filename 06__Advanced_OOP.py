@@ -234,12 +234,12 @@ print(player.name)                           # Teddy
 
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+
+##########################################################################################################################
+###   DECORATORS   ###
 
 https://www.makeuseof.com/tag/python-instance-static-class-methods/
 
@@ -351,11 +351,9 @@ de.some_other_function()                    # I'm a static method!
 
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+##########################################################################################################################
 ###  INCAPSULATION  ###
 
 class PlayerCharacter:
@@ -397,9 +395,9 @@ print(player2['age'])       # 100
 
 
 
-------------------------------------------------------------------------------------------------------------------------
 
 
+##########################################################################################################################
 ###  ABSRACTION  ###
 
 # This is an example of abstraction. We have access to the method "count", but we don't know how it works and we don't need to know actually
@@ -432,9 +430,10 @@ print(player1.speak())  # TypeError: 'str' object is not callable
 
 
 
-------------------------------------------------------------------------------------------------------------------------
 
 
+
+##########################################################################################################################
 ###  INHERITANCE  ###
 
 class User():
@@ -486,8 +485,9 @@ print(isinstance(User, object))        # True
 
 
 
------------------------------------------------------------------------------------------------------------
 
+
+##########################################################################################################################
 ###  PRIVACY  ###
 
 _<variable name> - means this variable is PRIVATE; do not change it
@@ -509,9 +509,10 @@ player1.name = '!!!'
 player1.speak = 'Booo'
 
 
------------------------------------------------------------------------------------------------------------
 
 
+
+##########################################################################################################################
 ###  POLYMORPHISM (many forms)  ###
 # different object classes can share the same method name
 
@@ -550,16 +551,16 @@ def player_attack(char):
   char.attack()
 
 
-player_attack(wizard1)              # Attacking with power of 60  -->  using 'def player_attack(char):'
+player_attack(wizard1)              # Attacking with power of 60  -->  using 'def player_attack(char):'  -->  Polymorphism
 wizard1.attack()                    # Attacking with power of 60  -->  using 'class Wizard(User):'
 Wizard('Saruman', 70).attack()      # Attacking with power of 70
 
-player_attack(archer1)              # Attacking with arrows; arrows left - 30
+player_attack(archer1)              # Attacking with arrows; arrows left - 30  -->  using 'def player_attack(char):'  -->  Polymorphism
 
 
 # for loop
-for char in [wizard1, archer1]:      # Attacking with power of 60
-  char.attack()                      # Attacking with arrows: arrows left - 30
+for char in [wizard1, archer1]:      # Attacking with power of 60  -->  Polymorphism
+  char.attack()                      # Attacking with arrows: arrows left - 30  -->  Polymorphism
 
 player_attack(user1)                 # Do nothing
 user1.attack()                       # Do nothing
@@ -574,7 +575,7 @@ class User:
     print('Logged in')
 
   def attack(self):                  # initial attack function
-    print('Do nothing')
+    print('User initial attack')
 
 
 class Wizard(User):
@@ -605,25 +606,23 @@ def player_attack(char):
   char.attack()
 
 
-player_attack(wizard1)  # Do nothing
+player_attack(wizard1)  # User initial attack
                         # Attacking with power of 60
-wizard1.attack()        # Do nothing
+wizard1.attack()        # User initial attack
                         # Attacking with power of 60
 player_attack(archer1)  # Attacking with arrows: arrows left - 30
 
 
 # for loop
-for char in [wizard1, archer1]:      # Do nothing  \n  # Attacking with power of 60
+for char in [wizard1, archer1]:      # User initial attack  \n  # Attacking with power of 60
   char.attack()                      # Attacking with arrows: arrows left - 30
 
-player_attack(user1)                  # Do nothing
+player_attack(user1)                 # User initial attack
 
 
 
 
------------------------------------------------------------------------------------------------------------
-
-
+##########################################################################################################################
 ###  SUPER CLASS  ###
 
 class User:
@@ -635,7 +634,7 @@ class User:
 
 class Wizard(User):
     def __init__(self, name, power, email):      # this shows the ORDER of arguments
-        User.__init__(self, email)               # one way to pass argument
+        User.__init__(self, email)               # one way to pass argument (more efficient way Andrew says)
         self.name = name
         self.power = power
 
@@ -658,7 +657,7 @@ class User:
 
 class Wizard(User):
     def __init__(self, name, power, email):
-        super().__init__(email)                # reffering to Super Class (class above), no self needed
+        super().__init__(email)                # reffering to Super Class (class above), no self needed  -->> substitute "User.__init__(self, email)"
         self.name = name
         self.power = power
 
@@ -670,31 +669,10 @@ print(wizard1.email)        # merlin@gmail.com
 
 
 
--------------
 
-
-
-# Exercise Extending List
-
-class SuperList(list):
-    def __len__(self):
-        return 1000
-
-super_list1 = SuperList()
-print(len(super_list1))                 # 1000
-
-super_list1.append(5)                   
-print(super_list1[0])                   # 5
-print(issubclass(SuperList, list))      # True
-print(issubclass(list, object))         # True
-
-
-
-
------------------------------------------------------------------------------------------------------------
-
-
-###  INTROSPECTION - the ability to determine the object at run time  ###
+##########################################################################################################################
+###  INTROSPECTION   ### 
+# the ability to determine the object at run time  
 
 class User:
     def __init__(self, email):
@@ -713,7 +691,9 @@ class Wizard(User):
         print(f'Attacking with power of {self.power}')
 
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
-print(dir(wizard1))    # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',  ...  'attack', 'email', 'name', 'power', 'sign_in']
+print(dir(wizard1))     # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',  ...  'attack', 'email', 'name', 'power', 'sign_in']
+                        # gives all of the methods and attributes that the Wizard instance has
+                        # showing what you have access to
 
 
 
@@ -733,6 +713,8 @@ action_figure = Toy('red', 0)
 print(action_figure.__str__())  # <__main__.Toy object at 0x773cad9efc90>
 print(str(action_figure))       # <__main__.Toy object at 0x773cad9efc90>
 
+# __<name of method>__ special "magical" method, can be access by 2 ways
+
 
 -----
 
@@ -742,15 +724,15 @@ class Toy():
         self.color = color
         self.age = age
         
-    def __str__(self):
+    def __str__(self):                  # do not modify Dunder Methods, we modified it now and it acting different way
         return f'{self.color}'
         
 action_figure = Toy('red', 0)
-print(action_figure.__str__())      # red  |  'str' is modified only when used with a specific object ('Toy' in our case)
-print(str(action_figure))           # red
-print(str('action_figure'))         # action_figure
-print(str(123) + 'a')               # 123a
-print(type(str(123)))               #  <class 'str'>
+print(action_figure.__str__())          # red  |  'str' is modified only when used with a specific object ('Toy' in our case)
+print(str(action_figure))               # red
+print(str('action_figure'))             # action_figure
+print(str(123) + 'a')                   # 123a
+print(type(str(123)))                   #  <class 'str'>
 
 
 -----
@@ -784,16 +766,46 @@ class Toy():
 action_figure = Toy('red', 0)
 print(action_figure.__str__())       # red
 print(str(action_figure))            # red
+
 print(len(action_figure))            # 5
+
 print(action_figure())               # yes??
+
 print(action_figure['name'])         # Yoyo
+
+print(len('123456789'))              # 9
+
+print(action_figure.__del__())       # deleted
+print(del(action_figure))            # SyntaxError: invalid syntax
+
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! Exercise  !!!
+# Extending List
+
+class SuperList(list):
+    def __len__(self):
+        return 1000
+
+super_list1 = SuperList()
+print(len(super_list1))                 # 1000
+
+super_list1.append(5)                   
+print(super_list1[0])                   # 5
+
+print(issubclass(SuperList, list))      # True
+print(issubclass(list, object))         # True
+
 
 
 
 
 ##########################################################################################################################
 ###  MULTIPLE INHERITANCE  ###
-Complicates code; be very cautious. Maybe avoid it to use
+# Complicates code; be very cautious. Maybe avoid it to use
 
 class User:
     def sign_in(self):
@@ -811,7 +823,7 @@ class Wizard(User):
         
         
     def run(self):
-        print('Run fast Wazard')
+        print('Run fast Wazard')            # if we put here "print(f'Run fast {self.name}')"  -->> "Run fast Borgie" instead of "Run fast Wizard"
 
 
 class Archer(User):
@@ -831,11 +843,12 @@ class HybridBorg(Wizard, Archer):
 
 hb1 = HybridBorg('Borgie', 50)      # extentiation
 
-print(hb1.run())    # Run fast Wizard  \n  None    | Order matters; if Archer first in 'class HybridBorg(Archer, Wizard)' it will gives 'Run fast Archer'
-print(hb1.name)     # orgie
-print(hb1.power)    # 50
-print(hb1.arrows)   # showes nothing
-print(hb1.check_arrows())   # gives an error since it doesn't know the arrows
+print(hb1.run())                    # Run fast Wizard    |     Order matters; if Archer first in "class HybridBorg(Archer, Wizard)" it will gives 'Run fast Archer'
+                                    # None
+print(hb1.name)                     # Borgie
+print(hb1.power)                    # 50
+print(hb1.arrows)                   # showes nothing    |    if we put Archer first in "class HybridBorg(Archer, Wizard)"  -->> 50
+print(hb1.check_arrows())           # gives an error since it doesn't know the arrows   |   if we put Archer first in "class HybridBorg(Archer, Wizard)"  -->> 50 remaining  \n  None
 
 
 
@@ -890,6 +903,8 @@ print(hb1.sign_in())        # Logged in
 
 
 
+
+
 ##########################################################################################################################
 ###  MRO  ###
 __mro__
@@ -918,11 +933,12 @@ print(M.__mro__)    # (<class '__main__.M'>, <class '__main__.B'>, <class '__mai
 
 
 
------------------------------------------------------------------------------
 
 
 
-# Exercise
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! Exercise  !!!
 
 class Pets():
     animals = []
@@ -969,7 +985,7 @@ my_cats.append(cat1)
 my_cats.append(cat2)
 my_cats.append(cat3)
 
-#OR my_cats = [Simon('Simon', 1), Sally('Sally', 2), Bob('Bob', 3)]
+#OR  -->  my_cats = [Simon('Simon', 1), Sally('Sally', 2), Bob('Bob', 3)]
 
 
 #3 Instantiate the Pet class with all your cats use variable my_pets
