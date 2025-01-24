@@ -7,7 +7,7 @@
 # functional programming separates Data and Functions when OOP combines Data and Functions
 
 
-
+# pure function
 def multiply_by2(li):
 	new_list = []
 	for item in li:
@@ -44,7 +44,7 @@ def multiply_by2(li):
 	
 new_list = []  					# this is not pure and has a side effect
 	
-multiply_by2([1,2,3])				# showes nothing
+multiply_by2([1,2,3])				# shows nothing
 
 
 
@@ -223,7 +223,7 @@ print(my_list)      # [1, 2, 3]
 
 #Square
 my_list = [5, 4, 3]
-print(f'Squared list = {list(map(lambda item: item * item, my_list))}')            # [25, 16, 9]
+print(list(map(lambda item: item * item, my_list)))            # [25, 16, 9]
 
 
 # List Sorting by second number
@@ -356,8 +356,13 @@ print(my_dict)          							# {'b': 4}
 
 
 
-my_dict = {num:num*2 for num in [1,2,3]}
+my_dict = {num:num * 2 for num in [1,2,3]}
 print(my_dict)          							# {1: 2, 2: 4, 3: 6}
+
+
+
+my_dict = {num:num * 2 for num in ['a','b','c']}
+print(my_dict)                                      				# {'a': 'aa', 'b': 'bb', 'c': 'cc'}
 
 
 
@@ -367,6 +372,8 @@ print(my_dict)          							# {1: 2, 2: 4, 3: 6}
 *************************************************************************************************************************
 ***  EXERCISE  ***
 
+
+###  MY SOLUTION  ###
 
 my_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
 
