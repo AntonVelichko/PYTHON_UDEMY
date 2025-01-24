@@ -1,5 +1,12 @@
+
+
 ##########################################################################################################################
 ###  PURE FUNCTION  ###
+
+# impossible to have Pure Functions everywhere
+# functional programming separates Data and Functions when OOP combines Data and Functions
+
+
 
 def multiply_by2(li):
 	new_list = []
@@ -10,22 +17,26 @@ def multiply_by2(li):
 print(multiply_by2([1,2,3]))			# [2, 4, 6]
 
 
------
+
+---------------
+
 
 
 def multiply_by2(li):
 	new_list = []
 	for item in li:
 		new_list.append(item * 2)
-	return print(new_list)  		# this is not pure and has a side effect
+	return print(new_list)  		# this is not pure and has a side effect like "print"
 	
 multiply_by2([1,2,3])				# [2, 4, 6]
 
 
-----
+
+---------------
 
 
-new_list = []  					# this is not pure and has a side effect
+
+new_list = []  					# this is not pure and has a side effect  -->  "new_list" is outside if the function scope
 def multiply_by2(li):
 	for item in li:
 		new_list.append(item * 2)
@@ -38,15 +49,22 @@ multiply_by2([1,2,3])				# showes nothing
 
 
 
+
+
 ##########################################################################################################################
 ###  MAP  ###
+
 
 def multiply_by2(item):
 	return item * 2
 
 print(list(map(multiply_by2, [1,2,3])))		# [2, 4, 6]
 
----
+
+
+---------------
+
+
 
 my_list = [1,2,3]
 def multiply_by2(item):
@@ -58,8 +76,11 @@ print(my_list)	# [1,2,3]
 
 
 
+
+
 ##########################################################################################################################
 ###  FILTER  ###
+
 
 my_list = [1,2,3]
 def only_odd(item):
@@ -71,21 +92,30 @@ print(my_list)	# [1,2,3]
 
 
 
+
+
 ##########################################################################################################################
 ###  ZIP  ###
+
 
 my_list = [1,2,3]
 your_list = [10, 20, 30]
 
 print(list(zip(my_list, your_list)))	# [(1, 10), (2, 20), (3, 30)]
 
----
+
+
+---------------
+
+
 
 my_list = [1,2,3]
 your_list = [10, 20, 30]
 their_list = ['a', 'b', 'c']
 
 print(list(zip(my_list, your_list, their_list)))	# [(1, 10, 'a'), (2, 20, 'b'), (3, 30, 'c')]
+
+
 
 
 
