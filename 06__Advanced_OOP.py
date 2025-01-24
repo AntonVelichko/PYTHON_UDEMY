@@ -2,6 +2,7 @@
 ##########################################################################################################################
 ### OOP  ###
 
+
 class BigObject:
     pass
 
@@ -21,7 +22,9 @@ print(type({}))                      # <class 'dict'>
 print(type(obj1))                    # <class '__main__.BigObject'>
 
 
+
 --------------
+
 
 
 class PlayerCharacter:
@@ -59,17 +62,15 @@ help(list)                        # to see the List blueprint
 
 
 
-
-
 ------------------
+
 
 
 class PlayerCharacter:
     membership = True                    # if False --> AttributeError: 'PlayerCharacter' object has no attribute 'name'
     def __init__(self, name, age):
         if(self.membership):             # self refers to this PlayerCharacter
-                                         # can also be used if(PlayerCharacter.membership): instead of if(self.membership):
-            self.name = name
+            self.name = name             # can also be used if(PlayerCharacter.membership): instead of if(self.membership):
             self.age = age
 
     def run(self):
@@ -86,6 +87,7 @@ print(player1.run())    # run
 
 
 ---------------
+
 
 
 class PlayerCharacter:
@@ -116,6 +118,7 @@ print(player2.name)         # anonymous
 ##########################################################################################################################
 ### @classmethod  ###
 
+
 class PlayerCharacter:
     membership = True
     def __init__(self, name = 'anonymous', age = 20):
@@ -138,10 +141,12 @@ player2.attack = 50
 print(player1.adding_things(2,3))                    # 5
 print(player2.name, player2.age)                     # anonymous 20
 print(PlayerCharacter.adding_things(3,4))            # 7
+print(player2.adding_things(4,5))                    # 9
 
 
 
 -----------------
+
 
 
 class PlayerCharacter:
@@ -160,11 +165,15 @@ class PlayerCharacter:
 
 
 print(PlayerCharacter.adding_things(3,3))            # <__main__.PlayerCharacter object at 0x72fbc215bee0>
-                                                     # object 'Teddy' instantiated with age = num1 + num2
 
-player = PlayerCharacter.adding_things(11,11)
+
+player = PlayerCharacter.adding_things(11,11)        # object 'Teddy' instantiated with age = num1 + num2
 print(player.age)                                    # 22
 print(player.name)                                   # Teddy
+print(player.
+
+
+
 
 
 
@@ -185,7 +194,7 @@ class PlayerCharacter:
     def adding_things(cls, num1, num2):
         return cls('Teddy', num1 + num2)
 
-    @staticmethod                            # same like @classmethod but no access to cls
+    @staticmethod                            # same as @classmethod but no access to cls
     def adding_things2(num1, num2):
         return num1 + num2
 
@@ -198,14 +207,12 @@ print(player.name)                           # Teddy
 
 
 
-
-
 ##########################################################################################################################
 ###   DECORATORS   ###
-
 https://www.makeuseof.com/tag/python-instance-static-class-methods/
 
-# Decorator Patterns
+
+###  DECORATOR PATTERNS  ###
 class DecoratorExample:                        # Example Class
   def __init__(self):                          # Example Setup  
     print('Hello, World!')
@@ -233,8 +240,9 @@ print('----')
 -----------------
 
 
+
 ###  INSTANCE METHOD  ###
-# The most common type of methods in Python classes, no decorator needed
+# The most common type of method in Python classes, no decorator is needed
 # When you create a Python class, its methods will be instance methods by default
 
 class DecoratorExample:                        # Example Class
@@ -246,12 +254,13 @@ class DecoratorExample:                        # Example Class
     print('I\'m an instance method!')
     print('My name is ' + self.name)
 
-de = DecoratorExample()     # Hello, World!
-de.example_function()       # I'm an instance method!
-                            # My name is Decorator Example
+de = DecoratorExample()                        # Hello, World!
+de.example_function()                          # I'm an instance method!
+                                               # My name is Decorator Example
 
 
 -----------------
+
 
 
 ### STATIC METHOD  ###
@@ -273,11 +282,12 @@ de = DecoratorExample.example_function()    # I'm a static method!
 # Static methods are great for utility functions, which perform a task in isolation
 # They don't need to (and cannot) access class data
 # They should be completely self-contained, and only work with data passed in as arguments
-# You may use a static method to add two numbers together, or print a given string
+# You may use a static method to add two numbers together or print a given string
 
 
 
 -----------------
+
 
 
 ### CLASS METHOD  ###
@@ -315,8 +325,10 @@ de.some_other_function()                    # I'm a static method!
 
 
 
+
 ##########################################################################################################################
 ###  INCAPSULATION  ###
+
 
 class PlayerCharacter:
   def __init__(self, name, age):
@@ -335,7 +347,7 @@ PlayerCharacter('John', 88).speak()     # My name is John, and I am 88 years old
 
 # Without a class we would use 2 variables and 2 functions
 # With class we have everything in one place, a blueprint, a package
-# This is entire object I can interact with, I can use
+# This is an entire object I can interact with, I can use
 
 
 
@@ -359,10 +371,12 @@ print(player2['age'])       # 100
 
 
 
+
 ##########################################################################################################################
 ###  ABSRACTION  ###
 
-# This is an example of abstraction. We have access to the method "count", but we don't know how it works and we don't need to know actually
+# This is an example of abstraction. We have access to the method "count"
+# but we don't know how it works and we don't need to know actually
 # We just need access to it
 print((1,2,3,1).count(1))            # 2
 
@@ -383,12 +397,9 @@ player1 = PlayerCharacter('Tony', 99)
 player1.name = '!!!'
 player1.speak = 'Booo'
 
-print(player1.speak)    # Booo
 print(player1.name)     # !!!
+print(player1.speak)    # Booo
 print(player1.speak())  # TypeError: 'str' object is not callable
-
-
-
 
 
 
@@ -397,6 +408,7 @@ print(player1.speak())  # TypeError: 'str' object is not callable
 
 ##########################################################################################################################
 ###  INHERITANCE  ###
+
 
 class User():
   def sign_in (self):      # if no attributes then we don't need __init__ , we do not initialize anything
@@ -414,6 +426,7 @@ wizard1.sign_in()       # Logged in
 
 
 ------------------------------------------------------------------------------------------------------------------------
+
 
 
 class User:
@@ -449,10 +462,12 @@ print(isinstance(User, object))        # True
 
 
 
+
 ##########################################################################################################################
 ###  PRIVACY  ###
 
 _<variable name> - means this variable is PRIVATE; do not change it
+
 
 class PlayerCharacter:
   def __init__(self, name, age):
@@ -474,16 +489,19 @@ player1.speak = 'Booo'
 
 
 
+
 ##########################################################################################################################
-###  POLYMORPHISM (many forms)  ###
+###  POLYMORPHISM  ####  
+# many forms
 # different object classes can share the same method name
+
 
 class User:
   def sign_in(self):
     print('Logged in')
 
   def attack(self):                                      # initial attack function
-    print('Do nothing')
+    print('User attack')
 
 
 class Wizard(User):
@@ -513,22 +531,24 @@ def player_attack(char):
   char.attack()
 
 
-player_attack(wizard1)              # Attacking with power of 60  -->  using 'def player_attack(char):'  -->  Polymorphism
+player_attack(wizard1)              # Attacking with power of 60  -->  using 'def player_attack(char):' is Polymorphism
 wizard1.attack()                    # Attacking with power of 60  -->  using 'class Wizard(User):'
 Wizard('Saruman', 70).attack()      # Attacking with power of 70
 
-player_attack(archer1)              # Attacking with arrows; arrows left - 30  -->  using 'def player_attack(char):'  -->  Polymorphism
+player_attack(archer1)              # Attacking with arrows; arrows left - 30  -->  using 'def player_attack(char):' is Polymorphism
 
 
 # for loop
-for char in [wizard1, archer1]:      # Attacking with power of 60  -->  Polymorphism
-  char.attack()                      # Attacking with arrows: arrows left - 30  -->  Polymorphism
+for char in [wizard1, archer1]:      # Attacking with power of 60  -->  this is Polymorphism
+  char.attack()                      # Attacking with arrows: arrows left - 30  -->  this is Polymorphism
 
-player_attack(user1)                 # Do nothing
-user1.attack()                       # Do nothing
+player_attack(user1)                 # User attack
+user1.attack()                       # User attack
+
 
 
 --------------
+
 
 
 # when we keep both methods, from inheritance and local
@@ -584,8 +604,11 @@ player_attack(user1)                 # User initial attack
 
 
 
+
+
 ##########################################################################################################################
 ###  SUPER CLASS  ###
+
 
 class User:
     def __init__(self, email):
@@ -607,7 +630,10 @@ wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
 print(wizard1.email)        # merlin@gmail.com
 
 
+
 ----------
+
+
 
 # super()
 class User:
@@ -616,6 +642,7 @@ class User:
 
     def sign_in(self):
         print('Logged in')
+
 
 class Wizard(User):
     def __init__(self, name, power, email):
@@ -626,8 +653,11 @@ class Wizard(User):
     def attack(self):
         print(f'Attacking with power of {self.power}')
 
+
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
 print(wizard1.email)        # merlin@gmail.com
+
+
 
 
 
@@ -636,12 +666,14 @@ print(wizard1.email)        # merlin@gmail.com
 ###  INTROSPECTION   ### 
 # the ability to determine the object at run time  
 
+
 class User:
     def __init__(self, email):
         self.email = email
 
     def sign_in(self):
         print('Logged in')
+
 
 class Wizard(User):
     def __init__(self, name, power, email):
@@ -652,10 +684,13 @@ class Wizard(User):
     def attack(self):
         print(f'Attacking with power of {self.power}')
 
+
 wizard1 = Wizard('Merlin', 60, 'merlin@gmail.com')
-print(dir(wizard1))     # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',  ...  'attack', 'email', 'name', 'power', 'sign_in']
+print(dir(wizard1))     # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__',   ...   'attack', 'email', 'name', 'power', 'sign_in']
                         # gives all of the methods and attributes that the Wizard instance has
                         # showing what you have access to
+
+
 
 
 
@@ -664,6 +699,7 @@ print(dir(wizard1))     # ['__class__', '__delattr__', '__dict__', '__dir__', '_
 ###  DUNDER METHODS  ###
 https://docs.python.org/3/reference/datamodel.html#special-method-names
 # we don't write our own Dunder Methods
+
 
 class Toy():
     def __init__(self, color, age):
@@ -675,10 +711,12 @@ action_figure = Toy('red', 0)
 print(action_figure.__str__())  # <__main__.Toy object at 0x773cad9efc90>
 print(str(action_figure))       # <__main__.Toy object at 0x773cad9efc90>
 
-# __<name of method>__ special "magical" method, can be access by 2 ways
+# __<name of method>__  is a special "magical" method, can be accessed with 2 ways
+
 
 
 -----
+
 
 
 class Toy():
@@ -688,7 +726,8 @@ class Toy():
         
     def __str__(self):                  # do not modify Dunder Methods, we modified it now and it acting different way
         return f'{self.color}'
-        
+
+
 action_figure = Toy('red', 0)
 print(action_figure.__str__())          # red  |  'str' is modified only when used with a specific object ('Toy' in our case)
 print(str(action_figure))               # red
@@ -697,7 +736,9 @@ print(str(123) + 'a')                   # 123a
 print(type(str(123)))                   #  <class 'str'>
 
 
+
 -----
+
 
 
 class Toy():
@@ -724,8 +765,9 @@ class Toy():
   def __getitem__(self,i):
       return self.my_dict[i]
 
-
 action_figure = Toy('red', 0)
+
+
 print(action_figure.__str__())       # red
 print(str(action_figure))            # red
 
@@ -744,9 +786,11 @@ print(del(action_figure))            # SyntaxError: invalid syntax
 
 
 
+
 ##########################################################################################################################
 ###  MULTIPLE INHERITANCE  ###
 # Complicates code; be very cautious. Maybe avoid it to use
+
 
 class User:
     def sign_in(self):
@@ -762,9 +806,8 @@ class Wizard(User):
         User.attack(self)
         print(f'Attacking with power of {self.power}')
         
-        
     def run(self):
-        print('Run fast Wazard')            # if we put here "print(f'Run fast {self.name}')"  -->> "Run fast Borgie" instead of "Run fast Wizard"
+        print('Run fast Wazard')            # if we put here "print(f'Run fast {self.name}')"  -->>  "Run fast Borgie" instead of "Run fast Wizard"
 
 
 class Archer(User):
@@ -801,8 +844,11 @@ print(hb1.check_arrows())           # gives an error since it doesn't know the a
 
 
 
-# continue, the limitation with Arrows is fixed but complicates the code
+# continue
+# the limitation with Arrows is fixed but complicates the code
 # multiple inheritance might complicate code a lot (some programming languages don't allow multi-inheritances)
+
+
 class User:
     def sign_in(self):
         print('Logged in')
@@ -836,16 +882,17 @@ class HybridBorg(Wizard, Archer):
 
 hb1 = HybridBorg('Borgie', 50, 100)
 
-print(hb1.run())            # Run fast Archer 
-                            # None
-print(hb1.check_arrows())   # 100 remaining  
-                            # None
-print(hb1.attack())         # Attacking with power of 50 
-                            # Order matters; 'def __init__(self, name, power, arrows):'
-                            # in this case, it will be Wizard
-                            # None
-print(hb1.sign_in())        # Logged in  
-                            # None
+print(hb1.run())                    # Run fast Archer 
+                                    # None
+print(hb1.check_arrows())           # 100 remaining  
+                                    # None
+print(hb1.attack())                 # Attacking with power of 50 
+                                    # Order matters; 'def __init__(self, name, power, arrows):'
+                                    # in this case, it will be Wizard
+                                    # None
+print(hb1.sign_in())                # Logged in  
+                                    # None
+
 
 
 
@@ -858,6 +905,7 @@ print(hb1.sign_in())        # Logged in
 # This will be a bad code since it's complicated to understand
 # Do not structure your code this way
 http://www.srikanthtechnologies.com/blog/python/mro.aspx
+
 
 class X: pass
 class Y: pass
@@ -884,10 +932,9 @@ print(M.mro())      # same like "print(M.__mro__)"
 
 
 
-
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! Exercise  !!!
+
 
 #Given the below class:
 class Cat:
@@ -909,9 +956,6 @@ def oldest_cat(*args):
 
 
 # 3 Print out: "The oldest cat is x years old.". x will be the oldest cat age by using the function in #2
-#print(cat1.age)
-#print(oldest_cat(cat1.age,cat2.age,cat3.age))
-
 print(f'The oldest cat is {oldest_cat(cat1.age,cat2.age,cat3.age)} years old.')
 
 
@@ -923,15 +967,19 @@ print(f'The oldest cat is {oldest_cat(cat1.age,cat2.age,cat3.age)} years old.')
 !!! Exercise  !!!
 # Extending List
 
+
 class SuperList(list):
     def __len__(self):
         return 1000
 
 super_list1 = SuperList()
+
 print(len(super_list1))                 # 1000
+print(super_list1)                      # []
 
 super_list1.append(5)                   
 print(super_list1[0])                   # 5
+print(super_list1)                      # [5]
 
 print(issubclass(SuperList, list))      # True
 print(issubclass(list, object))         # True
@@ -941,9 +989,9 @@ print(issubclass(list, object))         # True
 
 
 
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! Exercise  !!!
+
 
 class Pets():
     animals = []
@@ -998,9 +1046,13 @@ my_pets = Pets(my_cats)
 
 
 #4 Output all of the cats walking using the my_pets instance
-my_pets.walk()
+my_pets.walk()                  # Simon is just walking around
+                                # Sally is just walking around
+                                # Bob is just walking around
 
 print(cat1.sing('Moew'))        # Moew
+
+
 
 
 
