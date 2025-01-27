@@ -256,20 +256,21 @@ long_time()
 
 
 
-----------------------------------------------------------------------------------------------------------------
 
 
 
-### EXERCISE
+*************************************************************************************************************************
+***  EXERCISE  ***
 
-# Create an @authenticated decorator that only allows the function to run is user1 has 'valid' set to True:
+# Create an @authenticated decorator that only allows the function to run if user1 has 'valid' set to True:
+
+
 user1 = {
     "name": "Sorna",
-    "valid": True,  # changing this will either run or not run the message_friends function.
+    "valid": True,  			# changing this will either run or not run the message_friends function.
 }
 
 def authenticated(fn):
-    # code here
     def wrapper(*args, **kwargs):
         if args[0]["valid"]:
             return fn(*args, **kwargs)
@@ -284,23 +285,28 @@ def message_friends(user):
 
 message_friends(user1)
 
----
+
+
+---------------
+
+
 
 # modified to find out what is 'args[0]['valid']
+
 user1 = {
-    "name": "Sorna",
-    "valid": True,
+    "name": "Sorna",						# args[0]["name"]  <-- Sorna
+    "valid": True,						# args[0]["valid"]  <-- True
 }
 
 user2 = {
-    "name": "Sorna",
-    "valid": False,  
+    "name": "Dorna",						# args[1]["name"]  <-- Dorna
+    "valid": False,  						# args[1]["valid"]  <-- True
 }
 
 def authenticated(fn):
     def wrapper(*args, **kwargs):
         if args[0]["valid"]:
-            print(args[1]["valid"])     # False
+            print(args[1]["valid"])     			# False
             return fn(*args, **kwargs)
         else:
             return print("invalid user")
@@ -310,7 +316,7 @@ def authenticated(fn):
 def message_friends(*args):
     print("message has been sent")
 
-message_friends(user1, user2)       # message has been sent
+message_friends(user1, user2)       				# message has been sent
 
 
 
