@@ -6,7 +6,7 @@
 def hello():
 	print('hellllooo')
 greet = hello()
-print(greet)        # hellllooo
+print(greet)        		# hellllooo
 
 
 
@@ -17,7 +17,8 @@ print(greet)        # hellllooo
 def hello():
 	print('hellllooo')
 greet = hello
-print(greet())      # hellllooo  <--  we have to call it function ()
+print(greet)      		# <function hello3 at 0x7016a4d1c9a0>  <--  it shows functioin location
+print(greet())      		# hellllooo  <--  we have to call it function ()
 
 
 
@@ -28,24 +29,13 @@ print(greet())      # hellllooo  <--  we have to call it function ()
 def hello():
 	print('hellllooo')
 greet = hello
-print(greet)      # <function hello3 at 0x7016a4d1c9a0>  <--  it shows functioin location
+del hello	    		# it deletes hello
 
+print(hello)        		# NameError: name 'hello' is not defined
+print(hello())      		# NameError: name 'hello' is not defined
 
-
----------------
-
-
-
-def hello():
-	print('hellllooo')
-greet = hello
-del hello	    # it deletes hello
-
-print(hello)        # NameError: name 'hello' is not defined
-print(hello())      # NameError: name 'hello' is not defined
-
-print(greet())      # hellllooo \n None  <---  func is in memory, reference like 'hello' is deleted, but reference 'greet' is there
-                    # python didn't delete the whole function because the function still has another reference 'greet'
+print(greet())      		# hellllooo \n None  <---  func is in memory, reference like 'hello' is deleted, but reference 'greet' is there
+                    		# python didn't delete the whole function because the function still has another reference 'greet'
 
 
 
@@ -61,7 +51,7 @@ def greet():
 	
 a = hello(greet)
 
-print(a)        # still here!  \n  None
+print(a)        		# still here!  \n  None
 
 
 
@@ -71,7 +61,7 @@ print(a)        # still here!  \n  None
 ##########################################################################################################################
 ###  HIGHER ORDER FUNCTION - HOF  ###
 
-# any func that accept a Function as a paramentr or returns a function
+# HOF is any Function that accepts a function as a parameter or returns a function
 
 def greet(func):			# this is HOF  <--  func that accepts another function with its paraments
 	func()				
@@ -82,7 +72,7 @@ def greet(func):			# this is HOF  <--  func that accepts another function with i
 
 
 
-def greet():				# this is HOF  <--  also func that returns other function
+def greet():				# this is HOF  <--  func that returns other function
 	def func():
 		return 5
 	return func()
@@ -90,6 +80,8 @@ def greet():				# this is HOF  <--  also func that returns other function
 print(greet())      			# 5
 
 ---------------
+
+
 
 map(), filter(), reduce() 		# all are HOF
 
@@ -116,18 +108,16 @@ def my_decorator(func):
 def hello():
 	print('helllooo')
 
-
 hello()         			# ******
                 			# helllooo
                 			# ******
 
-@my_decorator				# boostong our func "bye"
+@my_decorator				# boosting our func "bye"
 def bye():
-	print('see ya later')
+	print('see ya later)
 bye()           			# ******
                 			# see ya later
                 			# ******
-
 
 
 ---------------
@@ -150,18 +140,6 @@ hello2 = my_decorator(hello)		# these 2 lines can be written as "my_decorator(he
 hello2()        			# ******
                 			# helllooo
                 			# ******
-
-
----------------
-
-
-
-# hello2 = my_decorator(hello)
-# hello2()
-# it is the same
-my_decorator(hello)()         # ******
-                              # helllooo
-                              # ******
 
 
 
@@ -213,8 +191,8 @@ hello('hiiii', ';)')	# ******
 
 
 ###  DECORATOR PATTERN  ###
-# we can pass as many arguments as we want in wrap function
-# this way is better and is the right way
+# we can pass as many arguments as we want in the wrap function
+# this way is better and it is the right way
 # it gives our decorator flexibility
 
 def my_decorator(func):
