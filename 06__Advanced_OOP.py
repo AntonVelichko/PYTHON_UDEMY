@@ -172,7 +172,7 @@ print(PlayerCharacter.adding_things(3,3))            # <__main__.PlayerCharacter
 player = PlayerCharacter.adding_things(11,11)        # object 'Teddy' instantiated with age = num1 + num2
 print(player.age)                                    # 22
 print(player.name)                                   # Teddy
-print(player.
+print(player)                                        # <__main__.PlayerCharacter object at 0x76e0e7778dd0>
 
 
 
