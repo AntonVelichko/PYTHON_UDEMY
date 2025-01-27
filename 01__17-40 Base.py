@@ -1,5 +1,4 @@
 
-
 ###  FUNDAMENTAL DATA TYPES  ###
 
 int
@@ -18,8 +17,10 @@ None                                      # absence of value
 
 
 
-###  NUMBERS  ###
 
+
+
+###  TYPE  ###
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
 print(type(2/4))          # <class 'float'>
@@ -29,15 +30,32 @@ print(type(9.9 + 1.1))    # <class 'float'>
 print(9.9 + 1.1)          # 11.0
 print(type(10.56))        # '10' stores in one memory and '56' in another
 
+
+
+
+
+
+###  MATH OPERATORS  ###
 print(2 ** 3)             # 8
 print(3 // 2)             # 1   /rounded down to integer
 print(5 % 4)              # 1   /modulo, the remainder of the division
 
-# Math functions   / https://www.programiz.com/python-programming/modules/math
+
+
+
+
+
+###  MATH FUNCTIONS  ###
+# https://www.programiz.com/python-programming/modules/math
 print(round(3.5))         # 4
 print(abs(-1))            # 1
 
-# Operator precedence
+
+
+
+
+
+###  OPERATOR PRECEDENCE  ###
 # ()  >>  **  >>  */  >>  +-
 print((5 + 4) * 10 / 2)     # 45.0
 print(((5 + 4) * 10) / 2)   # 45.0
