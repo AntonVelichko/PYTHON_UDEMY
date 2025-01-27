@@ -1,18 +1,24 @@
 
-# Fundamental Data Types
+
+###  FUNDAMENTAL DATA TYPES  ###
+
 int
-float                   # https://www.youtube.com/watch?v=PZRI1IfStY0
+float                                     # https://www.youtube.com/watch?v=PZRI1IfStY0
 bool
 str
 list
 dict
 tuple
 set
+None                                      # absence of value
 
-# Classes -> custom types
 
-# Specialized Data Types -> libraries, packages (modules)
-None                        # absence of value
+# Classes                                 <--  custom types
+# Specialized Data Types                  <--  libraries, packages (modules)
+
+
+
+###  NUMBERS  ###
 
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
