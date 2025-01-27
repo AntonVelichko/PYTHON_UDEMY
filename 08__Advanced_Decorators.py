@@ -1,38 +1,57 @@
-###
-# @classmethod
-# @staticmethod
 
-def hello1():
+##########################################################################################################################
+###  DECORATORS  ###
+
+
+def hello():
 	print('hellllooo')
-greet = hello1()
+greet = hello()
 print(greet)        # hellllooo
 
----
 
-def hello2():
-	print('hellllooo')
-greet = hello2
-print(greet())      # hellllooo
 
----
+---------------
 
-def hello3():
-	print('hellllooo')
-greet = hello3
-print(greet)      # <function hello3 at 0x7016a4d1c9a0>  |  functioin location
 
----
 
 def hello():
 	print('hellllooo')
 greet = hello
-del hello
-print(greet())      # hellllooo  | func is in memory but reference like 'hello' is deleted, but reference 'greet' is there
-                    # python didn't delete whole function becasue the function stil have another reference 'greet'
-print(hello)        # name 'hello' is not defined
-print(hello())      # # name 'hello' is not defined
+print(greet())      # hellllooo  <--  we have to call it function ()
 
----
+
+
+---------------
+
+
+
+def hello():
+	print('hellllooo')
+greet = hello
+print(greet)      # <function hello3 at 0x7016a4d1c9a0>  <--  it shows functioin location
+
+
+
+---------------
+
+
+
+def hello():
+	print('hellllooo')
+greet = hello
+del hello	    # it deletes hello
+
+print(hello)        # NameError: name 'hello' is not defined
+print(hello())      # NameError: name 'hello' is not defined
+
+print(greet())      # hellllooo \n None  <---  func is in memory, reference like 'hello' is deleted, but reference 'greet' is there
+                    # python didn't delete the whole function because the function still has another reference 'greet'
+
+
+
+---------------
+
+
 
 def hello(func):
 	func()
@@ -42,40 +61,48 @@ def greet():
 	
 a = hello(greet)
 
-print(a)        # still here!
+print(a)        # still here!  \n  None
 
 
 
-------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-### HIGHT Order Function - HOF
+##########################################################################################################################
+###  HIGHER ORDER FUNCTION - HOF  ###
+
 # any func that accept a Function as a paramentr or returns a function
 
-def greet(func):
-	func()		# this is HOF
+def greet(func):			# this is HOF  <--  func that accepts another function with its paraments
+	func()				
 
----
 
-def greet():
+
+---------------
+
+
+
+def greet():				# this is HOF  <--  also func that returns other function
 	def func():
 		return 5
 	return func()
 	
-print(greet())      # 5
+print(greet())      			# 5
 
----
+---------------
 
-map(), filter(), reduce() - are HOF
-
-
-
-------------------------------------------------------------------------------------------------------------------------------------
+map(), filter(), reduce() 		# all are HOF
 
 
 
-### DECORATOR - a function that wraps another function and inchanses it or changes it
+
+
+
+##########################################################################################################################
+###  DECORATOR  ###
+
+# a function that wraps another function and enhances it or changes it
+
 
 def my_decorator(func):
 	def wrap_func():
@@ -84,23 +111,30 @@ def my_decorator(func):
 		print('******')
 	return wrap_func
 
+
 @my_decorator
 def hello():
 	print('helllooo')
-hello()         # ******
-                # helllooo
-                # ******
 
-@my_decorator
+
+hello()         			# ******
+                			# helllooo
+                			# ******
+
+@my_decorator				# boostong our func "bye"
 def bye():
 	print('see ya later')
-bye()           # ******
-                # see ya later
-                # ******
+bye()           			# ******
+                			# see ya later
+                			# ******
 
----
 
-# how the Decorator works under the hood
+
+---------------
+
+
+
+###  how the Decorator works under the hood  ###
 
 def my_decorator(func):
 	def wrap_func():
@@ -112,12 +146,15 @@ def my_decorator(func):
 def hello():
 	print('helllooo')
 
-hello2 = my_decorator(hello)
-hello2()        # ******
-                # helllooo
-                # ******
+hello2 = my_decorator(hello)		# these 2 lines can be written as "my_decorator(hello)()"
+hello2()        			# ******
+                			# helllooo
+                			# ******
 
----
+
+---------------
+
+
 
 # hello2 = my_decorator(hello)
 # hello2()
@@ -126,7 +163,13 @@ my_decorator(hello)()         # ******
                               # helllooo
                               # ******
 
----
+
+
+
+
+
+##########################################################################################################################
+###  Decorator with parameter  ###
 
 def my_decorator(func):
 	def wrap_func(x):
@@ -143,7 +186,11 @@ hello('hiiii')      # ******
                     # hiiii
                     # ******
 
----
+
+
+---------------
+
+
 
 # we can give 2 parameters but it is hectic to change them if needed
 def my_decorator(func):
@@ -161,10 +208,17 @@ hello('hiiii', ';)')	# ******
                     	# hiiii  ;)
                     	# ******
 
----
 
-# DECORATOR PATTERN - we can pass as many arguments as we want in wrap function
-# this way is better and is a right way
+
+---------------
+
+
+
+
+###  DECORATOR PATTERN  ###
+# we can pass as many arguments as we want in wrap function
+# this way is better and is the right way
+# it gives our decorator flexibility
 
 def my_decorator(func):
 	def wrap_func(*args, **kwargs):
@@ -177,8 +231,10 @@ def hello(greeting, emoji = ':('):
 
 hello('hiiii')      # hiiii :(
 
----
-# @performance
+
+
+
+###  @performance  ###
 
 from time import time
 def performance(fn):
