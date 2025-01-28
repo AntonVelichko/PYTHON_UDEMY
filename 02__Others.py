@@ -23,11 +23,7 @@ else:
 
 
 
-# 62 Truthy Falsy
-# https://stackoverflow.com/questions/39983695/what-is-truthy-and-falsy-how-is-it-different-from-true-and-false
-print(bool(0))                  # False
-print(bool())                   # False
-print(bool(None))               # False
+
 
 
 
