@@ -12,6 +12,7 @@ print(arr[0])                     # 1
 
 
 
+##########################################################################################################################
 ###  LIST SLICING  ###
 arr = [
   'a',
@@ -71,6 +72,7 @@ print(matrix[0][1])               # 2
 
 
 
+##########################################################################################################################
 ###  LIST METHODS  ###
 # 44 List Methods# https://www.w3schools.com/python/python_ref_list.asp
 
@@ -144,86 +146,118 @@ print('i' in 'hi')                # True
 
 
 arr = ['a','b','c','d','e','a']
-# .sort()   /returns None
+# .sort()  <<--  sorts the same array and returns None
 arr.sort()
 print(arr)                          # ['a', 'a', 'b', 'c', 'd', 'e']
 
-# sorted()   /returns new array
+
+
+# sorted()  <<--  sorts and returns new array, initial array is not modified
 arr = ['a','b','c','d','e','a']
 print(sorted(arr))                  # ['a', 'a', 'b', 'c', 'd', 'e']
 print(arr)                          # ['a', 'b', 'c', 'd', 'e', 'a']
 
-# .copy()   /returns new copy of array
+new_arr = arr[:]  <<--  alternative to sorted, does the same
+
+
+
+# .copy()  <<--  returns new copy of array
 arr_2 = arr.copy()                  # arr_2 = arr[:]
 arr_2.sort()
 print(arr_2)                        # ['a', 'a', 'b', 'c', 'd', 'e']
 
-# .reverse()   /returns None
+
+
+# .reverse()  <<--  returns None
 arr = ['a','b','c','d','e']
 arr.reverse()
 print(arr)                          # ['e', 'd', 'c', 'b', 'a']
 
 
 
-----------------------------------------------------------------------------------
 
 
 
-# 47 List Patterns
+##########################################################################################################################
+###  LIST PATTERNS  ###
 arr = ['a','b','c','d','e']
 
 # len()
-print(len(arr))                     # 5
+print(len(arr))                               # 5
+
+
 
 # reverse by slicing (creates new list)
-print(arr[::-1])                    # ['e', 'd', 'c', 'b', 'a']
-print(arr)                          # ['a', 'b', 'c', 'd', 'e']
+print(arr[::-1])                              # ['e', 'd', 'c', 'b', 'a']
+print(arr)                                    # ['a', 'b', 'c', 'd', 'e']
+
+
 
 # copy by slicing (creates new list)
 arr_2 = arr[:]
 arr_2.reverse()
-print(arr_2)                      # ['e', 'd', 'c', 'b', 'a']
-print(arr)                        # ['a', 'b', 'c', 'd', 'e']
+print(arr_2)                                  # ['e', 'd', 'c', 'b', 'a']
+print(arr)                                    # ['a', 'b', 'c', 'd', 'e']
 
 arr_3 = arr[0:1]
-print(arr_3)                      # ['a']
+print(arr_3)                                  # ['a']
 
 arr_4 = arr[0:5:2]
-print(arr_4)                      # ['a', 'c', 'e']
+print(arr_4)                                  # ['a', 'c', 'e']
+
+
 
 # range()   /generate a new list
-print(list(range(1,10)))          # [1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(list(range(10)))            # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(list(range(1,10)))                      # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(list(range(10)))                        # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
 
 # .join()   / last value is skipped
-print(' '.join(['I','am','Jojo']))  # I am Jojo
-print(' '.join('hello'))          # h e l l o
-print('.'.join('PM'))             # P.M
+print(' '.join(['I','am','Jojo']))            # I am Jojo
+print(' '.join('hello'))                      # h e l l o
+print('.'.join('PM'))                         # P.M
+
+
+text = ' '
+new_text = text.join(['hi', 'my', 'name', 'is', 'Jojo'])
+print(new_text)                               # hi my name is Jojo    
 
 
 
-----------------------------------------------------------------------------------
 
 
 
-# 48 List Unpacking
+##########################################################################################################################
+###  LIST UNPACKING  ###
+
 a,b,c = [1,2,3]
-print(a)                        # 1
-print(b)                        # 2
-print(c)                        # 3
+print(a)                                   # 1
+print(b)                                   # 2
+print(c)                                   # 3
+
 
 a,b,c = 1,2,3
 print(a)
 print(b)
 print(c)
 
+
 a,b,c, *other = [1,2,3,4,5,6,7,8,9]
-print(a)                          # 1
-print(b)                          # 2
-print(other)                      # [4, 5, 6, 7, 8, 9]
+print(a)                                     # 1
+print(b)                                     # 2
+print(other)                                 # [4, 5, 6, 7, 8, 9]
+
 
 a,b,c, *other, d = [1,2,3,4,5,6,7,8,9]
-print(a)                          # 1
-print(other)                      # [4, 5, 6, 7, 8]
-print(d)                          # 9
+print(a)                                     # 1
+print(other)                                 # [4, 5, 6, 7, 8]
+print(d)                                     # 9
 
+
+
+
+
+
+
+-
