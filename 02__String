@@ -94,3 +94,10 @@ print(quote)                        # to be or not to be   / strings are immutab
 
 quote_2 = quote.replace('be', 'me')
 print(quote_2)                      # to me or not to me
+
+
+
+
+
+
+
