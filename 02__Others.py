@@ -25,31 +25,66 @@ else:
 
 
 
---------------------------------------------------------------------
 
 
 
+##########################################################################################################################
+###  TERNARY OPERATOR  ###
+# conditional expression
 
-
-
-
-# 63 Ternary operator
 is_friend = False
-true_friend = 'Yes, True'  if is_friend else 'No friend'
-print(true_friend)  # No friend
+true_friend = 'Yes, friend'  if is_friend else 'Not a friend'
+print(true_friend)  # Not a friend
 
 
 
-# 64 Short-circuiting
-
-# 65 Logical operators
-# > < ==  !=  and  or  not
-print(1 < 2 < 3 < 4)    # True
-print(not(True))        # False
-print(not True)         # False
 
 
-# 66 Exercise
+
+##########################################################################################################################
+###  SHORT CIRCUITING  ###
+
+is_Friend = True
+is_User = True
+
+if is_Friend or is_User:            # this is short-circuiting because if is_Friend is True then the program stops because after 'or' we don't need to check anymore
+  print('Best friend')
+
+
+
+--------------
+
+
+
+is_Friend = False
+is_User = True
+
+if is_Friend and is_User:            # this is short-circuiting because if is_Friend is False then the program stops because after 'and' we don't need to check anymore
+  print('Best friend')
+
+
+
+
+
+
+##########################################################################################################################
+###  LOGICAL OPERATORS  ###
+#   <   >   ==   <=   >=   !=   and   or   not   and not
+# focus on readability of your code not to write less lines of code and do smart tricks
+# better to solve the problem in a simple manner
+
+print(1 < 2 < 3 < 4)                         # True
+print(not(True))                             # False
+print(not True)                              # False
+
+
+
+
+
+
+*************************************************************************************************************************
+***  EXERCISE  ***
+
 is_magician = True
 is_expert = False
 
@@ -61,12 +96,20 @@ elif not is_magician:
   print('need magic')
 
 
+# this option is shorter but might be a bit complicated for other programmers to read
+if is_magician and is_expert:
+  print('you are a master')
+elif  is_magician or is_expert:               # short-circuiting
+  print('at least you are getting there')
 
---------------------------------------------------------------------
 
 
 
-# 67 is vs ==
+
+
+##########################################################################################################################
+###  IS vs ==  ###
+
 print(True == 1)            # True
 print('1' == 1)             # False
 print([] == 1)              # False
@@ -79,13 +122,13 @@ print((1,2,3) == (3,2,1))   # False
 print({1,2,3} == {3,2,1})   # True
 
 
+
 # 'is' checks if the value is stored in one memory location
 print(True is 1)            # False
 print('1' is 1)             # False
 print([] is 1)              # False
 print(10 is 10.0)           # False
-print([] is [])             # False
-print([1,2,3] is [1,2,3])   # False
+print([1,2,3] is [1,2,3])   # False  /every list (dict, sets, tuples) in its own memory location
 print([] is [])             # False  /every list (dict, sets, tuples) in its own memory location
 
 print('1' is '1')           # True
@@ -98,6 +141,7 @@ a = [1,2,3]
 b = [1,2,3]
 print(a is b)               # False
 print(a == b)               # True
+
 
 a = [1,2,3]
 b = a                       # refference in memory
