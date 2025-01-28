@@ -14,6 +14,10 @@ print("example")
 
 
 
+print('i' in 'hi')                # True
+
+
+
 
 ###  STRING CONCATENATION  ###
 print('hi' + '!')           # hi!
