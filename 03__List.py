@@ -1,129 +1,143 @@
 
+##########################################################################################################################
+###  LIST  ###
+# like array in JavaScript
+# list is a data structure
 
-# 41 Lists
 arr = [1,2,'a', True]
-print(arr[0])           # 1
+print(arr[0])                     # 1
 
 
 
-----------------------------------------------------------------------------------
 
 
 
-# 42 List Slicing
+###  LIST SLICING  ###
 arr = [
   'a',
   'b',
   'c',
   'd'
 ]
-print(arr[0:2])     # ['a', 'b']
-print(arr[0::2])    # ['a', 'c']
+print(arr[0:2])                 # ['a', 'b']
+print(arr[0::2])                # ['a', 'c']
+
 
 arr[0] = 'x'
-print(arr)          # ['x', 'b', 'c', 'd']
+print(arr)                      # ['x', 'b', 'c', 'd']
 
-arr_2 = arr[:3]     #copy of arr from 0 to 3 indexes
+
+arr_2 = arr[:3]                 # copy of arr from 0 to 3 indexes
 arr_2[0] = 'y'
+print(arr)                      # ['x', 'b', 'c', 'd']
+print(arr_2)                    # ['y', 'b', 'c']
 
-print(arr)          # ['x', 'b', 'c', 'd']
-print(arr_2)        # ['y', 'b', 'c']
 
-arr_3 = arr         # not a copy, just reference to data
+arr_3 = arr                     # not a copy, just reference to data
 arr_3[0] = 'w'
-print(arr)          # ['w', 'b', 'c', 'd']
-print(arr_3)        # ['w', 'b', 'c', 'd']
+print(arr)                      # ['w', 'b', 'c', 'd']
+print(arr_3)                    # ['w', 'b', 'c', 'd']
 
-# list slicing creates new copy
+
+
+
+# list slicing creates a new copy
 arr_4 = arr[:]
 arr_4[0] = 'n'
-print(arr_4)        # ['n', 'b', 'c', 'd']
-print(arr)          # ['w', 'b', 'c', 'd']
+print(arr_4)                    # ['n', 'b', 'c', 'd']
+print(arr)                      # ['w', 'b', 'c', 'd']
+
 
 arr_5 = arr + ['t']
-print(arr_5)        # ['w', 'b', 'c', 'd', 't']
-print(arr)          # ['w', 'b', 'c', 'd']
-
-
-----------------------------------------------------------------------------------
+print(arr_5)                    # ['w', 'b', 'c', 'd', 't']
+print(arr)                      # ['w', 'b', 'c', 'd']
 
 
 
-# 43 Matrix
+
+
+
+###  MATRIX  ###
 matrix = [
   [1,2,3],
   [4,5,6],
   [7,8,9]
 ]
 
-print(matrix[0][1])     # 2
+print(matrix[0][1])               # 2
 
 
 
-----------------------------------------------------------------------------------
 
 
 
-# 44 List Methods
-# https://www.w3schools.com/python/python_ref_list.asp
+###  LIST METHODS  ###
+# 44 List Methods# https://www.w3schools.com/python/python_ref_list.asp
+
 arr = [1,2,3,4,5]
-print(len(arr))           # 5
+print(len(arr))                    # 5
 
-# ADDING
-# .append()   /returns None
-arr.append(6)
-print(arr)                # [1, 2, 3, 4, 5, 6]
+
+
+# .append()  <<--  returns None
+arr.append(6)                       # adding
+print(arr)                          # [1, 2, 3, 4, 5, 6]
 
 ex = arr.append(7)
-print(ex)                 # None
-print(arr)                # [1, 2, 3, 4, 5, 6, 7]
+print(ex)                           # None
+print(arr)                          # [1, 2, 3, 4, 5, 6, 7]
 
-# .insert()   /index, value   /returns None
-arr.insert(1, 'x')        # index, value
-print(arr)                # [1, 'x', 2, 3, 4, 5, 6, 7]
 
-# .extend()   /returns None   /can add several values in the end
-#                             / can add another list
+
+# .insert()  <<--  returns None
+arr.insert(1, 'x')                  # index, value
+print(arr)                          # [1, 'x', 2, 3, 4, 5, 6, 7]
+
+
+
+# .extend()  <<--  returns None  <<--  can add several values in the end, can add another list
 arr.extend([8,9])
-print(arr)                # [1, 'x', 2, 3, 4, 5, 6, 7, 8, 9]
-
-# REMOVING
-# .pop()   /returns deleted value
-arr.pop()                 # delete last one
-print(arr)                # [1, 'x', 2, 3, 4, 5, 6, 7, 8]
-
-arr.pop(2)                # delete index
-print(arr)                # [1, 'x', 3, 4, 5, 6, 7, 8]
-
-# .remove()   /returns None
-arr.remove('x')           # remove the first value
-print(arr)                # [1, 3, 4, 5, 6, 7, 8]
-
-# .clear()   /returns None
-arr.clear()               # remove all
-print(arr)                # []
+print(arr)                          # [1, 'x', 2, 3, 4, 5, 6, 7, 8, 9]
 
 
 
-----------------------------------------------------------------------------------
+# .pop()  <<--  removing  <<--  returns deleted value
+arr.pop()                           # delete last one
+print(arr)                          # [1, 'x', 2, 3, 4, 5, 6, 7, 8]
+
+arr.pop(2)                          # delete index
+print(arr)                          # [1, 'x', 3, 4, 5, 6, 7, 8]
 
 
 
-# 45 List Methods 2
-# .index()   /returns the first index of value
+# .remove()  <<--  returns None
+arr.remove('x')                     # remove the first value
+print(arr)                          # [1, 3, 4, 5, 6, 7, 8]
+
+
+
+# .clear()  <<--  returns None
+arr.clear()                         # remove all
+print(arr)                          # []
+
+
+
+# .index()  <<--  returns the first index of value
 arr = ['a','b','c','d','e','a']
 print(arr.index('b'))             # 1
 print(arr.index('d', 0, 4))       # 3 /starts from 0 and stops before 4 
 print(arr.index('d', 0, 3))       # gives an error, in that range no 'd'
 
-# keyword https://www.w3schools.com/python/python_ref_keywords.asp
-# in
+
+
+# in  <<--  keyword https://www.w3schools.com/python/python_ref_keywords.asp
 print('d' in arr)                 # True
 print('x' in arr)                 # False
 
 print('i' in 'hi')                # True
 
-# .count()   / returns number
+
+# .count()  <<--  returns number
 print(arr.count('a'))             # 2
 
 
