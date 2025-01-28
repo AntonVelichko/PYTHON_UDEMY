@@ -20,6 +20,9 @@ print('a' not in 'bc')            # True
 
 
 
+
+
+##########################################################################################################################
 ###  STRING CONCATENATION  ###
 print('hi' + '!')           # hi!
 print('hi' + 5)             # gives Error
@@ -28,6 +31,9 @@ print('hi' + str(5))        # hi5
 
 
 
+
+
+##########################################################################################################################
 ###  ESCAPE SEQUENCE  ###
 weather = "it's sunny"
 weather = 'it\'s sunny'               # escape sequence
@@ -37,6 +43,9 @@ rain = 'new \n stroke'                # new license
 
 
 
+
+
+##########################################################################################################################
 ###  FORMATTED STRINGS  ###
 name = 'John'
 age = 5
@@ -55,6 +64,9 @@ print("Hello {0}, your balance is {amount}.".format("Cindy", amount=50))
 
 
 
+
+
+##########################################################################################################################
 ###  STRING INDEX  ###
 python = 'abcdefghij'
          #0123456789
@@ -76,6 +88,9 @@ print(python[::-2])           # jhfdb  (reverse, skip every 2)
 
 
 
+
+
+##########################################################################################################################
 ###  BUILT-IN FUNCTIONS  ###
 # https://docs.python.org/3/library/functions.html
 
@@ -86,6 +101,9 @@ print(greet[0:len(greet)-1])    # abcd
 
 
 
+
+
+##########################################################################################################################
 ###  STRING METHODS  ###
 # https://www.w3schools.com/python/python_ref_string.asp
 
@@ -99,6 +117,44 @@ print(quote)                        # to be or not to be   / strings are immutab
 
 quote_2 = quote.replace('be', 'me')
 print(quote_2)                      # to me or not to me
+
+
+
+
+
+
+##########################################################################################################################
+###  END  ###
+print("Studytonight")                     # Studytonight
+print("is awesome")                       # is awesome
+
+print("Studytonight",)                    # Studytonight
+print("is awesome")                       # is awesome
+
+print("Studytonight", end = "\n")          # Studytonight
+print("is awesome")                       # is awesome
+
+
+print("Studytonight", end =' ')
+print("is awesome")                       # Studytonight is awesome
+
+print("Studytonight", end ='')
+print("is awesome")                       # Studytonightis awesome
+
+print("Hi", end ='_Studytonight_')
+print("you are awesome")                  # Hi_Studytonight_you are awesome
+
+
+
+##########################################################################################################################
+###  SEP  ###
+print("Study", "tonight")                 # Study tonight
+print("Study", "tonight", sep = ' ')      # Study tonight
+
+print("Study", "tonight", sep = '')       # Studytonight
+print("Study", "tonight", sep = '-&-')    # Study-&-tonight
+
+print("Studytonight","has","been","created","for", sep = "_", end="__STUDENTS__")         # Studytonight_has_been_created_for__STUDENTS__
 
 
 
