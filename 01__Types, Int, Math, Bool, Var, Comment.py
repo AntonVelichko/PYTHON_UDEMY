@@ -51,12 +51,14 @@ print(type(10.56))        # '10' stores in one memory and '56' in another
 
 
 ##########################################################################################################################
-###  BOOLEANS  ###
+###  BOOLEANS  TRUTHY AND FALSY  ###
 
 # https://stackoverflow.com/questions/39983695/what-is-truthy-and-falsy-how-is-it-different-from-true-and-false
 print(bool(0))                # False
 print(bool(None))             # False
-print(bool())                   # False
+print(bool())                 # False
+print(bool(''))               # False
+
 print(bool(-1))               # True
 print(bool('a'))              # True
 
