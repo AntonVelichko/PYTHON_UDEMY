@@ -68,5 +68,5 @@ rename <folder name> <folder name>                    #  rename Directory
 
 
 
-notepad myfile.txt
-start notepad++ <filename>
+notepad <file_name>.txt
+start notepad++ <file_name>
