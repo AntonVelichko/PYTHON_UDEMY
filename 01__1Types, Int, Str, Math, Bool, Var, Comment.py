@@ -14,8 +14,13 @@ complex                                   # for complex math
 None                                      # absence of value
 
 
+a = None
+print(a)			                            # None
+
+
 # Classes                                 <--  custom types
 # Specialized Data Types                  <--  libraries, packages (modules)
+
 
 
 
@@ -29,6 +34,7 @@ print(type(int('5')))       # <class 'int'>
 
 
 
+
 ###  TYPE  ###
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
@@ -38,6 +44,46 @@ print(4/2)                # 2.0
 print(type(9.9 + 1.1))    # <class 'float'>
 print(9.9 + 1.1)          # 11.0
 print(type(10.56))        # '10' stores in one memory and '56' in another
+
+
+
+
+
+
+##########################################################################################################################
+###  BOOLEANS  ###
+print(bool(0))                # False
+print(bool(None))             # False
+print(bool(-1))               # True
+print(bool('a'))              # True
+
+year = input('What\'s your birth year?')
+age = 2021 - int(year)
+print(f'Your age is {age}')
+# age = 2021 - bool(year)   -->  2021 - 1
+
+
+
+
+
+
+##########################################################################################################################
+###  COMMENTS  ###
+# https://realpython.com/python-comments-guide/
+# self-explanatory
+
+name = input('What \'s username')
+passw = input('Your password')
+length = len(passw)
+hide = '*' * length
+print(f'{name}, your password {hide} is {length} letters long')
+
+
+'''
+If I really hate pressing `enter` and
+typing all those hash marks, I could
+just do this instead
+'''
 
 
 
@@ -107,7 +153,10 @@ print(int('0b111', 2))    # 7
 # variables are descriptive
 
 
-# constants   (all in the capital, the value shouldn't be changed)
+
+
+###  CONSTANTS  ###
+#  all in the capital, the value shouldn't be changed
 PI = 3.14                 # Uppercase means to not reassign var
 
 
@@ -226,35 +275,9 @@ quote_2 = quote.replace('be', 'me')
 print(quote_2)                      # to me or not to me
 
 
-###  FORMATTED STRINGS  ###
-# booleans
-print(bool(0))                # False
-print(bool(None))             # False
-print(bool(-1))               # True
-print(bool('a'))              # True
-
-year = input('What\'s your birth year?')
-age = 2021 - int(year)
-print(f'Your age is {age}')
-# age = 2021 - bool(year)   -->  2021 - 1
 
 
-###  FORMATTED STRINGS  ###
-# comments   / https://realpython.com/python-comments-guide/
-# self-explanatory
-name = input('What \'s username')
-passw = input('Your password')
-length = len(passw)
-hide = '*' * length
-print(f'{name}, your password {hide} is {length} letters long')
 
 
-'''
-If I really hate pressing `enter` and
-typing all those hash marks, I could
-just do this instead
-'''
 
-# 49 None
-a = None
-print(a)			     # None
+
