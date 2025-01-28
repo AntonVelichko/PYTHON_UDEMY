@@ -149,7 +149,29 @@ print(a is b)               # True
 
 
 
---------------------------------------------------------------------
+
+
+
+##########################################################################################################################
+###  WALRUS OPERATOR  ###
+
+a = 'Helloooooooo'
+
+if (len(a) > 10):
+  print(f'too long {len(a)} elements')          # too long 12 elements
+
+if ((n := len(a)) > 10):                        # 'n' equals of expression 'len(a)'
+  print(f'too long {n} elements')
+
+b = len(a)
+if (b > 10):
+  print(f'too long {b} elements')
+  
+
+while((n := len(a)) > 1):
+  print(n)
+  a = a[:-1]
+print(a)
 
 
 
@@ -157,46 +179,5 @@ print(a is b)               # True
 
 
 
---------------------------------------------------------------------
 
-
-
-# end
-print("Studytonight")                     # Studytonight
-print("is awesome")                       # is awesome
-
-print("Studytonight",)                    # Studytonight
-print("is awesome")                       # is awesome
-
-print("Studytonight", end = "\n")          # Studytonight
-print("is awesome")                       # is awesome
-
-
-print("Studytonight", end =' ')
-print("is awesome")                       # Studytonight is awesome
-
-print("Studytonight", end ='')
-print("is awesome")                       # Studytonightis awesome
-
-print("Hi", end ='_Studytonight_')
-print("you are awesome")                  # Hi_Studytonight_you are awesome
-
-
-
-# sep
-print("Study", "tonight")                 # Study tonight
-print("Study", "tonight", sep = ' ')      # Study tonight
-
-print("Study", "tonight", sep = '')       # Studytonight
-print("Study", "tonight", sep = ' & ')    # Study & tonight
-
-print("Studytonight","has","been","created","for", sep = "_", end="*STUDENTS")
-# Studytonight_has_been_created_for*STUDENTS
-
-
-
---------------------------------------------------------------------
-
-
-
-
+.
