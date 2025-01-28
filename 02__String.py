@@ -15,6 +15,7 @@ print("example")
 
 
 print('i' in 'hi')                # True
+print('a' not in 'bc')            # True
 
 
 
