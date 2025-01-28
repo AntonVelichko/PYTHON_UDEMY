@@ -1,19 +1,29 @@
 
-# 68 loops
+##########################################################################################################################
+###  FOR LOOP  ###
+# looping in iterable things (dict, list, tuple, set, string)
+# all these can be iterated
+
 for item in 'Zero':
   print(item)                     # 'z' 'e' 'r' 'o'
 
-for item in (1,2,3):
-  for x in ['a','b','c']:
+
+
+for item in (1, 2, 3):
+  for x in ['a', 'b', 'c']:
     print(item, x)                # '1 a'  '1 b' ...
 
 
+for item in 50:
+  print(item)                     # error: 'int' object is not iterable
 
---------------------------------------------------------------------
 
 
 
-# 69 iterables
+
+
+##########################################################################################################################
+###  ITERABLES  ###
 # iterate -> one by one, check each item in a collection
 
 user = {
@@ -23,32 +33,48 @@ user = {
 }
 
 for item in user:
-  print(item)                       # name   age ...
+  print(item)                       # name
+                                    # age
+                                    # can swim
 
 for item in user.items():
-  print(item)                       # ('name', 'Gollum') ...
+  print(item)                       # ('name', 'Gollum')  
+                                    # ('age', 5006)  ...
+                                    # ...
 
 for item in user.keys():
-  print(item)                       # name  age ...
+  print(item)                       # name  
+                                    # age
+                                    # ...
 
 for item in user.values():
-  print(item)                       # Gollum  5006 ...
+  print(item)                       # Gollum  
+                                    # 5006
+                                    # ...
+
 
 
 for item in user.items():
   key, value = item
-  print(key, value)                 # name Gollum   age 5006 ...
+  print(key, value)                 # name Gollum   
+                                    # age 5006
+                                    # ...
+
 
 for key, value in user.items():     # can use 'k' and 'v'  / any variables 
-  print(key, value)                 # name Gollum  age 5006 ...
+  print(key, value)                 # name Gollum
+                                    # age 5006
+                                    # ...
 
 
-# iterable items --> sets, lists, tuples, dictionaries, strings
---------------------------------------------------------------------
 
 
 
-# 70 Simple compile
+
+*************************************************************************************************************************
+***  EXERCISE  ***
+
+# simple counter
 my_list = [1,2,3,4,5,6,7,8,9,10]
 sum = 0
 for a in my_list:
@@ -57,79 +83,131 @@ print(sum)                          # 55
 
 
 
-# 71 range
-for i in range(0, 10):
-  print(i)                          # 0 1 2 ... 9
 
-for _ in range(0, 10, 2):           # _ means that variable doesn't matter
+
+
+##########################################################################################################################
+###  RANGE  ###
+
+print(range(100))                   # range(0, 100)  <<--  this is special type of object
+print(range(0, 100))                # range(0, 100)
+
+
+for i in range(0, 10):
+  print(i)                          # 0
+                                    # ...
+                                    # 9
+
+for _ in range(0, 10, 2):           # _ means that variable doesn't matter in this case, we just want to use 'range'
   print('email')                    # email ... (x5)
+
+
 
 for i in range(0, 10, 2):
   print(i)                          # 0  2  4  6  8
 
+
+  
 for _ in range(5, 0, -1):           # reversing range
   print(_)                          # 5 4 3 2 1
+
+
+
+for _ in range(3):
+  print(list(range(10)))            # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
 
 # https://stackoverflow.com/questions/3476732/how-to-loop-backwards-in-python
 for x in reversed(whatever):
     do_something()
 
-
+# All of these three solutions give the same results if the input is a string:
+# 1
 def reverse(text):
     result = ""
     for i in range(len(text),0,-1):
         result += text[i-1]
     return (result)
 print(reverse('abcde'))         # edcba
-# same can do --> text[::-1]
-# same can do --> "".join(reversed(text))
+
+# 2
+text[::-1]
+
+# 3
+"".join(reversed(text))
 
 
-for _ in range(3):
-  print(list(range(10)))            # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] ... (x3)
 
 
 
-# 72 enumerate()
+
+##########################################################################################################################
+###  ENUMERATE  ###
+
 for char in enumerate('abc'):
-  print(char)                       # (0, 'a') (1, 'b') (2, 'c')
+  print(char)                           # (0, 'a')
+                                        # (1, 'b')
+                                        # (2, 'c')
+
 
 for i, char in enumerate('abc'):
-  print(i, char)                    # 0 a  1 b  2 c
-  
+  print(i, char)                        # 0 a 
+                                        # 1 b
+                                        # 2 c
+
+
+for i, char in enumerate ((1,2,3)):
+  print(i, char)                        # 0 1
+                                        # 1 2
+                                        # 2 3
+
+
+# find index of specific item
 for i, char in enumerate(list(range(10))):
   if char == 5:
-    print(f'index of 5 is: {i}')    # index of 5 is: 5
+    print(f'index of 5 is: {i}')        # index of 5 is: 5
 
 
 
---------------------------------------------------------------------
 
 
 
-# 73 while loop
+##########################################################################################################################
+###  WHILE LOOP  ###
+
 i = 0
 while i < 5:
   print(i)                    # 0
   break
 
+
+
 i = 10
 while i < 15:
-  print(i)                    # 10 11 12 13 14
-  i = i + 1
+  print(i)                    # 10
+  i = i + 1                   # 11
+                              # ...
+                              # 14
+
 
 i = 20
 while i < 25:
-  print(i)                    # 20 21 22 23 24
+  print(i)                    # 20 / 21 / 22 / 23 / 24
   i = i + 1
-else:
+else:                         <<-- 'else' executing only when 'while' loop is finished
   print('done counting')      # done counting
+
+
 
 i = 0
 while i < 5:
   print(i)                    # 0
   i = i + 1
-  break                       # 'break' stops the loop
+  break                       # 'break' stops the loop, 'else' statement doesn't execute
 else:
   print('done')
 
