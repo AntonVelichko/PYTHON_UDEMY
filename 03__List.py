@@ -130,6 +130,11 @@ print(arr.index('d', 0, 3))       # gives an error, in that range no 'd'
 
 
 
+# .count()  <<--  returns number
+print(arr.count('a'))             # 2
+
+
+
 # in  <<--  keyword https://www.w3schools.com/python/python_ref_keywords.asp
 print('d' in arr)                 # True
 print('x' in arr)                 # False
@@ -137,18 +142,8 @@ print('x' in arr)                 # False
 print('i' in 'hi')                # True
 
 
-# .count()  <<--  returns number
-print(arr.count('a'))             # 2
 
-
-
-----------------------------------------------------------------------------------
-
-
-
-# 46 List Methods 3
 arr = ['a','b','c','d','e','a']
-
 # .sort()   /returns None
 arr.sort()
 print(arr)                          # ['a', 'a', 'b', 'c', 'd', 'e']
