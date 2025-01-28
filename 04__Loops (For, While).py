@@ -213,32 +213,38 @@ else:
 
 
 
---------------------------------------------------------------------
 
 
 
-# 74 loops
+##########################################################################################################################
+###  FOR or WHILE  ###
+
 for item in [1,2,3]:          # more simple
   print(item)                 # 1 2 3
 
+
+
 i = 0
-while i < len([1,2,3]):       # more powerful
+while i < len([1,2,3]):       # more powerful; use when you don't know how many times to loop
   print(i)                    # 0 1 2
   i += 1
 
 
 
---------------------------------------------------------------------
 
 
 
+##########################################################################################################################
+###  WHILE TRUE  ###
 while True:
   print('something')                      # something
   break
 
+
 while True:
   input('say something: ')                # say something: ___
   break
+
 
 while True:
   response = input('say \'bye\': ')       # say bye: ___
@@ -248,41 +254,53 @@ while True:
 
 
 
---------------------------------------------------------------------
 
 
 
-# 75 break, continue, pass
+##########################################################################################################################
+###  BREAK, CONTINUE, PASS  ###
+
 my_list = [1,2,3]
 for item in my_list:
   print(item)               # 1
   break
+
+
 
 my_list = [10,20,30]
 for item in my_list:
   print(item)               # 10 20 30
   continue
 
+
+
 my_list = [7,8,9]
 for item in my_list:
   continue
   print(item)               # nothing happens
+
+
 
 my_list = [7,8,9]
 i = 0
 while i < len(my_list):cx
 for item in my_list:
   # thinking about it
-  pass                      # just a temporary placeholder
-
-
---------------------------------------------------------------------
+  pass                      # just a temporary placeholder, not very useful
 
 
 
-# 76 our first GUI
-# Display the image below to the right hand side where the 0 is going to be ' ', 
+
+
+
+
+*************************************************************************************************************************
+***  EXERCISE  ***
+
+# first GUI
+# Display the image below to the right-hand side where the 0 is going to be ' ', 
 # and the 1 is going to be '*'. This will reveal an image!
+
 picture = [
   [0,0,0,1,0,0,0],
   [0,0,1,1,1,0,0],
@@ -301,28 +319,37 @@ for row in picture:
   print('')                       # can use also print()
 
 
+
+
+
+
+##########################################################################################################################
+###  CLEAN CODE  ###
+
 # clean 
-# readability
+# readability (don't need to be very smart to use some techniques)
 # predictability
 # do not repeat yourself (DRY)
+# keep code reusable
 
 
 fill = '$'
 empty = ' '
 for row in picture:
   for pixel in row:
-    if (pixel):
+    if pixel:
       print(fill, end = '')
     else:
       print(empty, end = '')
   print('')
 
 
-# my version
+
+###  MY VERSION  ###
 string = ''
 for row in picture:
   for pixel in row:
-    if (pixel):
+    if pixel:
       string = string + '#'
     else:
       string = string + ' '
@@ -331,11 +358,13 @@ print(string)
 
 
 
---------------------------------------------------------------------
 
 
 
-# 78 find duplicates
+*************************************************************************************************************************
+***  EXERCISE  ***
+# find duplicates
+
 my_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
 dupl = []
 for value in my_list:
@@ -345,3 +374,9 @@ for value in my_list:
       
 print(dupl)                           # ['b', 'n']
 
+
+
+
+
+
+.
