@@ -75,13 +75,6 @@ print(f'Your age is {age}')
 # https://realpython.com/python-comments-guide/
 # self-explanatory
 
-name = input('What \'s username')
-passw = input('Your password')
-length = len(passw)
-hide = '*' * length
-print(f'{name}, your password {hide} is {length} letters long')
-
-
 '''
 If I really hate pressing `enter` and
 typing all those hash marks, I could
