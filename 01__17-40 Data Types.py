@@ -1,4 +1,5 @@
 
+##########################################################################################################################
 ###  FUNDAMENTAL DATA TYPES  ###
 
 int
@@ -9,6 +10,7 @@ list
 dict
 tuple
 set
+complex                                   # for complex math
 None                                      # absence of value
 
 
@@ -17,9 +19,14 @@ None                                      # absence of value
 
 
 
+# https://www.geeksforgeeks.org/python-int-function/
 
 
 
+
+
+
+##########################################################################################################################
 ###  TYPE  ###
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
@@ -35,6 +42,7 @@ print(type(10.56))        # '10' stores in one memory and '56' in another
 
 
 
+##########################################################################################################################
 ###  MATH OPERATORS  ###
 print(2 ** 3)             # 8
 print(3 // 2)             # 1   /rounded down to integer
@@ -45,6 +53,7 @@ print(5 % 4)              # 1   /modulo, the remainder of the division
 
 
 
+##########################################################################################################################
 ###  MATH FUNCTIONS  ###
 # https://www.programiz.com/python-programming/modules/math
 print(round(3.5))         # 4
@@ -55,50 +64,67 @@ print(abs(-1))            # 1
 
 
 
+##########################################################################################################################
 ###  OPERATOR PRECEDENCE  ###
-# ()  >>  **  >>  */  >>  +-
+#  ()   >>   **   >>   */   >>   +-
 print((5 + 4) * 10 / 2)     # 45.0
 print(((5 + 4) * 10) / 2)   # 45.0
 print((5 + 4) * (10 / 2))   # 45.0
 print(5 + (4 * 10) / 2)     # 25.0
 print(5 + 4 * 10 // 2)      # 25
 
-complex                   # for complex math
 
-# https://www.geeksforgeeks.org/python-int-function/
 
-# binary
+
+
+
+##########################################################################################################################
+###  BINARY  ###
 print(bin(5))             # 0b101
 print(int('0b111', 2))    # 7
 
 
-# keywords   / https://www.w3schools.com/python/python_ref_keywords.asp
 
-# Variables ---
+
+
+
+##########################################################################################################################
+###  VARIABLES  ###
+# keywords  -  https://www.w3schools.com/python/python_ref_keywords.asp
+
 # snake_case
-# start with lowercase or _underscore
+# start with lowercase or 
+# start with _underscore means the variable is private (do not change it)
 # contains letters, numbers, underscores
 # case sensitive
 # don't overwrite keywords
 # variables are descriptive
 
 
-# constants   (all in capital)
+# constants   (all in the capital, the value shouldn't be changed)
 PI = 3.14                 # Uppercase means to not reassign var
 
+
+
 iq = 100                  # statement
-user_age = iq / 5         # 'iq / 5' is expresion   / 'user_age = iq / 5' is statement
+user_age = iq / 5         # iq / 5                    <<--  this is expresion 
+                          # user_age = iq / 5         <<--  this is statement
+
 
 
 a,b,c = 1,2,3
-print(a)
-print(b)
-print(c)
+print(a)                  # 1
+print(b)                  # 2
+print(c)                  # 3
 
 
+
+##########################################################################################################################
+###  VARIABLES  ###
+# augmented assignment operator
 value = 5
 value = value + 2         # 7
-# augmented assignment operator
+
 value += 2
 value -= 2
 value *= 2
@@ -106,7 +132,11 @@ value /= 2
 
 
 
-# stings
+
+
+
+##########################################################################################################################
+###  STRINGS  ###
 long_string = '''
 WOW
 0 0
