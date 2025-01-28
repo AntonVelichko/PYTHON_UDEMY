@@ -1,5 +1,8 @@
 
-# 60 if elif else
+##########################################################################################################################
+###  IF, ELIF, ELSE  ###
+
+
 is_old = False
 is_licenced = True
 
@@ -10,6 +13,9 @@ elif is_licenced:
 else:
   print('Not!')                 # check (if False)
 
+
+
+###  AND  ###
 you_old = True
 you_licenced = True
 if you_old and you_licenced:
