@@ -100,5 +100,19 @@ print(quote_2)                      # to me or not to me
 
 
 
+*************************************************************************************************************************
+***  EXERCISE  ***
+
+birth_year = input('What year were you born?')
+age = 2025 - int(birth_year)
+
+print(f'your age is: {age}')
+
+
+
+
+
+
+
 
 -
