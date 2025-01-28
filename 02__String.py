@@ -114,8 +114,8 @@ print(f'your age is: {age}')
 ***  EXERCISE  ***
 
 name = input('What \'s username')
-passw = input('Your password')
-length = len(passw)
+password = input('Your password')
+length = len(password)
 hide = '*' * length
 print(f'{name}, your password {hide} is {length} letters long')
 
