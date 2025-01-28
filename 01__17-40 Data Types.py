@@ -19,14 +19,16 @@ None                                      # absence of value
 
 
 
+###  TYPE CONVERSION  ###
+print(type(str(100)))       # <class 'str'>
+print(type(int('5')))       # <class 'int'>
+
+
+
 # https://www.geeksforgeeks.org/python-int-function/
 
 
 
-
-
-
-##########################################################################################################################
 ###  TYPE  ###
 print(type(6))            # <class 'int'>
 print(type(0))            # <class 'int'>
@@ -50,10 +52,6 @@ print(5 % 4)              # 1   /modulo, the remainder of the division
 
 
 
-
-
-
-##########################################################################################################################
 ###  MATH FUNCTIONS  ###
 # https://www.programiz.com/python-programming/modules/math
 print(round(3.5))         # 4
@@ -61,10 +59,6 @@ print(abs(-1))            # 1
 
 
 
-
-
-
-##########################################################################################################################
 ###  OPERATOR PRECEDENCE  ###
 #  ()   >>   **   >>   */   >>   +-
 print((5 + 4) * 10 / 2)     # 45.0
@@ -72,6 +66,18 @@ print(((5 + 4) * 10) / 2)   # 45.0
 print((5 + 4) * (10 / 2))   # 45.0
 print(5 + (4 * 10) / 2)     # 25.0
 print(5 + 4 * 10 // 2)      # 25
+
+
+
+###  AUGMENTED ASSIGNMENT OPERATOR  ###
+
+value = 5
+value = value + 2         # 7
+
+value += 2
+value -= 2
+value *= 2
+value /= 2
 
 
 
@@ -119,52 +125,44 @@ print(c)                  # 3
 
 
 
-##########################################################################################################################
-###  VARIABLES  ###
-# augmented assignment operator
-value = 5
-value = value + 2         # 7
-
-value += 2
-value -= 2
-value *= 2
-value /= 2
-
-
-
 
 
 
 ##########################################################################################################################
 ###  STRINGS  ###
+
+
 long_string = '''
 WOW
 0 0
 ---
 '''
+
 print(long_string)
 
 print("example")
 
 
-# string concatenation
+
+
+###  STRING CONCATENATION  ###
 print('hi' + '!')           # hi!
 print('hi' + 5)             # gives Error
 print('hi' + str(5))        # hi5
 
 
-# type conversion
-print(type(str(100)))       # <class 'str'>
-print(type(int('5')))       # <class 'int'>
 
 
-# escape sequence
-weather = 'it\'s sunny'
-sunny = '\t it is sample'   # Tab
-rain = 'new \n stroke'      # new license
+###  ESCAPE SEQUENCE  ###
+weather = "it's sunny"
+weather = 'it\'s sunny'               # escape sequence
+sunny = '\t it is sample'             # Tab
+rain = 'new \n stroke'                # new license
 
 
-# formatted strings
+
+
+###  FORMATTED STRINGS  ###
 name = 'John'
 age = 5
 print('hi ' + name + ' ' +str(age) + ' years old')            # hi John 5 years old
@@ -180,9 +178,12 @@ print("Hello {name}, your balance is {amount}.".format(name="Cindy", amount=50))
 print("Hello {0}, your balance is {amount}.".format("Cindy", amount=50))
 
 
-# string index
+
+
+###  STRING INDEX  ###
 python = 'abcdefghij'
          #0123456789
+
 # string[start:stop:stepover]
 print(python[1:4])            # bcd
 print(python[1:])             # bcdefghij
@@ -199,13 +200,20 @@ print(python[::-2])           # jhfdb  (reverse, skip every 2)
 
 
 
-# built-in functions   / https://docs.python.org/3/library/functions.html
+
+###  BUILT-IN FUNCTIONS  ###
+# https://docs.python.org/3/library/functions.html
+
 greet = 'abcde'
 print(greet[0:len(greet)])    # abcde
 print(greet[0:len(greet)-1])    # abcd
 
 
-# string methods   / https://www.w3schools.com/python/python_ref_string.asp
+
+
+###  STRING METHODS  ###
+# https://www.w3schools.com/python/python_ref_string.asp
+
 quote = 'to be or not to be'
 print(quote.upper())                # TO BE OR NOT TO BE
 print(quote.capitalize())           # To be or not to be
@@ -218,6 +226,7 @@ quote_2 = quote.replace('be', 'me')
 print(quote_2)                      # to me or not to me
 
 
+###  FORMATTED STRINGS  ###
 # booleans
 print(bool(0))                # False
 print(bool(None))             # False
@@ -230,7 +239,7 @@ print(f'Your age is {age}')
 # age = 2021 - bool(year)   -->  2021 - 1
 
 
-
+###  FORMATTED STRINGS  ###
 # comments   / https://realpython.com/python-comments-guide/
 # self-explanatory
 name = input('What \'s username')
