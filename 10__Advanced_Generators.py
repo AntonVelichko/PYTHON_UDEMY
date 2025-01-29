@@ -89,7 +89,7 @@ def performance(fn):
 @performance
 def long_time():
     print('1')
-    for i in range(1000000): #it finishes after.
+    for i in range(100000000): #it finishes after.
         i*5
 
 long_time()
@@ -98,7 +98,7 @@ print()
 @performance
 def long_time2():
     print('2')
-    for i in list(range(1000000)): #it took longer.
+    for i in list(range(100000000)): #it took longer.
         i*5
 
 long_time2()
