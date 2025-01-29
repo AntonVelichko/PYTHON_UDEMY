@@ -178,6 +178,174 @@ print(a)
 
 
 
+##########################################################################################################################
+###  SCOPE  ###
+# what variables do I have access to?
+
+
+def some_func():
+  total = 100
+print(total)                         # NameError: name 'total' is not defined
+
+
+
+if False:
+  x = 10
+print(x)                              # 10
+                                      # if Flase  <--  NameError: name 'x' is not defined
+
+
+
+
+
+###  SCOPE RULES  ###
+
+#1 - start with local
+#2 - parent local scope
+#3 - global
+#4 - built-in python functions
+
+
+
+a = 1
+def func():
+  a = 5
+  return a
+
+print(a)                             # 1
+print(func())                        # 5  <--  #1 - start with local
+
+
+
+a = 1
+def func():
+  return a
+
+print(a)                             # 1
+print(func())                        # 1  <--  #3 - global
+
+
+
+--------------
+
+
+
+a = 1
+def parent():
+  a = 10
+  def func():
+    return a
+  return func()
+
+print(a)                             # 1
+print(parent())                      # 10  <--  #2 - parent local scope
+
+
+
+a = 1
+def parent():
+  def func():
+    return a
+  return func()
+
+print(a)                              # 1
+print(parent())                       # 1  <--  #3 - global
+
+
+
+--------------
+
+
+
+a = 1
+def parent():
+  def func():
+    return sum
+  return func()
+
+print(a)                              # 1
+print(parent())                       # <built-in function sum>  <--  #4 - built-in python functions
+
+
+
+
+
+
+###  GLOBAL KEYWORD  ###
+
+total = 0
+def count():
+  total = 0
+  total += 1
+  return total
+
+count()
+count()
+print(count())                          # 1  <--  every time we run a function we reset 'total' to '0'
+
+
+
+
+# global keyword
+total = 0
+def count():
+  global total                          # not a good way to use, hard to understand
+  total += 1
+  return total
+
+count()
+count()
+print(count())                          # 3
+
+
+
+
+# dependency injection (without using a global variable)
+total = 0
+def count(total):
+  total +=1
+  return total
+print(count(count(count(total))))        # 3
+
+
+
+
+
+###  NONLOCAL KEYWORD  ###
+
+# nonlocal and global make code complicated
+# nonlocal is used to refer to Parent local
+# try to make you code predictable; not using 'nonlocal' or 'global'
+
+def outer():
+  x = 'local'
+  def inner():
+    nonlocal x
+    x = 'nonlocal'
+    print('inner:', x)
+
+  inner()                         # inner: nonlocal
+  print('outer:', x)
+outer()                           # outer: nonlocal
+
+
+
+
+def outer_2():
+  x = 'local'
+  def inner():
+  # nonlocal x
+    x = 'nonlocal'
+    print('inner:', x)
+
+  inner()                         # inner: nonlocal
+  print('outer:', x)
+outer_2()                         # outer: local
+
+
+
+
 
 
 .
+
