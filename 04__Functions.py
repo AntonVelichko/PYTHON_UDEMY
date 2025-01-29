@@ -268,28 +268,27 @@ print(highest_even2([1,2,10,13,3,4,11]))
 
 
 
-
-
-
-
-
-# 90 scope
+##########################################################################################################################
+###  SCOPE  ###
 # what variables do I have access to?
+
 
 def some_func():
   total = 100
-print(total)              # NameError: name 'total' is not defined
+print(total)                         # NameError: name 'total' is not defined
 
 
 
-# 91 scope rules
-a = 1
-def func():
-  a = 5
-  return a
+if False:
+  x = 10
+print(x)                              # 10
+                                      # if Flase  <--  NameError: name 'x' is not defined
 
-print(a)                    # 1
-print(func())               # 5
+
+
+
+
+###  SCOPE RULES  ###
 
 #1 - start with local
 #2 - parent local scope
@@ -298,7 +297,71 @@ print(func())               # 5
 
 
 
-# 92 global total
+a = 1
+def func():
+  a = 5
+  return a
+
+print(a)                             # 1
+print(func())                        # 5  <--  #1 - start with local
+
+
+
+a = 1
+def func():
+  return a
+
+print(a)                             # 1
+print(func())                        # 1  <--  #3 - global
+
+
+
+--------------
+
+
+
+a = 1
+def parent():
+  a = 10
+  def func():
+    return a
+  return func()
+
+print(a)                             # 1
+print(parent())                      # 10  <--  #2 - parent local scope
+
+
+
+a = 1
+def parent():
+  def func():
+    return a
+  return func()
+
+print(a)                              # 1
+print(parent())                       # 1  <--  #3 - global
+
+
+
+--------------
+
+
+
+a = 1
+def parent():
+  def func():
+    return sum
+  return func()
+
+print(a)                              # 1
+print(parent())                       # <built-in function sum>  <--  #4 - built-in python functions
+
+
+
+
+
+
+###  GLOBAL KEYWORD  ###
 
 total = 0
 def count():
@@ -308,65 +371,42 @@ def count():
 
 count()
 count()
-print(count())                  # 1
-
-
-total_1 = 0
-def count_1():
-  global total_1                # not a good way to use, hard to understand
-  total_1 += 1
-  return total_1
-
-count_1()
-count_1()
-print(count_1())                # 3
-
-
-total_2 = 2
-def count_2(total_2):
-  total_2 = 0
-  return total_2
-print(count_2(total_2))         #0
-
-
-total_3 = 3
-def count_3(total_3):
-  #total_3 = 0
-  return total_3
-print(count_3(total_3))         #3
-
-
-total_3 = 3
-a = 2
-def count_3(total_3):
-    return total_3
-print(count_3(a))         #2
-
-
-def count_4(total_4):
-  total_4 +=1
-  return total_4
-print(count_4(total_4))         # name 'total_4' is not defined
-
-
-total_5 = 5
-def count_5(total_5):
-  total_5 +=1
-  return total_5
-print(count_5(total_5))         # 6
-print(count_5(total_5))         # 6
-
-
-total_6 = 0
-def count_6(total_6):
-  total_6 +=1
-  return total_6
-print(count_6(count_6(count_6(total_6))))        # 3
+print(count())                          # 1  <--  every time we run a function we reset 'total' to '0'
 
 
 
-# 93 nonlocal Keyword
+
+# global keyword
+total = 0
+def count():
+  global total                          # not a good way to use, hard to understand
+  total += 1
+  return total
+
+count()
+count()
+print(count())                          # 3
+
+
+
+
+# dependency injection (without using a global variable)
+total = 0
+def count(total):
+  total +=1
+  return total
+print(count(count(count(total))))        # 3
+
+
+
+
+
+###  NONLOCAL KEYWORD  ###
+
 # nonlocal and global make code complicated
+# nonlocal is used to refer to Parent local
+# try to make you code predictable; not using 'nonlocal' or 'global'
+
 def outer():
   x = 'local'
   def inner():
@@ -379,9 +419,12 @@ def outer():
 outer()                           # outer: nonlocal
 
 
+
+
 def outer_2():
   x = 'local'
   def inner():
+  # nonlocal x
     x = 'nonlocal'
     print('inner:', x)
 
@@ -392,7 +435,11 @@ outer_2()                         # outer: local
 
 
 
-#Exercise!
+
+
+*************************************************************************************************************************
+***  EXERCISE  ***
+
 #Display the image below to the right hand side where the 0 is going to be ' ', and the 1 is going to be '*'. This will reveal an image!
 picture = [
   [0,0,0,1,0,0,0],
