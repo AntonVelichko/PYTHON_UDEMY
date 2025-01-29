@@ -312,7 +312,7 @@ picture = [
 
 for row in picture:
   for pixel in row:
-    if (pixel == 1):
+    if (pixel):
       print('*', end = '')
     else:
       print(' ', end = '')
