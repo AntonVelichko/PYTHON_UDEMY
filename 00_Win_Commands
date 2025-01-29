@@ -65,8 +65,31 @@ rename <folder name> <folder name>                    #  rename Directory
 
 
 ####################################################################################################################################################
+Windows Terminal PowerShell
+
+ls					- all directories
+pwd					- present working directory
+cd Desktop				- change directory to Desktop
+cd ..					- one dir back
+cd /					- root dir
+cd ~					- to user dir
+clear					- clear the terminal
+
+cd Desktop/test				- chenge dir to
+start .					- opens the folder we are in now
+mkdir <folder_name>
+echo > <file_name>.html			- create a file
+start <file_name>.html	
+
+ren <file_name>.html <new_file_name>.html
+del <file_name>.html			- delete file
 
 
+
+####################################################################################################################################################
+How to Launch/Open Sublime Text 3 form Command Line on Windows 10
+https://www.youtube.com/watch?v=MlnH8t4S4Qw
 
 notepad <file_name>.txt
 start notepad++ <file_name>
+subl <file_name.xxx>
