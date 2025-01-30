@@ -93,3 +93,9 @@ https://www.youtube.com/watch?v=MlnH8t4S4Qw
 notepad <file_name>.txt
 start notepad++ <file_name>
 subl <file_name.xxx>
+
+
+####################################################################################################################################################
+
+pip -V					- check pip version
+pip3 list				- see what pakages are installed
