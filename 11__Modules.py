@@ -4,3 +4,4 @@
 
 # Third Party Modules
 https://pypi.org/
+https://www.makeuseof.com/tag/install-pip-for-python/
