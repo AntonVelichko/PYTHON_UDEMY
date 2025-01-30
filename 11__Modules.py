@@ -16,7 +16,7 @@ https://www.makeuseof.com/tag/install-pip-for-python/
 
 from collections import Counter, defaultdict, OrderedDict
 
-
+###  Counter  ###
 li = [1,2,3,4,5,5]							# Counter({5: 2, 1: 1, 2: 1, 3: 1, 4: 1})
 print(Counter(li))
 
@@ -24,9 +24,11 @@ sentence = 'blah blah blah test'			# Counter({'b': 3, 'l': 3, 'a': 3, 'h': 3, ' 
 print(Counter(sentence))
 
 
---------------
 
 
+
+
+###  defaultdict  ###
 dict = {'a': 1, 'b': 2}
 print(dict['a'])							# 1
 # print(dict['c'])							# KeyError: 'c'
@@ -42,10 +44,14 @@ dict = defaultdict(lambda: 'does not exist', {'a': 1, 'b': 2})
 print(dict['c'])														# does not exist
 
 
---------------
 
 
+
+###  OrderedDict  ###
 # dictionary that maintains the order
+# Recently, the Python has made Dictionaries ordered by default! So unless you need to maintain older version of Python (older than 3.7), you no longer need to use ordered dict, you can just use regular dictionaries!
+# You can read more about it here:  https://softwaremaniacs.org/blog/2020/02/05/dicts-ordered/en/
+
 d1 = OrderedDict()
 d1['a'] = 1
 d1['b'] = 2
@@ -82,3 +88,9 @@ d2['b'] = 2
 d2['a'] = 1
 
 print(d1 == d2)								# True
+
+
+
+
+
+.
