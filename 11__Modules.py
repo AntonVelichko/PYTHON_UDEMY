@@ -93,4 +93,32 @@ print(d1 == d2)								# True
 
 
 
+
+###  datetime  ###
+import datetime
+
+print(datetime.time())					# 00:00:00
+print(datetime.time(5,45,2))			# 05:45:02
+print(datetime.date.today())			# 2025-01-30
+
+
+
+
+
+
+###  array  ###
+# array takes less memory and performs faster
+# https://stackoverflow.com/questions/176011/python-list-vs-array-when-to-use
+# https://docs.python.org/3/library/array.html
+
+from array import array
+
+arr = array('i', [1,2,3])
+print(arr[0])							# 1
+
+
+
+
+
+
 .
