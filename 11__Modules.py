@@ -9,6 +9,11 @@ https://www.makeuseof.com/tag/install-pip-for-python/
 
 
 
+
+
+##########################################################################################################################
+
+
 from collections import Counter, defaultdict, OrderedDict
 
 
@@ -19,6 +24,7 @@ sentence = 'blah blah blah test'			# Counter({'b': 3, 'l': 3, 'a': 3, 'h': 3, ' 
 print(Counter(sentence))
 
 
+--------------
 
 
 dict = {'a': 1, 'b': 2}
@@ -36,6 +42,7 @@ dict = defaultdict(lambda: 'does not exist', {'a': 1, 'b': 2})
 print(dict['c'])														# does not exist
 
 
+--------------
 
 
 # dictionary that maintains the order
@@ -50,6 +57,8 @@ d2['b'] = 2
 print(d1 == d2)								# True
 
 
+--------------
+
 
 d1 = OrderedDict()
 d1['a'] = 1
@@ -63,7 +72,7 @@ print(d1 == d2)								# False
 
 
 
-# there is no order in regular dictionary
+# there is no order in a regular dictionary
 d1 = {}
 d1['a'] = 1
 d1['b'] = 2
