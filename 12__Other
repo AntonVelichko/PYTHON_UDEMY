@@ -1,7 +1,37 @@
 
 ###  DEBUGGING  ###
 
-# linting
+# linting (detecting syntax errors and others same sort of errors)
 # ide/ code editor
 # read errors
 
+
+
+
+# pdb (python debugger, build-in module)
+# https://docs.python.org/3/library/pdb.html
+
+
+import pdb
+
+def add(num1, num2):
+  # print(num1, num2)  # we would use this before
+  pdb.set_trace()                 # better way to see what is going on
+  t = 4 * 2
+  return num1 + num2
+
+add(4, 4)
+
+# pdb commands
+# <parametr_name> then 'next'  -  to see what is inside (in our case it is num1, num2)
+# help
+# help <command_name_from_help_list>
+# a - showing all arguments
+# w  - showing the context of the current line that executing
+
+# step - moving code line by line every time step is called
+# in 'step' command 'continue' will run the code until it hits an error
+
+# num1 = 1 - parametrs can be changed in pdb mode
+
+# exit - leabing the pdb mode
