@@ -99,5 +99,6 @@ subl <file_name.xxx>
 
 pip -V					- check pip version
 pip3 list				- see what pakages are installed
+pip3 install <your_module>		- install default latest version
 pip3 install <your_module>==<version in formt 0.0.0)		- install specific version
 pip3 uninstall <your_module>		- uninstall
