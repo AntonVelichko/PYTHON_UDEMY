@@ -1,4 +1,7 @@
 https://www.w3schools.com/python/python_regex.asp
+https://regex101.com/
+https://regexone.com/
+
 
 
 string = "search inside of this text please!"
@@ -6,7 +9,7 @@ string = "search inside of this text please!"
 print('search' in string)                                   # True
 
 print(re.search('this', string))                            # <re.Match object; span=(17, 21), match='this'>
-                                                            # give an object, the word starts from index 17 and ending at 21 (not included)
+                                                            # give an object, the word starts from index 17 and ends at 21 (not included)
 
 a = re.search('this', string)                                                            
 print(a.span())                                             # (17, 21)
@@ -51,3 +54,33 @@ print(d)                                                    # <re.Match object; 
 pattern = re.compile('this')
 d = pattern.match(string)
 print(d)     
+
+
+
+
+
+
+import re
+
+pattern = re.compile(r"([a-zA-z]).([a])")                   # r" means raw string
+string = 'Hey how are you'
+
+a = pattern.search(string)
+print(a.group(1))                                            # w
+print(a.group(2))                                            # s
+print(a.group())                                             # w a
+
+
+
+
+
+
+import re
+
+regex_pattern = re.compile(r"([A-Za-z0-9$%#@]{8,}\d)")
+
+password = 'dfsd34$%dfs6'
+check = regex_pattern.fullmatch(password)
+print(check)                                                        # <re.Match object; span=(0, 12), match='dfsd34$%dfs6'>
+
+
