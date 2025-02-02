@@ -1,3 +1,6 @@
+https://www.w3schools.com/python/python_regex.asp
+
+
 string = "search inside of this text please!"
 
 print('search' in string)                                   # True
