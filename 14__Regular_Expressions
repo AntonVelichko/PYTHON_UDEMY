@@ -1,0 +1,21 @@
+string = "search inside of this text please!"
+
+print('search' in string)                                   # True
+
+print(re.search('this', string))                            # <re.Match object; span=(17, 21), match='this'>
+                                                            # give an object, the word starts from index 17 and ending at 21 (not included)
+
+a = re.search('this', string)                                                            
+print(a.span())                                             # (17, 21)
+print(a.start())                                            # 17
+print(a.end())                                              # 21
+print(a.group())                                            # this  |  gives the part of the string that was a match
+
+a = re.search('thIs', string)
+#print(a.group())                                            # AttributeError: 'NoneType' object has no attribute 'group'
+
+
+
+
+
+
