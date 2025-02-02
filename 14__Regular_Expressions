@@ -1,3 +1,7 @@
+
+##########################################################################################################################
+###  REGEX  ###
+
 https://www.w3schools.com/python/python_regex.asp
 https://regex101.com/
 https://regexone.com/
@@ -22,7 +26,7 @@ a = re.search('thIs', string)
 
 
 
-
+---------------
 
 
 
@@ -45,10 +49,12 @@ c = pattern.fullmatch(string)
 print(c)                                                    # <re.Match object; span=(0, 39), match='search this inside of this text please!'>
 
 
+
 pattern = re.compile('search')
 string = 'search this inside of this text please!'
 d = pattern.match(string)
 print(d)                                                    # <re.Match object; span=(0, 6), match='search'>
+
 
 
 pattern = re.compile('this')
@@ -57,6 +63,7 @@ print(d)
 
 
 
+---------------
 
 
 
@@ -75,6 +82,10 @@ print(a.group())                                             # w a
 
 
 
+*************************************************************************************************************************
+***  EXERCISE  ***
+# password checker
+
 import re
 
 regex_pattern = re.compile(r"([A-Za-z0-9$%#@]{8,}\d)")
@@ -84,3 +95,6 @@ check = regex_pattern.fullmatch(password)
 print(check)                                                        # <re.Match object; span=(0, 12), match='dfsd34$%dfs6'>
 
 
+
+
+.
