@@ -1,5 +1,14 @@
 
 
+https://www.youtube.com/watch?v=em-QrwbVxig
+https://www.youtube.com/watch?v=fX64q6sYom0
+https://www.youtube.com/watch?v=iOxF5cDVIZo
+https://www.youtube.com/watch?v=uJA-GVWNjcc
+https://www.youtube.com/watch?v=npopDLgUXzU
+
+
+
+
 n = 5
 for i in range(n):
   for j in range(n):
