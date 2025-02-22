@@ -104,3 +104,4 @@ pip3 install <your_module>==<version in formt 0.0.0)		- install specific version
 pip3 uninstall <your_module>		- uninstall
 
 py --list
+python --version
