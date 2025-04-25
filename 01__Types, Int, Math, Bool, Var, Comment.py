@@ -65,7 +65,7 @@ print(bool('a'))              # True
 year = input('What\'s your birth year?')
 age = 2021 - int(year)
 print(f'Your age is {age}')
-# age = 2021 - bool(year)   -->  2021 - 1
+# age = 2021 - bool(year)   -->  2021 - 1 = 2020
 
 
 
