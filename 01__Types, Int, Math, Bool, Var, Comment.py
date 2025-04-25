@@ -104,7 +104,7 @@ print(abs(-1))            # 1
 
 
 ###  OPERATOR PRECEDENCE  ###
-#  ()   >>   **   >>   */   >>   +-
+#  ()    **    */    +-
 print((5 + 4) * 10 / 2)     # 45.0
 print(((5 + 4) * 10) / 2)   # 45.0
 print((5 + 4) * (10 / 2))   # 45.0
@@ -161,7 +161,7 @@ print(int('0b111', 2))    # 7
 
 ###  CONSTANTS  ###
 #  all in the capital, the value shouldn't be changed
-PI = 3.14                 # Uppercase means to not reassign var
+PI = 3.14                 # Uppercase means not to reassign the variable
 
 
 
