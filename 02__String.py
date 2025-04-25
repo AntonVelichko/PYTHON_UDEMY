@@ -68,22 +68,22 @@ print("Hello {0}, your balance is {amount}.".format("Cindy", amount=50))
 
 ##########################################################################################################################
 ###  STRING INDEX  ###
-python = 'abcdefghij'
+str = 'abcdefghij'
          #0123456789
 
 # string[start:stop:stepover]
-print(python[1:4])            # bcd
-print(python[1:])             # bcdefghij
-print(python[:])              # abcdefghij
-print(python[::])             # abcdefghij
-print(python[::1])            # abcdefghij
-print(python[1:100])          # bcdefghij
-print(python[-1])             # j 
-print(python[-4])             # g
-print(python[:-3])            # abcdefg
-print(python[-3:])            # hij
-print(python[::-1])           # jihgfedcba  (revrese)
-print(python[::-2])           # jhfdb  (reverse, skip every 2)
+print(str[1:4])            # bcd
+print(str[1:])             # bcdefghij
+print(str[:])              # abcdefghij
+print(str[::])             # abcdefghij
+print(str[::1])            # abcdefghij
+print(str[1:100])          # bcdefghij
+print(str[-1])             # j 
+print(str[-4])             # g
+print(str[:-3])            # abcdefg
+print(str[-3:])            # hij
+print(str[::-1])           # jihgfedcba  (revrese)
+print(str[::-2])           # jhfdb  (reverse, skip every 2)
 
 
 
@@ -154,7 +154,7 @@ print("Study", "tonight", sep = ' ')      # Study tonight
 print("Study", "tonight", sep = '')       # Studytonight
 print("Study", "tonight", sep = '-&-')    # Study-&-tonight
 
-print("Studytonight","has","been","created","for", sep = "_", end="__STUDENTS__")         # Studytonight_has_been_created_for__STUDENTS__
+print("Studytonight","has","been","created","for", sep = "-", end="__STUDENTS__")         # Studytonight-has-been-created-for__STUDENTS__
 
 
 
