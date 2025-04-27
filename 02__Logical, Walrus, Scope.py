@@ -345,6 +345,17 @@ outer_2()                         # outer: local
 
 
 
+def outer_3():
+  x = 'local'
+  def inner():
+    nonlocal x
+    # x = 'nonlocal'
+    print('inner:', x)
+
+  inner()                         # inner: local
+  print('outer:', x)
+outer_3()                         # outer: local
+
 
 
 .
