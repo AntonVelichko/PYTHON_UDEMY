@@ -106,3 +106,7 @@ pip3 uninstall <your_module>		- uninstall
 
 py --list
 python --version
+
+
+
+exit() | Cntr+D (Z)   - exit python
