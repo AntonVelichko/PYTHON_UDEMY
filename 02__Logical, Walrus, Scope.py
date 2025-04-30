@@ -149,6 +149,12 @@ print(a is b)               # True
 
 
 
+# place in memory
+print(id('string'))
+print(id(123))
+
+
+
 
 
 
