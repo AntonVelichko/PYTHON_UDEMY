@@ -216,7 +216,7 @@ while i < 5:
   i = i + 1
   break                       # 'break' stops the loop, 'else' statement doesn't execute
 else:
-  print('done')
+  print('done')              # this will not execute
 
 
 
@@ -226,7 +226,7 @@ else:
 ##########################################################################################################################
 ###  FOR or WHILE  ###
 
-for item in [1,2,3]:          # more simple
+for item in [1,2,3]:          # simpler, easier to read and understand
   print(item)                 # 1 2 3
 
 
@@ -281,20 +281,26 @@ for item in my_list:
 
 
 
-my_list = [7,8,9]
+my_list = [1,2,3]
 for item in my_list:
   continue
   print(item)               # nothing happens
 
 
 
-my_list = [7,8,9]
-i = 0
-while i < len(my_list):cx
+my_list = [1,2,3]
 for item in my_list:
   # thinking about it
   pass                      # just a temporary placeholder, not very useful
 
+
+
+my_list = [1,2,3]
+i = 0
+while i < len(my_list):
+  print(my_list[i])
+  i += 1
+  pass
 
 
 
