@@ -125,7 +125,14 @@ for _ in range(3):
 for x in reversed(whatever):
     do_something()
 
-# All of these three solutions give the same results if the input is a string:
+
+for x in reversed([1,2,3]):
+    print(x)
+
+
+
+
+# All three of these solutions give the same results if the input is a string:
 # 1
 def reverse(text):
     result = ""
