@@ -150,8 +150,8 @@ print(a is b)               # True
 
 
 # place in memory
-print(id('string'))
-print(id(123))
+print(id('string'))         # 132055321746688
+print(id(123))              # 132055322215432
 
 
 
@@ -228,7 +228,7 @@ def func():
   return a
 
 print(a)                             # 1
-print(func())                        # 1  <--  #3 - global
+print(func())                        # 1  <--  using global variable
 
 
 
