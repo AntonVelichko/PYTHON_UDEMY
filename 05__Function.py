@@ -1,6 +1,6 @@
 
 ##########################################################################################################################
-###  OOP  ###
+###  FUNCTION  ###
 
 def say_hello():
   print('hello!')
@@ -152,11 +152,11 @@ check_driver_age(92)
 
 def test(a):
   '''
-  Info: this fuction test and prints param
+  Info: this function tests and prints param
   '''
   print(a)
 
-test('!')            # !
+test('!')             # !
 help(test)            # test(a) Info: this fuction test and prints param
 print(test.__doc__)   # Info: this fuction test and prints param
 
