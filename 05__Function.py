@@ -13,6 +13,12 @@ print(say_hello())          # hello!
 
 
 
+def my_function(something)      # something is 'parameter'
+  do something
+  
+my_function(123)                # 123 is argument
+
+
 
 
 ##########################################################################################################################
