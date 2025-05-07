@@ -41,9 +41,62 @@ while not at_goal():
 
 
 
-
 ##########################################################################################################################
 ###  DAY 7  ###
+
+import random
+import hangman_words
+from hangman_art import stages, logo
+
+lives  = 6
+
+chosen_word = random.choice(hangman_words.word_list)
+print(chosen_word)
+
+placeholder = ""
+word_length = len(chosen_word)
+for position in range(word_length):
+    placeholder += "_"
+print(placeholder)
+
+list_display = list(placeholder)
+print(list_display)
+
+# TODO-1: - Use a while loop to let the user guess again.
+
+print(logo)
+
+while "_" in list_display and lives > 0:
+    guess = input("Guess a letter: ").lower()
+
+    if guess not in chosen_word:
+        lives -= 1
+
+    if guess in list_display:
+        print(f"You've already guessed a '{guess}'")
+
+
+    # TODO-2: Change the for loop so that you keep the previous correct letters in display.
+
+    for i in range(word_length):
+        if chosen_word[i] == guess:
+            list_display[i] = guess
+        else:
+            pass
+
+    print(list_display)
+    print(lives)
+
+    print(stages[lives])
+
+
+
+else:
+    if lives == 0:
+        print("You lose")
+    else:
+        print("You win")
+
 
 
 
