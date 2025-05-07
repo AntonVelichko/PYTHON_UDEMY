@@ -130,3 +130,31 @@ def calculate_love_score(name1, name2):
 print(calculate_love_score("Angela Yu","Jack Bauer"))
 print(calculate_love_score("Kanye West", "Kim Kardashian"))
 
+
+---------------------------------------------------------------
+
+
+def calculate_love_score(name1, name2):   
+    combined_name = name1 + name2
+
+    word_true = "TRUE"
+    word_love = "LOVE"
+    
+    total_true = 0
+    total_love = 0
+
+    for letter in combined_name.upper():
+        if letter in word_true:
+            total_true +=1
+        if letter in word_love:
+            total_love +=1
+
+    print(f"{total_true}{total_love}")
+    
+
+calculate_love_score("Angela Yu", "Jack Bauer")
+calculate_love_score("Kanye West", "Kim Kardashian")
+
+
+
+
