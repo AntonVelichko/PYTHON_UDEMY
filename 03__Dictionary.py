@@ -62,7 +62,6 @@ dictionary = {
 
 
 
-
 ##########################################################################################################################
 ### DICTIONARY METHODS  ###
 # https://www.w3schools.com/python/python_ref_dictionary.asp
@@ -72,6 +71,14 @@ dictionary = {
   'a': 1,
   'b': 2
 }
+
+
+
+
+# adding
+dictionary['New'] = 'Sample'
+print(dictionary)               # {'a': 1, 'b': 2, 'New': 'Sample'}
+
 
 
 
