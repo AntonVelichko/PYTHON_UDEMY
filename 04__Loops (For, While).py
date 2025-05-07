@@ -53,6 +53,11 @@ for item in user.values():
                                     # ...
 
 
+for item in user:
+  print(user[item])                 # Gollum  
+                                    # 5006
+                                    # ...
+
 
 for item in user.items():
   key, value = item
