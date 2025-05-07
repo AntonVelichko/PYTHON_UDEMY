@@ -156,5 +156,16 @@ calculate_love_score("Angela Yu", "Jack Bauer")
 calculate_love_score("Kanye West", "Kim Kardashian")
 
 
+---------------------------------------------------------------
+
+
+def calculate_love_score(person, partner):
+    true = sum([f"{person}{partner}".upper().count(letter) for letter in "TRUE"])
+    love = sum([f"{person}{partner}".upper().count(letter) for letter in "LOVE"])
+    print(f"{true}{love}")
+    
+
+calculate_love_score("Angela Yu", "Jack Bauer")
+calculate_love_score("Kanye West", "Kim Kardashian")
 
 
