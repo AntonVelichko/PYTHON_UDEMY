@@ -293,6 +293,7 @@ print(count())                          # 1  <--  every time we run a function w
 
 
 # global keyword
+# better not use "global', only use if really nessecary
 total = 0
 def count():
   global total                          # not a good way to use, hard to understand
