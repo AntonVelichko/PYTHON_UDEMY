@@ -149,6 +149,10 @@ print(dictionary)                     # {'b': 12, 'a': 11}
 dictionary.clear()
 print(dictionary)                     # {}
 
+# or clear with {}
+dictionary = {}
+print(dictionary)                     # {}
+
 
 # .popitem() 
 # /removes the last one since Python 3.7, before dict was unordered so basically, it removed some random item
