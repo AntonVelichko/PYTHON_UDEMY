@@ -2,6 +2,7 @@
 ##########################################################################################################################
 ###  exercise Grading  ###
 
+# my version
 student_scores = {
     'Harry': 88,
     'Ron': 78,
@@ -26,6 +27,7 @@ print(student_grades)
 
 ---
 
+# someone's better version
 student_scores = {
     'Harry': 88,
     'Ron': 78,
@@ -33,7 +35,8 @@ student_scores = {
     'Draco': 75,
     'Neville': 60
 }
- 
+
+# using function gives more universal approach, flexibility and function can be reused
 def score_to_grade(score):
     if score > 90:
         return "Outstanding"
