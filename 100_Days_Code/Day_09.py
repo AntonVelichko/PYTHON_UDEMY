@@ -55,4 +55,101 @@ for key in student_scores:
 
 
 
+
+##########################################################################################################################
+###  PROJECT CALCULATOR  ###
+
+............................................................................................
+../my_solution.py
+
+from art import logo
+
+# function to find max bid
+def highest_bid(bids):
+    max_bid = 0
+    max_bid_name = ""
+    for name in bidders_list:
+        if bidders_list[name] > max_bid:
+            max_bid = bidders_list[name]
+            max_bid_name = name
+    print("\n" * 3)
+    print(f"The winner is '{max_bid_name}' with bid of ${bidders_list[max_bid_name]}")
+
+
+# initial parameters
+bidders_list = {}
+continue_bidding = True
+
+print(logo)
+
+# loop for bidders
+while continue_bidding:
+    name = input("Enter your name: ")
+    bid = int(input("Enter your bid: "))
+    bidders_list[name] = bid
+    should_continue = input("Are there any other bidders? Type 'yes' or 'no': \n").lower()
+
+    if should_continue == 'no':
+        continue_bidding = False
+        highest_bid(bidders_list)
+    else:
+        print("\n" * 20)
+
+
+
+
+............................................................................................
+../teacher_solution.py
+
+from art import logo
+print(logo)
+
+
+def find_highest_bidder(bidding_record):
+    highest_bid = 0
+    winner = ""
+    for bidder in bidding_record:
+        bid_amount = bidding_record[bidder]
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            winner = bidder
+    print(f"The winner is {winner} with a bid of ${highest_bid}")
+
+
+bids = {}
+continue_bidding = True
+while continue_bidding:
+    name = input("What is your name?: ")
+    price = int(input("What is your bid?: $"))
+    bids[name] = price
+    should_continue = input("Are there any other bidders? Type 'yes or 'no'.\n")
+    if should_continue == "no":
+        continue_bidding = False
+        find_highest_bidder(bids)
+    elif should_continue == "yes":
+        print("\n" * 20)
+
+
+
+
+............................................................................................
+../art.py
+
+logo = r'''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''
+
+
+
+
 [end]
