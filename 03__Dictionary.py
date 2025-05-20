@@ -79,7 +79,7 @@ dictionary = {
 dictionary['New'] = 'Sample'
 print(dictionary)               # {'a': 1, 'b': 2, 'New': 'Sample'}
 
-# changing
+# updating
 dictionary['New'] = 'New Sample'
 print(dictionary)               # {'a': 1, 'b': 2, 'New': 'New Sample'}
 
