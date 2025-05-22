@@ -49,3 +49,18 @@ def calculate_love_score(name1, name2):
     return str(true_score) + str(love_score)
     
 print(calculate_love_score('Demetron', "Paraphen"))
+
+
+---
+
+
+# by other user
+def calculate_love_score(person, partner):
+    true = sum([f"{person}{partner}".upper().count(letter) for letter in "TRUE"])
+    love = sum([f"{person}{partner}".upper().count(letter) for letter in "LOVE"])
+    print(f"{true}{love}")
+
+
+
+
+..[end]
