@@ -183,7 +183,144 @@ john.print_info()                # John is 20
 
 
 ##########################################################################################################################
-###  __init__  ###
+###  METHOD OUTSIDE A CLASS  ###
+# Атрибуты класса, которые являются функциями, -- это такие же  атрибуты класса, как и переменные. Это можно увидеть на следующем примере
+
+def outer_method(self):
+    print('I am a method of object', self)
+
+class MyClass:
+    method = outer_method
+
+obj = MyClass()
+obj.method()                    # I am a method of object <__main__.MyClass object at 0x000001E1215C6A50>
+print(MyClass.method)           # <function outer_method at 0x000001B7C7573EC0>
+# MyClass.method()              # TypeError: outer_method() missing 1 required positional argument: 'self'
+
+
+
+
+
+##########################################################################################################################
+###  STATIC METHOD  ###
+# Методы, которые являются общими для класса и всех экземпляров класса и не имеют доступ к данным экземпляров классов, называются статическими методами.
+# Для создания статических методов используется декоратор staticmethod.
+# Декоратор – это специальная функция, которая изменяет поведение функции или класса. Для применения декоратора следует перед
+# соответствующим объявлением указать символ @, имя необходимого декоратора и список его аргументов в круглых скобках.
+# Если передача параметров декоратору не требуется, скобки не указываются.
+
+
+class MyClass:
+    # Объявление атрибута класса
+    class_attribute = 8
+
+    # Конструктор
+    def __init__(self):
+        self.data_attribute = 42
+
+    # Статический метод. Обратите внимание, что у него нет параметра self, поскольку он не связан ни с одним из экземпляров класса не имеет доступа к атрибутам-данным
+    @staticmethod
+    def static_method():
+        print(MyClass.class_attribute)
+
+    # Обычный метод
+    def instance_method(self):
+        print(self.data_attribute)
+
+
+if __name__ == '__main__':
+    # Вызов статического метода
+    MyClass.static_method()                 # 8
+    # Инстанцирование объекта
+    obj = MyClass()
+    # Вызов метода
+    obj.instance_method()                   # 42
+    # Аналогично атрибутам класса, доступ ко статическим методам можно получить и через экземпляр класса
+    obj.static_method()                     # 8
+
+
+
+
+
+##########################################################################################################################
+###  CLASS METHOD  ###
+# Так как классы тоже являются объектами, то помимо атрибутов-функций они могут иметь и собственные методы. 
+# Для создания методов класса используется декоратор classmethod. В таких методах первый параметр принято называть не self, а cls.
+#
+# Методы класса обычно используются в двух случаях:
+# •	для создания фабричных методов, которые создают экземпляры данного класса альтернативными способами;
+# •	статические методы, вызывающие статические методы:  поскольку данный класс передаётся как первый аргумент функции, не нужно вручную указывать имя класса для вызова статического метода.
+
+
+class Rectangle:
+    """
+    Класс, описывающий прямоугольник
+    """
+
+    def __init__(self, side_a, side_b):
+        """
+        Конструктор класса
+        :param side_a: первая сторона
+        :param side_b: вторая сторона
+        """
+        self.side_a = side_a
+        self.side_b = side_b
+
+    def __repr__(self):
+        """
+        Метод, который возвращает строковое представление объекта
+        """
+        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)
+
+
+class Circle:
+    """
+    Класс, описывающий окружность
+    """
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def __repr__(self):
+        return 'Circle(%.1f)' % self.radius
+
+    @classmethod
+    def from_rectangle(cls, rectangle):
+        """
+        Мы используем метод класса в качестве фабричного метода, который создаёт экземпляр класса Circle из экземпляра класса Rectangle как окружность, вписанную в данный прямоугольник.
+        :param rectangle: Rectangle instance
+        :return: Circle instance
+        """
+        radius = (rectangle.side_a ** 2 + rectangle.side_b ** 2) ** 0.5 / 2
+        return cls(radius)
+        # если мы напишем Circle.from_rectangle - то cls будет равно Circle
+        # если опишем class Disc который наследуется от class Circle -  Disc.from_rectangle - то cls будет Disc и экземпляр класса будет Disc
+
+        """
+        Если бы мы написали вот так:
+        @staticmethod
+        def from_rectangle(rectangle):
+            radius = (rectangle.side_a ** 2 + rectangle.side_b ** 2) ** 0.5 / 2
+            return Circle(radius)
+        Здесь мы получаем экземпляр класса Circle. Например если бы у нас был бы class Disc и он наследовался бы от класса Circle
+        """
+
+def main():
+    rectangle = Rectangle(3, 4)
+    print(rectangle)
+    circle1 = Circle(1)
+    print(circle1)
+    circle2 = Circle.from_rectangle(rectangle)
+    print(circle2)
+
+
+if __name__ == '__main__':
+    main()
+
+# не злоупотредлять classmethod, если нужно описать просто staticmethod то classmethod использовать не имеет смысла
+
+
+
 
 
 
