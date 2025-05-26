@@ -209,7 +209,6 @@ print(MyClass.method)           # <function outer_method at 0x000001B7C7573EC0>
 # соответствующим объявлением указать символ @, имя необходимого декоратора и список его аргументов в круглых скобках.
 # Если передача параметров декоратору не требуется, скобки не указываются.
 
-
 class MyClass:
     # Объявление атрибута класса
     class_attribute = 8
@@ -250,7 +249,6 @@ if __name__ == '__main__':
 # Методы класса обычно используются в двух случаях:
 # •	для создания фабричных методов, которые создают экземпляры данного класса альтернативными способами;
 # •	статические методы, вызывающие статические методы:  поскольку данный класс передаётся как первый аргумент функции, не нужно вручную указывать имя класса для вызова статического метода.
-
 
 class Rectangle:
     """
@@ -307,11 +305,11 @@ class Circle:
 
 def main():
     rectangle = Rectangle(3, 4)
-    print(rectangle)
+    print(rectangle)                                  # Rectangle(3.0, 4.0)
     circle1 = Circle(1)
-    print(circle1)
+    print(circle1)                                    # Circle(1.0)
     circle2 = Circle.from_rectangle(rectangle)
-    print(circle2)
+    print(circle2)                                    # Circle(2.5)
 
 
 if __name__ == '__main__':
@@ -319,6 +317,144 @@ if __name__ == '__main__':
 
 # не злоупотредлять classmethod, если нужно описать просто staticmethod то classmethod использовать не имеет смысла
 
+
+
+
+
+
+##########################################################################################################################
+###  PRIVAT MEMBERS  ###
+# Атрибуты, имена которых начинаются, но не заканчиваются, двумя символами подчёркивания, считаются приватными. К ним применяется механизм
+# «name mangling», суть которого заключается в том, что изнутри класса и его экземпляров к этим атрибутам можно обращаться по тому имени,
+# было задано при объявлении, однако на самом деле к именам слева добавляется подчёркивание и имя класса. Этот механизм не предполагает защиты данных от
+# изменения извне, так как к ним всё равно можно обратиться, зная имя класса и то, как Python изменяет имена приватных атрибутов, однако позволяет
+# защитить их от случайного переопределения в классах-потомках.
+
+class MyClass:
+    def __init__(self):
+        self.__private_attribute = 42
+
+    def get_private(self):
+        return self.__private_attribute
+
+
+obj = MyClass()
+print(obj.get_private())  # 42
+print(obj.__private_attribute)  # ошибка
+# print(obj._MyClass__private_attribute)  # 42
+
+
+
+
+
+##########################################################################################################################
+###  ???  ###
+
+class MyObject:
+    def __init__(self):
+        self.__private_attribute = 0
+
+    def get_attribute(self):
+        return self.__private_attribute
+
+    def set_attribute(self, value):
+        if value < 10:
+            self.__private_attribute = value
+            return self.__private_attribute
+        else:
+            return self.__private_attribute
+
+obj = MyObject()            # creating an example of class MyObject
+
+print(obj.get_attribute())                          # 0
+print(obj.set_attribute(9))                         # 9
+print(obj.set_attribute(11))                        # 9
+
+
+print(MyObject().get_attribute())                   # 0
+print(MyObject().set_attribute(9))                  # 9
+print(MyObject().set_attribute(11))                 # 0  <-- this doesn't change
+
+print(MyObject.get_attribute())         # TypeError: MyObject.get_attribute() missing 1 required positional argument: 'self'
+
+
+
+
+--- same but with methods ---
+
+
+
+
+class MyObject:
+    def __init__(self):
+        self.__attribute = 0
+
+    @property
+    def attribute(self):
+        return self.__attribute
+
+    @attribute.setter
+    def attribute(self, value):
+        if value < 10:
+            self.__attribute = value
+            return self.__attribute
+        else:
+            return self.__attribute
+
+
+obj = MyObject()            # creating an example of class MyObject
+
+# calling @property method, not private '__attribute'
+print(obj.attribute)                                    # 0
+
+# calling method @attribute.setter
+obj.attribute = 9
+
+# calling method @property
+print(obj.attribute)                                    # 9
+
+obj.attribute = 11
+print(obj.attribute)                                    # 9
+
+
+
+print(MyObject().attribute)                             # 0
+
+MyObject().attribute = 9
+print(MyObject().attribute)                             # 0
+
+MyObject().attribute = 11
+print(MyObject().attribute)                             # 0
+
+
+'''
+The reason MyObject().attribute = 9 does not change it to 9 is because you are assigning the value to a new instance of MyObject, but you are not storing that instance anywhere.
+
+Each time MyObject() is called, a brand-new object is created. So when you write:
+
+------
+MyObject().attribute = 9
+print(MyObject().attribute)  # Still prints 0
+------
+
+Here's what's happening:
+MyObject() creates a new instance of MyObject.
+
+attribute = 9 sets the attribute value for that temporary instance.
+
+Immediately after, MyObject().attribute creates another new instance, which still has its original value (0), since it is not the same instance as the one you just modified.
+
+How to Fix It
+If you want the modification to persist, you need to store the instance in a variable:
+
+------
+obj = MyObject()  # Store instance in a variable
+obj.attribute = 9  # Modify stored instance
+print(obj.attribute)  # Outputs: 9
+------
+
+Every time you call MyObject(), it creates a new object, so changes made to one instance do not carry over to others. Hope that clears it up! Let me know if you need more clarification.
+'''
 
 
 
