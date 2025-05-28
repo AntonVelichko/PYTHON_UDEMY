@@ -151,6 +151,7 @@ john.age = 20
 
 # Проверим, чем является атрибут print_info класса Person
 print(Person)                                   # <class '__main__.Person'>
+print(type(Person))                             # <class 'type'>
 print(Person.print_info)                        # <function Person.print_info at 0x00000148C1B88220>
 print(type(Person.print_info))                  # функция (<class 'function'>)
 
@@ -161,6 +162,7 @@ Person.print_info(john)                        # John is 20
 # Метод -- это функция, привязанная к объекту. Все атрибуты класса, являющиеся функциями, описывают соответствующие методы экземпляров данного класса.
 
 print(alex)                                       # <__main__.Person object at 0x77fd6548fb90>
+print(type(alex))                                 # <class '__main__.Person'>
 print(alex.print_info)                            # <bound method Person.print_info of <__main__.Person object at 0x0000017351116A50>> (привязанный метод который лежит уже по другому адресу)
 print(type(alex.print_info))                      # метод (<class 'method'>)
 
@@ -236,11 +238,11 @@ MyClass().method()				# I am a method of object <__main__.MyClass object at 0x00
 
 class MyClass:
     # Объявление атрибута класса
-    class_attribute = 8
+    class_attribute = "Class/Static Attribute"
 
     # Конструктор
     def __init__(self):
-        self.data_attribute = 42
+        self.data_attribute = "Constructor Attribute"
 
     # Статический метод. Обратите внимание, что у него нет параметра self, поскольку он не связан ни с одним из экземпляров класса не имеет доступа к атрибутам-данным
     @staticmethod
@@ -254,13 +256,13 @@ class MyClass:
 
 if __name__ == '__main__':
     # Вызов статического метода
-    MyClass.static_method()                 # 8
+    MyClass.static_method()                 # Class/Static Attribute
     # Инстанцирование объекта
     obj = MyClass()
     # Вызов метода
-    obj.instance_method()                   # 42
+    obj.instance_method()                   # Constructor Attribute
     # Аналогично атрибутам класса, доступ ко статическим методам можно получить и через экземпляр класса
-    obj.static_method()                     # 8
+    obj.static_method()                     # Class/Static Attribute
 
 
 
@@ -270,11 +272,11 @@ In the below example, we have both data and class attributes with the same name,
 
 class MyClass:
     # Объявление атрибута класса
-    data_attribute = 8
+    data_attribute = "Class/Static Attribute"
 
     # Конструктор
     def __init__(self):
-        self.data_attribute = 42
+        self.data_attribute = "Constructor Attribute"
 
     # Статический метод. Обратите внимание, что у него нет параметра self, поскольку он не связан ни с одним из экземпляров класса не имеет доступа к атрибутам-данным
     @staticmethod
@@ -288,16 +290,16 @@ class MyClass:
 
 if __name__ == '__main__':
     # Вызов статического метода
-    MyClass.static_method()                 # 8
+    MyClass.static_method()                 # Class/Static Attribute
     # Вызов обычного метода
-    MyClass().instance_method()				# 42
+    MyClass().instance_method()             # Constructor Attribute
 
     # Инстанцирование объекта
     obj = MyClass()
     # Вызов метода
-    obj.instance_method()                   # 42
+    obj.instance_method()                   # Constructor Attribute
     # Аналогично атрибутам класса, доступ ко статическим методам можно получить и через экземпляр класса
-    obj.static_method()                     # 8
+    obj.static_method()                     # Class/Static Attribute
 
 
 
@@ -331,7 +333,7 @@ class Rectangle:
         """
         Метод, который возвращает строковое представление объекта
         """
-        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)			# new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
+        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)         # new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
 
 
 class Circle:
@@ -369,14 +371,23 @@ class Circle:
 def main():
     rectangle = Rectangle(3, 4)
     print(rectangle)                                  # Rectangle(3.0, 4.0)
+    
     circle1 = Circle(1)
     print(circle1)                                    # Circle(1.0)
+    
     disc = Circle.from_rectangle(rectangle)
     print(disc)                                       # Circle(2.5)
 
+    plate = Circle
+    print(plate.from_rectangle(rectangle))            # Circle(2.5)
+    print(plate)                                      # <class '__main__.Circle'>
+    print(plate.from_rectangle)                       # <bound method Circle.from_rectangle of <class '__main__.Circle'>>
 
-    print(Circle)								      # <class '__main__.Circle'>
-    print(Circle.from_rectangle)					  # <bound method Circle.from_rectangle of <class '__main__.Circle'>>
+
+
+
+    print(Circle)                                     # <class '__main__.Circle'>
+    print(Circle.from_rectangle)                      # <bound method Circle.from_rectangle of <class '__main__.Circle'>>
 
 
 if __name__ == '__main__':
@@ -397,7 +408,7 @@ class Rectangle:
         self.side_b = side_b
 
     def __repr__(self):
-        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)			# new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
+        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)         # new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
 
 
 class Circle:
@@ -417,13 +428,20 @@ class Circle:
 def main():
     rectangle = Rectangle(3, 4)
     print(rectangle)                                  # Rectangle(3.0, 4.0)
+    
     circle1 = Circle(1)
     print(circle1)                                    # Circle(1.0)
+    
     disc = Circle.from_rectangle(rectangle)
     print(disc)                                       # Circle(2.5)
 
-    print(Circle)								      # <class '__main__.Circle'>
-    print(Circle.from_rectangle)					  # <function Circle.from_rectangle at 0x00000193729BC180>
+    plate = Circle
+    print(plate.from_rectangle(rectangle))            # Circle(2.5)
+    print(plate)                                      # <class '__main__.Circle'>
+    print(plate.from_rectangle)                       # <function Circle.from_rectangle at 0x000001EED5CCC220>  <-- same address
+
+    print(Circle)                                     # <class '__main__.Circle'>
+    print(Circle.from_rectangle)                      # <function Circle.from_rectangle at 0x000001F95FBEC220>  <-- same address
 
 
 if __name__ == '__main__':
