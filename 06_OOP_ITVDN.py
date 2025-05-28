@@ -131,6 +131,7 @@ john.name = 'John'
 john.age = 20
 
 # Проверим, чем является атрибут print_info класса Person
+print(Person)                                   # <class '__main__.Person'>
 print(Person.print_info)                        # <function Person.print_info at 0x00000148C1B88220>
 print(type(Person.print_info))                  # функция (<class 'function'>)
 
@@ -140,6 +141,7 @@ Person.print_info(john)                        # John is 20
 
 # Метод -- это функция, привязанная к объекту. Все атрибуты класса, являющиеся функциями, описывают соответствующие методы экземпляров данного класса.
 
+print(alex)                                       # <__main__.Person object at 0x77fd6548fb90>
 print(alex.print_info)                            # <bound method Person.print_info of <__main__.Person object at 0x0000017351116A50>> (привязанный метод который лежит уже по другому адресу)
 print(type(alex.print_info))                      # метод (<class 'method'>)
 
@@ -349,8 +351,12 @@ def main():
     print(rectangle)                                  # Rectangle(3.0, 4.0)
     circle1 = Circle(1)
     print(circle1)                                    # Circle(1.0)
-    circle2 = Circle.from_rectangle(rectangle)
-    print(circle2)                                    # Circle(2.5)
+    disc = Circle.from_rectangle(rectangle)
+    print(disc)                                       # Circle(2.5)
+
+
+    print(Circle)								      # <class '__main__.Circle'>
+    print(Circle.from_rectangle)					  # <bound method Circle.from_rectangle of <class '__main__.Circle'>>
 
 
 if __name__ == '__main__':
@@ -359,6 +365,64 @@ if __name__ == '__main__':
 # не злоупотредлять classmethod, если нужно описать просто staticmethod то classmethod использовать не имеет смысла
 
 
+'''
+In the below example, we don't use @classmethod
+'''
+
+
+class Rectangle:
+    """
+    Класс, описывающий прямоугольник
+    """
+
+    def __init__(self, side_a, side_b):
+        """
+        Конструктор класса
+        :param side_a: первая сторона
+        :param side_b: вторая сторона
+        """
+        self.side_a = side_a
+        self.side_b = side_b
+
+    def __repr__(self):
+        """
+        Метод, который возвращает строковое представление объекта
+        """
+        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)			# new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
+
+
+class Circle:
+    """
+    Класс, описывающий окружность
+    """
+
+    def __init__(self, radius):
+        self.radius = radius
+
+    def __repr__(self):
+        return 'Circle(%.1f)' % self.radius
+
+    def from_rectangle(rectangle):
+        radius = (rectangle.side_a ** 2 + rectangle.side_b ** 2) ** 0.5 / 2
+        return Circle(radius)
+        # Здесь мы получаем экземпляр класса Circle. Например если бы у нас был бы class Disc и он наследовался бы от класса Circle
+
+
+
+def main():
+    rectangle = Rectangle(3, 4)
+    print(rectangle)                                  # Rectangle(3.0, 4.0)
+    circle1 = Circle(1)
+    print(circle1)                                    # Circle(1.0)
+    disc = Circle.from_rectangle(rectangle)
+    print(disc)                                       # Circle(2.5)
+
+    print(Circle)								      # <class '__main__.Circle'>
+    print(Circle.from_rectangle)					  # <function Circle.from_rectangle at 0x00000193729BC180>
+
+
+if __name__ == '__main__':
+    main()
 
 
 
