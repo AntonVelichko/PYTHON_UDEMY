@@ -40,6 +40,11 @@ print(type(AnotherClass))           # <class 'type'>
 # Как видим, теперь AnotherClass -- это то же самое, что и MyClass, и obj является и экземпляром класса AnotherClass
 print(isinstance(obj, AnotherClass))  # True
 
+# MyClass and AnotherClass are in the same location
+print(MyClass())                    # <__main__.MyClass object at 0x7ebddcdf3b90>
+print(AnotherClass())               # <__main__.MyClass object at 0x7ebddcdf3b90>
+print(obj)                          # <__main__.MyClass object at 0x7ebddcdf3b90>
+
 
 
 
@@ -67,6 +72,11 @@ object2 = MyClass()
 print(object1.int_field)            # 8
 print(object2.str_field)            # string
 
+# All of them are in different locations
+print(MyClass())                    # <__main__.MyClass object at 0x000001B6763E8B90>
+print(object1)                      # <__main__.MyClass object at 0x000001B6760D6A50>
+print(object2)                      # <__main__.MyClass object at 0x000001B6763E8A50>
+
 # Все вышеперечисленные обращения к атрибутам на самом деле относятся ко двум одним и тем же переменным
 
 # Изменение значения атрибута класса
@@ -75,11 +85,19 @@ print(MyClass.int_field)            # 10
 print(object1.int_field)            # 10
 print(object2.int_field)            # 10
 
+print(MyClass())                    # <__main__.MyClass object at 0x000001B67614A780>
+print(object1)                      # <__main__.MyClass object at 0x000001B6760D6A50>
+print(object2)                      # <__main__.MyClass object at 0x000001B6763E8A50>
+
 # Однако, аналогично глобальным и локальным переменным, присвоение значение атрибуту объекта не изменяет значение атрибута класса, а ведёт к созданию атрибута данных (нестатического поля)
 object1.str_field = 'another string'
 print(MyClass.str_field)            # string
 print(object1.str_field)            # another string
 print(object2.str_field)            # string
+
+print(MyClass())                    # <__main__.MyClass object at 0x7efd3c78cc10>
+print(object1)                      # <__main__.MyClass object at 0x7efd3c777d90>
+print(object2)                      # <__main__.MyClass object at 0x7efd3c777e50>
 
 
 
@@ -197,9 +215,10 @@ class MyClass:
 
 obj = MyClass()
 obj.method()                    # I am a method of object <__main__.MyClass object at 0x000001E1215C6A50>
+print(obj.method)               # <bound method outer_method of <__main__.MyClass object at 0x7f626d593690>>
 print(MyClass.method)           # <function outer_method at 0x000001B7C7573EC0>
 
-MyClass.method()                # TypeError: outer_method() missing 1 required positional argument: 'self'
+# MyClass.method()                # TypeError: outer_method() missing 1 required positional argument: 'self'
 MyClass().method()				# I am a method of object <__main__.MyClass object at 0x000001B1E7DA8A50>
 
 
@@ -365,37 +384,22 @@ if __name__ == '__main__':
 # не злоупотредлять classmethod, если нужно описать просто staticmethod то classmethod использовать не имеет смысла
 
 
+
 '''
 In the below example, we don't use @classmethod
 '''
 
 
 class Rectangle:
-    """
-    Класс, описывающий прямоугольник
-    """
-
     def __init__(self, side_a, side_b):
-        """
-        Конструктор класса
-        :param side_a: первая сторона
-        :param side_b: вторая сторона
-        """
         self.side_a = side_a
         self.side_b = side_b
 
     def __repr__(self):
-        """
-        Метод, который возвращает строковое представление объекта
-        """
         return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)			# new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
 
 
 class Circle:
-    """
-    Класс, описывающий окружность
-    """
-
     def __init__(self, radius):
         self.radius = radius
 
