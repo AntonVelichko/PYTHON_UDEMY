@@ -508,3 +508,12 @@ print(a, b, c, d)  # 5 7 3 4
 
 
 
+
+
+###  IF ELSE  ###
+def test(i):
+    return '+' if i >= 0 else '-'
+    
+print(test(-1))              # '-'
+
+
