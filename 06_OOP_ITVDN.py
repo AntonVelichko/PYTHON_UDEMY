@@ -138,8 +138,7 @@ print(type(Person.print_info))                  # функция (<class 'functi
 Person.print_info(alex)                        # Alex is 18
 Person.print_info(john)                        # John is 20
 
-# Метод -- это функция, привязанная к объекту. Все атрибуты класса, являющиеся функциями, описывают соответствующие методы экземпляров
-# данного класса.
+# Метод -- это функция, привязанная к объекту. Все атрибуты класса, являющиеся функциями, описывают соответствующие методы экземпляров данного класса.
 
 print(alex.print_info)                            # <bound method Person.print_info of <__main__.Person object at 0x0000017351116A50>> (привязанный метод который лежит уже по другому адресу)
 print(type(alex.print_info))                      # метод (<class 'method'>)
@@ -177,6 +176,9 @@ john = Person('John', 20)
 alex.print_info()                # Alex is 18
 john.print_info()                # John is 20
 
+Person.print_info(alex)			 # Alex is 18
+Person.print_info(john)			 # John is 20
+
 
 
 
@@ -194,7 +196,9 @@ class MyClass:
 obj = MyClass()
 obj.method()                    # I am a method of object <__main__.MyClass object at 0x000001E1215C6A50>
 print(MyClass.method)           # <function outer_method at 0x000001B7C7573EC0>
-# MyClass.method()              # TypeError: outer_method() missing 1 required positional argument: 'self'
+
+MyClass.method()                # TypeError: outer_method() missing 1 required positional argument: 'self'
+MyClass().method()				# I am a method of object <__main__.MyClass object at 0x000001B1E7DA8A50>
 
 
 
@@ -238,6 +242,44 @@ if __name__ == '__main__':
 
 
 
+'''
+In the below example, we have both data and class attributes with the same name, and it works the same way as the above code
+'''
+
+class MyClass:
+    # Объявление атрибута класса
+    data_attribute = 8
+
+    # Конструктор
+    def __init__(self):
+        self.data_attribute = 42
+
+    # Статический метод. Обратите внимание, что у него нет параметра self, поскольку он не связан ни с одним из экземпляров класса не имеет доступа к атрибутам-данным
+    @staticmethod
+    def static_method():
+        print(MyClass.data_attribute)
+
+    # Обычный метод
+    def instance_method(self):
+        print(self.data_attribute)
+
+
+if __name__ == '__main__':
+    # Вызов статического метода
+    MyClass.static_method()                 # 8
+    # Вызов обычного метода
+    MyClass().instance_method()				# 42
+
+    # Инстанцирование объекта
+    obj = MyClass()
+    # Вызов метода
+    obj.instance_method()                   # 42
+    # Аналогично атрибутам класса, доступ ко статическим методам можно получить и через экземпляр класса
+    obj.static_method()                     # 8
+
+
+
+
 
 
 ##########################################################################################################################
@@ -267,7 +309,7 @@ class Rectangle:
         """
         Метод, который возвращает строковое представление объекта
         """
-        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)
+        return 'Rectangle(%.1f, %.1f)' % (self.side_a, self.side_b)			# new version --> f'Rectangle({self.side_a:.1f}, {self.side_b:.1f})'
 
 
 class Circle:
