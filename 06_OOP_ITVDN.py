@@ -460,23 +460,23 @@ if __name__ == '__main__':
 
 class MyClass:
     def __init__(self):
-        self.__private_attribute = 42
+        self.__private_attribute = "Private Attriute"
 
     def get_private(self):
         return self.__private_attribute
 
 
 obj = MyClass()
-print(obj.get_private())  # 42
-print(obj.__private_attribute)  # ошибка
-# print(obj._MyClass__private_attribute)  # 42
+print(obj.get_private())  # Private Attriute
+# print(obj.__private_attribute)  # ошибка
+print(obj._MyClass__private_attribute)  # Private Attriute
 
 
 
 
 
 ##########################################################################################################################
-###  ???  ###
+###  GET / SET  ###
 
 class MyObject:
     def __init__(self):
@@ -492,16 +492,15 @@ class MyObject:
         else:
             return self.__private_attribute
 
-obj = MyObject()            # creating an example of class MyObject
-
-print(obj.get_attribute())                          # 0
-print(obj.set_attribute(9))                         # 9
-print(obj.set_attribute(11))                        # 9
-
+obj = MyObject()            # creating an example of the class MyObject
 
 print(MyObject().get_attribute())                   # 0
 print(MyObject().set_attribute(9))                  # 9
-print(MyObject().set_attribute(11))                 # 0  <-- this doesn't change
+print(MyObject().set_attribute(11))                 # 0  <-- this doesn't change in Main Class
+
+print(obj.get_attribute())                          # 0
+print(obj.set_attribute(9))                         # 9
+print(obj.set_attribute(11))                        # 9 <-- changes are in Example Class
 
 print(MyObject.get_attribute())         # TypeError: MyObject.get_attribute() missing 1 required positional argument: 'self'
 
@@ -619,17 +618,14 @@ class Complex:
 
     def __repr__(self):
         """
-        Метод __repr__ возвращает строковое представление объекта, которое,
-        если это возможно, должно быть корректным выражением, создающим
-        аналогичный объект, иначе содержать его описание;
-        вызывается функцией repr.
+        Метод __repr__ возвращает строковое представление объекта, которое, если это возможно, должно быть корректным выражением, создающим
+        аналогичный объект, иначе содержать его описание; вызывается функцией repr.
         """
         return 'Complex(%g, %g)' % (self.real, self.imaginary)
 
     def __str__(self):
         """
-        Метод __str__ возвращает предназначенное для человека строковое
-        представление объекта; вызывается функциями str, print и format.
+        Метод __str__ возвращает предназначенное для человека строковое представление объекта; вызывается функциями str, print и format.
         """
         return '%g %c %gi' % (self.real,
                               '+' if self.imaginary >= 0 else '-',
@@ -653,8 +649,7 @@ class Complex:
     def __sub__(self, other):
         """
         Операция вычитания.
-        Сложение и отрицание уже определены, поэтому вычитание
-        можно определить через них
+        Сложение и отрицание уже определены, поэтому вычитание можно определить через них
         """
         return self + (-other)
 
@@ -730,7 +725,7 @@ class MyClass:
         """
         Метод __getattribute__ вызывается при получении атрибутов
         """
-
+        
         # Если запрошено поле secret_field и пароль верный
         if item == 'secret_field' and self.password == '9ea)fc':
             # то возвращаем значение
@@ -744,7 +739,7 @@ class MyClass:
 obj = MyClass()
 
 # Разблокирование секретного поля
-obj.password = '9ea)fc'             # comment it ro see Error
+obj.password = '9ea)fc'             # comment it to see Error
 
 # Вывод значения secret field.
 # Значение будет получено, если раскомментировать предыдущую строку программного кода, иначе будет получена ошибка.
