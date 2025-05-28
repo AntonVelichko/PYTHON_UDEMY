@@ -43,6 +43,7 @@ print(isinstance(obj, AnotherClass))  # True
 # MyClass and AnotherClass are in the same location
 print(MyClass())                    # <__main__.MyClass object at 0x7ebddcdf3b90>
 print(AnotherClass())               # <__main__.MyClass object at 0x7ebddcdf3b90>
+
 print(obj)                          # <__main__.MyClass object at 0x7ebddcdf3b90>
 
 
