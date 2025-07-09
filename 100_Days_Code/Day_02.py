@@ -14,6 +14,8 @@ print(f"Each person should pay: ${splitted_bill}")
 
 
 
+
+
 ............................................................................................
 ../teacher_solution.py
 
