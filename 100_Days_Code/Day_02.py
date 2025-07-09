@@ -31,4 +31,4 @@ print(f"Each person should pay: ${final_amount}")
 
 
 
-.
+[end]
