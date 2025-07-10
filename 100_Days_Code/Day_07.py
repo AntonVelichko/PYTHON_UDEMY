@@ -12,17 +12,17 @@ from hangman_art import stages, logo
 lives  = 6
 
 # creating Guessed Word
-guessing_word = random.choice(hangman_words.word_list)
-print(guessing_word)
+chosen_word = random.choice(hangman_words.word_list)
+print(chosen_word)
 
 # creating a placeholder for Guessed Word
 placeholder = ""
-word_length = len(guessing_word)
+word_length = len(chosen_word)
 for _ in range(word_length):
     placeholder += "_"
 print(placeholder)
 
-# creating a list placeholder for calculation
+# creating list placeholder for calculation
 list_placeholder = list(placeholder)
 print(list_placeholder)
 
@@ -33,14 +33,14 @@ print(logo)
 while "_" in list_placeholder and lives > 0:
     guess = input("Guess a letter: ").lower()
 
-    if guess not in guessing_word:
+    if guess not in chosen_word:
         lives -= 1
 
     if guess in list_placeholder:
         print(f"You've already guessed a '{guess}'")
 
     for i in range(word_length):
-        if guessing_word[i] == guess:
+        if chosen_word[i] == guess:
             list_placeholder[i] = guess
 
     print(''.join(list_placeholder))
