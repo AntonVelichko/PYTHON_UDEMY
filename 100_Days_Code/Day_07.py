@@ -4,40 +4,44 @@
 ............................................................................................
 ../my_solution.py
 
+# importing data
 import random
 import hangman_words
 from hangman_art import stages, logo
 
 lives  = 6
 
-chosen_word = random.choice(hangman_words.word_list)
-print(chosen_word)
+# creating Guessed Word
+guessing_word = random.choice(hangman_words.word_list)
+print(guessing_word)
 
+# creating a placeholder for Guessed Word
 placeholder = ""
-word_length = len(chosen_word)
-for position in range(word_length):
+word_length = len(guessing_word)
+for _ in range(word_length):
     placeholder += "_"
 print(placeholder)
 
-list_display = list(placeholder)
-print(list_display)
+list_placeholder = list(placeholder)
+print(list_placeholder)
 
 print(logo)
 
-while "_" in list_display and lives > 0:
+while "_" in list_placeholder and lives > 0:
     guess = input("Guess a letter: ").lower()
 
-    if guess not in chosen_word:
+    if guess not in guessing_word:
         lives -= 1
 
-    if guess in list_display:
+    if guess in list_placeholder:
         print(f"You've already guessed a '{guess}'")
 
     for i in range(word_length):
-        if chosen_word[i] == guess:
-            list_display[i] = guess
+        if guessing_word[i] == guess:
+            list_placeholder[i] = guess
 
-    print(list_display)
+    print(list_placeholder)
+    print(list_placeholder)
     print(lives)
     print(stages[lives])
 
