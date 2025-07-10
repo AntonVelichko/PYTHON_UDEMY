@@ -22,11 +22,14 @@ for _ in range(word_length):
     placeholder += "_"
 print(placeholder)
 
+# creating a list placeholder for calculation
 list_placeholder = list(placeholder)
 print(list_placeholder)
 
+# printing the logo
 print(logo)
 
+# starting the loop
 while "_" in list_placeholder and lives > 0:
     guess = input("Guess a letter: ").lower()
 
@@ -40,7 +43,7 @@ while "_" in list_placeholder and lives > 0:
         if guessing_word[i] == guess:
             list_placeholder[i] = guess
 
-    print(list_placeholder)
+    print(''.join(list_placeholder))
     print(list_placeholder)
     print(lives)
     print(stages[lives])
@@ -51,6 +54,7 @@ else:
         print("You lose")
     else:
         print("You win")
+
 
 
 
