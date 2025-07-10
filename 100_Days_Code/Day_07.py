@@ -95,6 +95,7 @@ while not game_over:
 
     display = ""
 
+    # this part is confusing, hard to read
     for letter in chosen_word:
         if letter == guess:
             display += letter
