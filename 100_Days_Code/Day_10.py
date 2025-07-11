@@ -62,7 +62,7 @@ def divide(n1, n2):
     return n1 / n2
 
 
-# check if input is a number
+# checking if input is a number
 def is_number(input_string):
     try:
         float(input_string)
@@ -91,7 +91,7 @@ operation_sign = ''
 while True:
     print(logo)
 
-    # checking if First number is a number
+    # checking if First Number is a number
     if first_number:
         first_number
     else:
@@ -100,21 +100,21 @@ while True:
             if not is_number(first_number):
                 print("This is not a number. Enter only number")
 
-    # checking if Operation sign is correct
+    # checking if Operation Sign is correct
     while operation_sign not in operation_signs:
         for key in operations:
             print(key)
-        operation_sign = input(f"Enter operator {', '.join(f'"{w}"' for w in operation_signs)} :")
+        operation_sign = input(f"Enter operator {', '.join(f'"{w}"' for w in operation_signs)} : ")
         if operation_sign not in operation_signs:
             print("Invalid operator. Please try again")
 
-    # checking if Second number is a number
+    # checking if Second Number is a number
     while not is_number(second_number):
         second_number = input("Enter second number: ")
         if not is_number(second_number):
             print("This is not a number. Enter only number")
 
-    # converting numbers to float
+    # converting numbers into float
     first_number = float(first_number)
     second_number = float(second_number)
 
@@ -126,6 +126,8 @@ while True:
 
     # asking a User to keep result or start over
     keep_result = input(f"Type 'y' to continue with {calculation_result}, or any key to start new: ")
+
+    # remove previous Operation Sign
     operation_sign = None
 
     # keep First number if User wants or restart if not
