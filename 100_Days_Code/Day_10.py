@@ -142,6 +142,116 @@ while True:
 
 
 
+
+............................................................................................
+../my_solution.py UPDATED with ChatGPT
+
+from art import logo
+
+# Operation functions
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    if n2 == 0:
+        return "❌ Error: Cannot divide by zero\n"
+    return n1 / n2
+
+# Check if input is a valid number
+def is_number(input_string):
+    try:
+        float(input_string)
+        return True
+    except ValueError:
+        return False
+
+# Supported operations
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
+
+# Main calculator function
+def calculator():
+    first_number = ''
+    new_session = True  # Flag to determine when to show the logo
+
+    while True:
+        # Show logo only at the start of a new session (not after errors or chaining)
+        if new_session:
+            print(logo)
+            new_session = False  # Don't show it again until the user fully resets
+
+        # Ask user for the first number until valid
+        while not is_number(first_number):
+            first_number = input("Enter first number: ")
+            if not is_number(first_number):
+                print("❌ This is not a number. Please enter a valid number.")
+        first_number = float(first_number)
+
+        # We are now ready to do calculations with this number
+        continue_calculating = True  # This controls the inner calculation loop
+
+        while continue_calculating:
+            # Display available operation symbols
+            print("\nAvailable operations:")
+            for symbol in operations:
+                print(f"  {symbol}")
+
+            # Ask user for a valid operator
+            operation_sign = ''
+            while operation_sign not in operations:
+                operation_sign = input(f"Choose an operator {', '.join(operations.keys())}: ")
+                if operation_sign not in operations:
+                    print("❌ Invalid operator. Try again.")
+
+            # Ask for the second number until valid
+            second_number = ''
+            while not is_number(second_number):
+                second_number = input("Enter second number: ")
+                if not is_number(second_number):
+                    print("❌ This is not a number. Please enter a valid number.")
+            second_number = float(second_number)
+
+            # Perform the calculation using the selected operation
+            result = operations[operation_sign](first_number, second_number)
+
+            # If result is an error (like divide by zero), show message and reset
+            if isinstance(result, str):
+                print(result)
+                first_number = ''       # Reset number input
+                new_session = False     # Still in same session, don't show logo
+                break                   # Exit the inner loop and restart
+            else:
+                # Show result with 2 decimal places
+                print(f"\n✅ {first_number} {operation_sign} {second_number} = {result:.2f}")
+
+            # Ask user if they want to continue with the result
+            keep_going = input(f"\nType 'y' to continue calculating with {result:.2f}, or any other key to start over: ")
+            if keep_going.lower() == 'y':
+                first_number = result       # Keep result as first number
+            else:
+                print("\n" * 3)
+                first_number = ''           # Reset inputs
+                new_session = True          # Show logo again next time
+                continue_calculating = False  # Exit inner loop
+
+# Run the calculator
+calculator()
+
+
+
+
+
+
 ............................................................................................
 ../teacher_solution.py
 
