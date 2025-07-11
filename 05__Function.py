@@ -211,8 +211,10 @@ print(is_even(51))
 def super_func(*args):        # can accept any number as many as we want
   print(*args)                # 1 2 3
   print(args)                 # (1, 2, 3)  <--  tuple
+  print(args[0])              # 1
   return sum(args)            # 6
 print(super_func(1,2,3))
+
 
 
 
