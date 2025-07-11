@@ -54,6 +54,28 @@ print(calculate_love_score('Demetron', "Paraphen"))
 ---
 
 
+# my updated solution with cycle
+def calculate_love_score(*kwargs):
+    true_check = "true"
+    love_check = "love"   
+    
+    true_score = 0
+    love_score = 0
+    
+    for kwarg in kwargs:
+        for letter in range(0, len(kwarg)):
+            if kwarg[letter].lower() in true_check:
+                true_score += 1
+            if kwarg[letter].lower() in love_check:
+                love_score += 1
+            
+    return str(true_score) + str(love_score)
+print(calculate_love_score('Demetron', "Paraphen"))
+
+
+---
+
+
 # by other user
 def calculate_love_score(person, partner):
     true = sum([f"{person}{partner}".upper().count(letter) for letter in "TRUE"])
