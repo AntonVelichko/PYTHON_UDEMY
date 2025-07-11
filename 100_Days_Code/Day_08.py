@@ -29,7 +29,7 @@ print(calculate_love_score('Demetron', "Paraphen"))
 ---
 
 
-# my updated solution
+# my updated solution with Combined Name
 def calculate_love_score(name1, name2):
     
     combined_name = name1 + name2
@@ -47,14 +47,13 @@ def calculate_love_score(name1, name2):
             love_score += 1
             
     return str(true_score) + str(love_score)
-    
 print(calculate_love_score('Demetron', "Paraphen"))
 
 
 ---
 
 
-# my updated solution with cycle
+# my updated solution with Cycle
 def calculate_love_score(*kwargs):
     true_check = "true"
     love_check = "love"   
@@ -93,7 +92,7 @@ def calculate_love_score(person, partner):
 ............................................................................................
 ../my_solution.py
 
-# made code complicated with revirsing the alphabet
+# made the code complicated by reversing the alphabet
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 def caesar(original_text, shift_amount, encode_or_decode):
@@ -122,19 +121,18 @@ caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
 ../teacher_solution.py
 
 import art
-
 print(art.logo)
 
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-            'v', 'w', 'x', 'y', 'z']
-
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 def caesar(original_text, shift_amount, encode_or_decode):
     output_text = ""
+    
     if encode_or_decode == "decode":
         shift_amount *= -1
 
-# if user input a sumbol that not exist in our alphabet
+# if user inputs a sumbol that not exists in our alphabet
     for symbol in original_text:
         if symbol not in alphabet:
             output_text += symbol
