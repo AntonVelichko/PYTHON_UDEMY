@@ -244,6 +244,7 @@ def calculator():
                 new_session = True          # Show logo again next time
                 continue_calculating = False  # Exit inner loop
 
+            # If use calculator() that is what will happen
             # A new instance of the function is added to the call stack.
             # The previous instance is still in memory, waiting for the new one to finish.
             # If the user restarts over and over again, you eventually build up many layers of function calls
