@@ -164,8 +164,6 @@ operations = {
     "/": divide,
 }
 
-# print(operations["*"](4, 8))
-
 
 def calculator():
     print(art.logo)
