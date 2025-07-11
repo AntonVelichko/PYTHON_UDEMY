@@ -75,6 +75,31 @@ print(calculate_love_score('Demetron', "Paraphen"))
 ---
 
 
+# chatGPT polished solution with Cycle
+def calculate_love_score(*args):
+    true_check = "true"
+    love_check = "love"
+
+    true_score = 0
+    love_score = 0
+
+    combined_words = "".join(args).lower()
+
+    for char in combined_words:
+        if char in true_check:
+            true_score += 1
+        if char in love_check:
+            love_score += 1
+
+    return str(true_score) + str(love_score)
+
+# Example usage
+print(calculate_love_score('Demetron', "Paraphen"))  # Output: e.g., "77"
+
+
+---
+
+
 # by other user
 def calculate_love_score(person, partner):
     true = sum([f"{person}{partner}".upper().count(letter) for letter in "TRUE"])
