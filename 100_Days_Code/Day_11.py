@@ -151,6 +151,10 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 def deal_card():
     return random.choice(cards)
 
+
+"""
+# calculate_score() modifies the original card list:
+# his works, but mutates the list, which might be a surprise in larger programs
 # Function to calculate the score and adjust Aces if needed
 def calculate_score(card_list):
     score = sum(card_list)
@@ -158,6 +162,18 @@ def calculate_score(card_list):
         card_list[card_list.index(11)] = 1
         score = sum(card_list)
     return score
+"""
+
+# Fixed Version: No Mutation of the Original List
+def calculate_score(card_list):
+    cards_copy = card_list[:]  # Create a shallow copy of the list
+    score = sum(cards_copy)
+    while 11 in cards_copy and score > 21:
+        cards_copy[cards_copy.index(11)] = 1
+        score = sum(cards_copy)
+    return score
+
+
 
 # Function to display current hand
 def display_hand(player, hand, score):
@@ -237,6 +253,7 @@ def blackjack():
 # Game entry point
 if input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower() == 'y':
     blackjack()
+
 
 
 
