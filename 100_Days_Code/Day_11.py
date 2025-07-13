@@ -138,6 +138,110 @@ if game_start.lower() == 'y':
 
 
 
+............................................................................................
+../my_solution.py updated with GPT
+
+import random
+from art import logo
+
+# Card deck (11 represents Ace)
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+# Function to deal a random card
+def deal_card():
+    return random.choice(cards)
+
+# Function to calculate the score and adjust Aces if needed
+def calculate_score(card_list):
+    score = sum(card_list)
+    while 11 in card_list and score > 21:
+        card_list[card_list.index(11)] = 1
+        score = sum(card_list)
+    return score
+
+# Function to display current hand
+def display_hand(player, hand, score):
+    print(f"{player} cards: {hand}, current score: {score}")
+
+# Main game function
+def blackjack():
+    while True:
+        print(logo)
+
+        # Initialize hands
+        user_cards = [deal_card(), deal_card()]
+        computer_cards = [deal_card(), deal_card()]
+
+        user_score = calculate_score(user_cards)
+        computer_score = calculate_score(computer_cards)
+
+        # Show initial hands
+        display_hand("Your", user_cards, user_score)
+        print(f"Computer's first card: {computer_cards[0]}")
+
+        # Early Blackjack check
+        if user_score == 21 or computer_score == 21:
+            print("\nFinal results:")
+            display_hand("Your", user_cards, user_score)
+            display_hand("Computer's", computer_cards, computer_score)
+
+            if user_score == 21 and computer_score == 21:
+                print("🟰 Draw with Blackjack!")
+            elif user_score == 21:
+                print("🏆 Win with a Blackjack!")
+            else:
+                print("❌ Opponent has Blackjack. You lose.")
+        else:
+            # Player turn
+            user_done = False
+            while not user_done:
+                should_continue = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+                if should_continue == "y":
+                    user_cards.append(deal_card())
+                    user_score = calculate_score(user_cards)
+                    display_hand("Your", user_cards, user_score)
+                    print(f"Computer's first card: {computer_cards[0]}")
+
+                    if user_score > 21:
+                        print("❌ You went over. You lose.")
+                        user_done = True
+                else:
+                    user_done = True
+
+            # Computer's turn if user hasn't busted
+            if user_score <= 21:
+                while computer_score < 17:
+                    computer_cards.append(deal_card())
+                    computer_score = calculate_score(computer_cards)
+
+                # Final comparison
+                print("\nFinal results:")
+                display_hand("Your", user_cards, user_score)
+                display_hand("Computer's", computer_cards, computer_score)
+
+                if computer_score > 21:
+                    print("✅ Opponent went over. You win!")
+                elif computer_score > user_score:
+                    print("❌ You lose.")
+                elif user_score > computer_score:
+                    print("✅ You win!")
+                else:
+                    print("🟰 Draw!")
+
+        # Ask to play again
+        again = input("\nDo you want to play a game of Blackjack again? Type 'y' or 'n': ").lower()
+        if again != 'y':
+            break
+        print("\n" * 20)
+
+# Game entry point
+if input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower() == 'y':
+    blackjack()
+
+
+
+
+
 
 ............................................................................................
 ../teacher_solution.py
