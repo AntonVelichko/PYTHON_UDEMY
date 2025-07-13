@@ -43,7 +43,7 @@ print(type(4/2))          # <class 'float'>
 print(4/2)                # 2.0
 print(type(9.9 + 1.1))    # <class 'float'>
 print(9.9 + 1.1)          # 11.0
-print(type(10.56))        # '10' stores in one memory and '56' in another
+print(type(10.56))        # <class 'float'> '10' stores in one memory and '56' in another
 
 
 
@@ -91,8 +91,27 @@ just do this instead
 ##########################################################################################################################
 ###  MATH OPERATORS  ###
 print(2 ** 3)             # 8
+
 print(3 // 2)             # 1   /rounded down to integer
+7 // 2   # ➜ 3
+7 / 2    # ➜ 3.5 (regular division)
+-7 // 2  # ➜ -4 (rounds DOWN)
+
 print(5 % 4)              # 1   /modulo, the remainder of the division
+7 % 2   # ➜ 1 → because 7 = 2×3 + 1
+8 % 3   # ➜ 2 → because 8 = 3×2 + 2
+-7 % 2  # ➜ 1 → in Python, % always returns a **non-negative remainder**
+
+| Operator | Name                | Returns                | Example   | Result |
+| -------- | ------------------- | ---------------------- | --------- | ------ |
+| `//`     | Floor Division      | Whole part of division | `17 // 5` | `3`    |
+| `%`      | Modulus (Remainder) | Leftover part          | `17 % 5`  | `2`    |
+
+
+Real-Life Analogy
+Let’s say you have 17 candies and want to put them in boxes of 5:
+17 // 5 → You can fill 3 full boxes
+17 % 5 → You’ll have 2 candies left over
 
 
 
@@ -148,13 +167,13 @@ print(int('0b111', 2))    # 7
 ###  VARIABLES  ###
 # keywords  -  https://www.w3schools.com/python/python_ref_keywords.asp
 
-# snake_case
-# start with lowercase or 
-# start with _underscore means the variable is private (do not change it)
-# contains letters, numbers, underscores
-# case sensitive
-# don't overwrite keywords
-# variables are descriptive
+snake_case
+start with lowercase or _
+start with _underscore means the variable is private (do not change it)
+contains letters, numbers, underscores
+case sensitive
+don't overwrite keywords
+variables are descriptive
 
 
 
@@ -166,7 +185,7 @@ PI = 3.14                 # Uppercase means not to reassign the variable
 
 
 iq = 100                  # statement
-user_age = iq / 5         # iq / 5                    <<--  this is expresion 
+user_age = iq / 5         # iq / 5                    <<--  this is expresion
                           # user_age = iq / 5         <<--  this is statement
 
 
@@ -182,4 +201,4 @@ print(c)                  # 3
 
 
 
-_
+[end]
