@@ -199,7 +199,7 @@ if False:
   x = 10
 print(x)                              # 10
                                       # if Flase  <--  NameError: name 'x' is not defined
-
+                                      # if True   <--  10
 
 
 
