@@ -331,6 +331,53 @@ game()
 
 
 
+............................................................................................
+
+Yes — the first version using while True: has clear advantages over the second one. Here's a breakdown of why the first one is better:
+
+✅ Version 1 — Input Loop (recommended):
+while True:
+    try:
+        user_guess = int(input("Make a guess: "))
+        break  # Exit loop if input is valid
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+        
+✅ Benefits:
+Keeps prompting until valid input is received.
+Ensures that the program never proceeds with invalid data.
+Clean and reusable input-validation pattern.
+Prevents user_guess from being undefined or invalid.
+
+
+⚠️ Version 2 — Single try-except block:
+try:
+    user_guess = int(input("Make a guess: "))
+except ValueError:
+    print("Please enter a valid number.")
+    continue
+    
+⚠️ Problems:
+This only handles one input attempt.
+After printing the error message, continue applies to the outer loop, which could cause unintended behavior if not structured properly.
+If placed in the wrong spot (e.g. not within a containing loop), it may crash or skip logic because user_guess may not be defined.
+Not self-contained — relies on outer control flow to work correctly.
+
+| Feature                         | `while True:` Version ✅ | Single try-except ❌ |
+| ------------------------------- | ----------------------- | ------------------- |
+| Keeps asking until valid input  | ✅                       | ❌                   |
+| Prevents undefined `user_guess` | ✅                       | ❌                   |
+| Safer and cleaner               | ✅                       | ❌                   |
+| Reusable in many places         | ✅                       | ⚠️ Somewhat         |
+
+✅ Verdict:
+Use the first version with while True: — it’s safer, clearer, and more robust.
+
+
+
+
+
 
 ............................................................................................
 ../teacher_solution.py
