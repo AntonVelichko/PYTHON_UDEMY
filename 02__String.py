@@ -183,5 +183,18 @@ print(f'{name}, your password {hide} is {password_length} letters long')
 
 
 
+##########################################################################################################################
+###  xxx  ###
 
--
+a = 'Helloooooooo'
+
+while ((n := len(a)) > 1):
+    print(n)
+    a = a[:-1]
+print(a)
+
+
+
+
+
+[end]
