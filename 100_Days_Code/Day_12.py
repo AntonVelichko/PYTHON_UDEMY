@@ -374,9 +374,27 @@ Not self-contained — relies on outer control flow to work correctly.
 ✅ Verdict:
 Use the first version with while True: — it’s safer, clearer, and more robust.
 
+    
+⚠️ Shorter Version 2:
+try:
+    user_guess = int(input("Make a guess: "))
+except ValueError:
+    print("Please enter a valid number.")
+
+⚠️ Limitations:
+❌ Only allows one try: If the user inputs "abc", they see the error message, but there's no second chance unless your outer logic explicitly loops.
+❌ Risk of skipping logic: If placed incorrectly, user_guess might be undefined after this block, leading to crashes or unexpected behavior.
+❌ User frustration: One mistake and the game might just move on or break.
+
+| Feature                      | `while True:` ✅ | Short version ❌ |
+| ---------------------------- | --------------- | --------------- |
+| Loops until input is valid   | ✅               | ❌               |
+| Prevents undefined variables | ✅               | ❌               |
+| Better user experience       | ✅               | ❌               |
+| Easier to debug and reuse    | ✅               | ⚠️ Limited      |
 
 
-
+    
 
 
 ............................................................................................
