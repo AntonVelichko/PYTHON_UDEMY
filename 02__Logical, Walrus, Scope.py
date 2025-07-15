@@ -228,7 +228,7 @@ def func():
   return a
 
 print(a)                             # 1
-print(func())                        # 1  <--  using global variable
+print(func())                        # 1  <--  #3 - using global variable
 
 
 
@@ -293,7 +293,7 @@ print(count())                          # 1  <--  every time we run a function w
 
 
 # global keyword
-# better not use "global', only use if really nessecary
+# better not use "global', only use if really necessary 
 total = 0
 def count():
   global total                          # not a good way to use, hard to understand
@@ -313,6 +313,18 @@ def count(total):
   total +=1
   return total
 print(count(count(count(total))))        # 3
+
+
+
+
+total = 0
+def count(total):
+  total +=1
+  return total
+  
+count(total)
+count(total)
+print(count(total))    # 1  <--  if we do it the regular way, because every time we call the function, total = 0
 
 
 
@@ -370,19 +382,20 @@ outer_3()                         # outer: local
 
 
 ###  GLOBAL, NONLOCAL  ###
-# global var - exists out of any function and can be called from anywhere
-# local var - exists inside of function
+# global var - exists outside of any function and can be called from anywhere
+# local var - exists inside a function
 
 def outer_function():
     # объявление функции локально
     def inner_function():
         print('Внутренняя функция')
     print('Внешняя функция')
-    # вызов функции
+    # вызов внутреннуй функции
     inner_function()
 
 # вызов внешней функции
-outer_function()
+outer_function()        # Внешняя функция
+                        # Внутренняя функция
 
 # inner_function()  # ошибка, здесь эта функция недоступна
 
@@ -394,7 +407,7 @@ outer_function()
 def function():
     print(var)  # получеие доступа к глобальной переменной
 var = 'глобальная переменная'
-function()
+function()                      # глобальная переменная
 
 
 ---
@@ -403,7 +416,7 @@ function()
 var = 'глобальная переменная'
 def function():
     print(var)  # получеие доступа к глобальной переменной
-function()
+function()                      # глобальная переменная
 
 
 ---
@@ -417,28 +430,28 @@ def function():
 
 # определение глобальной переменной
 var = 'глобальная переменная'
-function()
+function()          # локальная переменная
 # вывод значения глобальной переменной на экран
-print(var)
+print(var)          # глобальная переменная
 
 
 ---
 
 
 def function():
-    # global указывает, что необходимо получать доступ к глобальной переменной
-    # var, а не создавать новую локальную при попытке что-либо ей присвоить
+    # global указывает, что необходимо получать доступ к глобальной переменной var
+    # а не создавать новую локальную при попытке что-либо ей присвоить
     global var
     # вывод значения глобальной переменной на экран
-    print(var)
+    print(var)          # глобальная переменная
     # изменение глобальной переменной
     var = 'новое значение'
     # вывод значения глобальной переменной на экран
-    print(var)
+    print(var)          # новое значение
 
 var = 'глобальная переменная'
 function()
-print(var)
+print(var)              # новое значение
 
 
 ---
@@ -468,32 +481,28 @@ print(var)  # 0
 
 
 def outer_function():
-    var = 8  # создание локальной переменной var
+    var = 8                    # создание локальной переменной var
 
     def inner_function():
-        # указывает, что необходимо использовать глобальную переменную
-        global var
-        print(var)  # 0
+        global var             # # указывает, что необходимо использовать глобальную переменную
+        print(var)             # 0
         var = 10
 
-    print(var)  # 8
-    inner_function()  # вызов внутренней функции
-    print(var)  # 8
+    print(var)                 # 8
+    inner_function()           # вызов внутренней функции
+    print(var)                 # 8
 
-
-# создание глобальной переменной var
-var = 0
-print(var)  # 0
+var = 0                        # создание глобальной переменной var
+print(var)                     # 0
 outer_function()
-print(var)  # 10
+print(var)                     # 10  <--  мы изменили глобальну переменную в 'inner_function()'
 
 
 ---
 
 
-def function(c, d):
-    # a, b -- глобальные переменные; c, d -- локальные
-    global a, b
+def function(c, d):            # c, d -- локальные
+    global a, b                # a, b -- глобальные переменные 
     # изменение значения глобальной переменной
     a = 5
     b = 7
@@ -501,10 +510,10 @@ def function(c, d):
     c = 10
     d = 12
 
-a, b, c, d = 1, 2, 3, 4  # множественное присваивание
-print(a, b, c, d)  # 1 2 3 4
+a, b, c, d = 1, 2, 3, 4        # множественное присваивание
+print(a, b, c, d)              # 1 2 3 4
 function(c, d)
-print(a, b, c, d)  # 5 7 3 4
+print(a, b, c, d)              # 5 7 3 4
 
 
 
