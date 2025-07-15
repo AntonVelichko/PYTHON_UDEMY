@@ -232,6 +232,105 @@ game()
 
 
 
+............................................................................................
+../my_solution_UPDATED_with_GPT_suggestions.py
+
+import random
+from art import logo
+
+
+EASY_LEVEL_ATTEMPTS = 10
+HARD_LEVEL_ATTEMPTS = 5
+
+
+def random_number():
+    return random.randint(1, 100)
+
+
+def set_difficulty():
+    difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
+    if difficulty == "hard":
+        return HARD_LEVEL_ATTEMPTS
+    else:
+        return EASY_LEVEL_ATTEMPTS
+
+
+def check_answer(u_guess, h_number):
+    emoji_up = "⬆️"
+    emoji_down = "⬇️"
+
+    difference = u_guess - h_number
+    direction = emoji_up if difference > 0 else emoji_down
+    proximity = abs(u_guess - h_number)
+
+
+    if proximity  > 50:
+        message = "Super"
+    elif proximity  > 25:
+        message = "Very"
+    elif proximity  > 12:
+        message = "Too"
+    elif proximity  > 6:
+        message = "Little"
+    elif proximity  > 0:
+        message = "A bit"
+    else:
+        # Right number message and exit the function
+        print(f"\n✅You got it! The answer was {h_number}.")
+        return
+    # Wrong number message
+    print(f"{direction}{message} {'high' if difference > 0 else 'low'}")
+
+
+def game():
+    # Initial game start print
+    while True:
+        print(logo)
+        print("Welcome to the Number Guessing Game!\n"
+              "I'm thinking of a number between 1 and 100.")
+
+        # Guessing number is created
+        hidden_number = random_number()
+        # print(f"Number to guess = {hidden_number}")
+
+        # Guessing loop
+        user_guess = 0
+        attempts = set_difficulty()
+        while hidden_number != user_guess and attempts > 0:
+            print(f"\nYou have {attempts} attempts remaining to guess the number.")
+
+            # Integer validation
+            while True:
+                try:
+                    user_guess = int(input("Make a guess: "))
+                    break       # Input was successfully converted to int, so we can exit the loop
+                except ValueError:
+                    print("Please enter a valid number.")
+                    continue
+
+            check_answer(user_guess, hidden_number)
+
+            # Exit the loop if number is found
+            if user_guess == hidden_number:
+                break
+
+            attempts -= 1
+            if attempts == 0:
+                print(f"\n❌You've run out of guesses! The answer was {hidden_number}.")
+
+        # Ask to play again
+        again = input("\nDo you want to play 'Guess the Number' again? Type 'y' or 'n': ").lower()
+        if again != 'y':
+            break
+        print("\n" * 20)
+
+
+game()
+
+
+
+
+
 
 ............................................................................................
 ../teacher_solution.py
