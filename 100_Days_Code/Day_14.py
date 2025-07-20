@@ -70,8 +70,6 @@ game()
 
 
 
-
-
 # number = competetor()
 # print(number)
 # a = f"Compare A: {number['name']}, a {number['description']}, from {number['country']}."
@@ -89,6 +87,120 @@ game()
 #     print(True)
 # else:
 #     print(False)
+
+
+
+
+
+
+
+
+............................................................................................
+../my_solutionUPDATED.py
+
+import random
+from art import logo, vs
+from game_data import data
+
+
+# Functions to choose competetors
+def get_account():
+    return random.choice(data)
+
+
+def format_data(account):
+    """Takes the account data and returns the printable format."""
+    account_name = account["name"]
+    account_descr = account["description"]
+    account_country = account["country"]
+    return f"{account_name}, a {account_descr}, from {account_country}"
+
+
+def check_answer(user_guess, a_followers, b_followers):
+    """Take a user's guess and the follower counts and returns if they got it right."""
+    if a_followers == b_followers:
+        return "draw"
+    return "a" if a_followers > b_followers else "b"
+
+
+def get_next_accounts(winner_account):
+    """Sets up the next round with the previous winner as Account A."""
+    return winner_account, get_account()
+
+
+
+# Start of the game
+def game():
+    while True:
+
+        # Data
+        score = 0
+        account_a = get_account()
+        account_b = get_account()
+        print(logo)
+
+        while True:
+
+            # Check if accounts are different
+            while account_a == account_b:
+                account_b = get_account()
+
+            # Give options
+            print(f"Compare A: {format_data(account_a)}.")
+            print(vs)
+            print(f"Compare B: {format_data(account_b)}.")
+
+            # Ask user for a guess. User input validation
+            while True:
+                user_guess = input("Who has more followers? Type 'A' or 'B': ").strip().lower()
+                if user_guess not in ['a', 'b']:
+                    print("Please type 'A' or 'B'.")
+                    continue    # Go back to top and ask again
+                break
+
+            # Clear the screen
+            print("\n" * 20)
+            print(logo)
+
+            # Get follower count of each account
+            a_follower_count = account_a["follower_count"]
+            b_follower_count = account_b["follower_count"]
+
+            # Check if user is correct.
+            result = check_answer(user_guess, a_follower_count, b_follower_count)
+
+            # Give user feedback on their guess
+            if result == "draw":
+                print("It's a draw! Let's shuffle and continue.")
+            elif result == user_guess:
+                score += 1
+                print(f"You're right! Current score {score}")
+            else:
+                print(f"Sorry, that's wrong. Final score: {score}.")
+                break
+
+            if result in ["draw", user_guess]:
+                account_a, account_b = get_next_accounts(account_b)
+
+
+        play_again = input("Would like to play again? 'Y' or 'N': ").lower()
+        if play_again != "y":
+            break
+        print("\n" * 20)
+
+
+# Only run the game if this script is executed directly
+if __name__ == "__main__":
+    game()
+
+'''
+Why do this?
+When your script is imported as a module in another Python file, everything outside a function 
+will run immediately—which is usually not what you want. By wrapping your main logic like this, you ensure:
+game() only runs when this file is executed directly (not when it's imported elsewhere).
+Other scripts can safely import your helper functions without starting the game.
+'''
+
 
 
 
