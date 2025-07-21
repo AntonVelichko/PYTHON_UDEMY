@@ -139,7 +139,8 @@ def game():
         account_b = get_account()
         print(logo)
 
-        while True:
+        game_should_continue = True
+        while game_should_continue:
 
             # Check if accounts are different
             while account_a == account_b:
@@ -185,7 +186,7 @@ def game():
 
         play_again = input("Would like to play again? 'Y' or 'N': ").lower()
         if play_again != "y":
-            break
+            game_should_continue = False
         print("\n" * 20)
 
 
