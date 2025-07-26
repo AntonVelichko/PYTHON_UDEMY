@@ -143,6 +143,23 @@ while True:
 
 
 
+"""
+# In this case, if the  User input is not a digit, it won't start from the beginning but from the current coin that has wrong input
+
+def get_valid_int(prompt):
+    while True:
+        value = input(prompt)
+        if value.isdigit():
+            return int(value)
+        else:
+            print("Please enter a valid number.")
+
+quarters = get_valid_int("How many quarters? ")
+dimes = get_valid_int("How many dimes? ")
+nickles = get_valid_int("How many nickles? ")
+pennies = get_valid_int("How many pennies? ")
+"""
+
 
 
 
